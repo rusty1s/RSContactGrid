@@ -10,6 +10,11 @@
 		6137B4CB1B38740A006AC4C5 /* RSContactGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 6137B4CA1B38740A006AC4C5 /* RSContactGrid.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6137B4D21B38740A006AC4C5 /* RSContactGrid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6137B4C71B38740A006AC4C5 /* RSContactGrid.framework */; };
 		6137B4D71B38740A006AC4C5 /* RSContactGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6137B4D61B38740A006AC4C5 /* RSContactGridTests.swift */; };
+		6137B4E21B389B90006AC4C5 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6137B4E11B389B90006AC4C5 /* Protocols.swift */; };
+		614B304E1B399BAE00B9EB4E /* ContactGridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B304D1B399BAE00B9EB4E /* ContactGridDelegate.swift */; };
+		614B30501B399BE500B9EB4E /* ContactGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B304F1B399BE500B9EB4E /* ContactGrid.swift */; };
+		614B30521B399BF600B9EB4E /* ContactGridSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30511B399BF600B9EB4E /* ContactGridSegment.swift */; };
+		614B30541B399C0000B9EB4E /* ContactGridSegmentEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30531B399C0000B9EB4E /* ContactGridSegmentEdge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +34,11 @@
 		6137B4D11B38740A006AC4C5 /* RSContactGridTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSContactGridTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6137B4D61B38740A006AC4C5 /* RSContactGridTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSContactGridTests.swift; sourceTree = "<group>"; };
 		6137B4D81B38740A006AC4C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6137B4E11B389B90006AC4C5 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		614B304D1B399BAE00B9EB4E /* ContactGridDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGridDelegate.swift; sourceTree = "<group>"; };
+		614B304F1B399BE500B9EB4E /* ContactGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGrid.swift; sourceTree = "<group>"; };
+		614B30511B399BF600B9EB4E /* ContactGridSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGridSegment.swift; sourceTree = "<group>"; };
+		614B30531B399C0000B9EB4E /* ContactGridSegmentEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGridSegmentEdge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +81,10 @@
 		6137B4C91B38740A006AC4C5 /* RSContactGrid */ = {
 			isa = PBXGroup;
 			children = (
+				614B30551B399C3800B9EB4E /* Protocols */,
 				6137B4CA1B38740A006AC4C5 /* RSContactGrid.h */,
 				6137B4CC1B38740A006AC4C5 /* Info.plist */,
+				6137B4E11B389B90006AC4C5 /* Protocols.swift */,
 			);
 			path = RSContactGrid;
 			sourceTree = "<group>";
@@ -84,6 +96,17 @@
 				6137B4D81B38740A006AC4C5 /* Info.plist */,
 			);
 			path = RSContactGridTests;
+			sourceTree = "<group>";
+		};
+		614B30551B399C3800B9EB4E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				614B304F1B399BE500B9EB4E /* ContactGrid.swift */,
+				614B30511B399BF600B9EB4E /* ContactGridSegment.swift */,
+				614B30531B399C0000B9EB4E /* ContactGridSegmentEdge.swift */,
+				614B304D1B399BAE00B9EB4E /* ContactGridDelegate.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +165,7 @@
 		6137B4BE1B38740A006AC4C5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Matthias Fey";
 				TargetAttributes = {
@@ -193,6 +217,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				614B30521B399BF600B9EB4E /* ContactGridSegment.swift in Sources */,
+				6137B4E21B389B90006AC4C5 /* Protocols.swift in Sources */,
+				614B30501B399BE500B9EB4E /* ContactGrid.swift in Sources */,
+				614B304E1B399BAE00B9EB4E /* ContactGridDelegate.swift in Sources */,
+				614B30541B399C0000B9EB4E /* ContactGridSegmentEdge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +336,7 @@
 		6137B4DC1B38740A006AC4C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -317,12 +347,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rusty1s.RSContactGrid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		6137B4DD1B38740A006AC4C5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -375,6 +407,7 @@
 				6137B4DD1B38740A006AC4C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6137B4DE1B38740A006AC4C5 /* Build configuration list for PBXNativeTarget "RSContactGridTests" */ = {
 			isa = XCConfigurationList;
@@ -383,6 +416,7 @@
 				6137B4E01B38740A006AC4C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
