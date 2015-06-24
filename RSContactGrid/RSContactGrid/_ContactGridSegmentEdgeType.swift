@@ -1,15 +1,19 @@
 //
-//  ContactGridSegmentEdge.swift
+//  _ContactGridSegmentEdgeType.swift
 //  RSContactGrid
 //
 //  Created by Matthias Fey on 23.06.15.
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-protocol ContactGridSegmentEdge : RawRepresentable, Hashable, Equatable, CustomStringConvertible, CustomDebugStringConvertible {
+protocol _ContactGridSegmentEdgeType : RawRepresentable, Hashable, Equatable, CustomStringConvertible, CustomDebugStringConvertible {
+    
+    // MARK: Associated types
     
     typealias ContactedObject
     typealias Content
+    
+    // MARK: Instance variables
     
     var contactedObject: ContactedObject? { get set }
     var content: Content? { get set }
@@ -19,11 +23,11 @@ protocol ContactGridSegmentEdge : RawRepresentable, Hashable, Equatable, CustomS
 
 // MARK: CustomStringConvertible / CustomDebugStringConvertible
 
-extension ContactGridSegmentEdge {
+extension _ContactGridSegmentEdgeType {
     
     /// A textual representation of `self`.
-    var description: String { return "TODO" }
+    final var description: String { return "TODO" }
     
     /// A textual representation of `self`, suitable for debugging.
-    var debugDescription: String { return "TODO" }
+    final var debugDescription: String { return "TODO" }
 }

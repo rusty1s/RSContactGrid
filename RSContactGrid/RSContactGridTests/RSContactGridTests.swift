@@ -26,6 +26,11 @@ class RSContactGridTests: XCTestCase {
         
         let array = Array<Int>()
         print(array)
+        print(array.debugDescription)
+        
+        let set = Set<Int>()
+        print(set)
+        print(set.debugDescription)
     }
     
     func testPerformanceExample() {
