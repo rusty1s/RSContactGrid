@@ -10,33 +10,42 @@ protocol _ContactGridSegmentType : Hashable, Equatable, Comparable, CustomString
     
     // MARK: Associated types
     
-    typealias Edge: _ContactGridSegmentEdgeType
+    typealias Element: _ContactGridSegmentEdgeType
     
     // MARK: Initializiers
     
-    init(x: Int, y: Int)
+    init(point: (Int, Int))
     
     // MARK: Instance variables
     
-    var x: Int { get }
-    var y: Int { get }
+    var point: (Int, Int) { get }
     
-    var remainingEdges: Set<Edge> { get set }
+    var remainingEdges: Set<Element> { get set }
 }
 
 // MARK: Default implementations
 
 extension _ContactGridSegmentType {
     
+    // MARK: Initializers
+    
+    init(x: Int, y: Int) {
+        self.init(point: (x, y))
+    }
+    
     // MARK: Instance variables
     
-    final var deletedEdges: Set<Edge> { return Edge.allEdges.subtract(remainingEdges) }
-    final var contactedEdges: Set<Edge> { return Set(remainingEdges.filter { $0.contactedObject != nil }) }
+    var x: Int { return point.0 }
+    var y: Int { return point.1 }
+    
+    final var deletedEdges: Set<Element.EdgeType> { return Element.allEdges.subtract(remainingEdges.map { $0.edge }) }
+    final var contactedEdges: Set<Element> { return Set(remainingEdges.filter { $0.contactedObject != nil }) }
 }
 
 // MARK: Hashable
 
 extension _ContactGridSegmentType {
+    
     final var hashValue: Int { return "\(x):\(y)".hashValue }
 }
 
@@ -45,8 +54,8 @@ extension _ContactGridSegmentType {
 extension _ContactGridSegmentType {
     
     /// A textual representation of `self`.
-    final var description: String { return "TODO" }
+    var description: String { return "TODO" }
     
     /// A textual representation of `self`, suitable for debugging.
-    final var debugDescription: String { return "TODO" }
+    var debugDescription: String { return "TODO" }
 }

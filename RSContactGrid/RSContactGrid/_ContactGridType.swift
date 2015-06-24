@@ -6,17 +6,19 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-protocol _ContactGridType : Hashable, Equatable, CollectionType, SequenceType, _CollectionDefaultsType, _CollectionGeneratorDefaultsType, MutableCollectionType, Sliceable, _Sliceable, __ArrayType, ArrayLiteralConvertible, MutableSliceable, Reflectable, CustomStringConvertible, CustomDebugStringConvertible {
+protocol _ContactGridType /*: Hashable, Equatable, CollectionType, SequenceType, _CollectionDefaultsType, _CollectionGeneratorDefaultsType, MutableCollectionType, Sliceable, _Sliceable, __ArrayType, ArrayLiteralConvertible, MutableSliceable, Reflectable, CustomStringConvertible, CustomDebugStringConvertible*/ {
+    
+    // MARK: Associated types
     
     typealias Element: _ContactGridSegmentType
     typealias Index = (Int, Int)
     
-    typealias Delegate: _ContactGridDelegateType
+    typealias Delegate: _ContactGridDelegate
     
     // MARK: Initializers
     
-    init(minimumCapacity: Int)
     init()
+    init(minimumCapacity: Int)
     init<S : SequenceType where S.Generator.Element == Element>(_ sequence: S)
     
     // MARK: Instance variables
@@ -41,8 +43,8 @@ protocol _ContactGridType : Hashable, Equatable, CollectionType, SequenceType, _
 extension _ContactGridType {
     
     /// A textual representation of `self`.
-    final var description: String { return "TODO" }
+    var description: String { return "TODO" }
     
     /// A textual representation of `self`, suitable for debugging.
-    final var debugDescription: String { return "TODO" }
+    var debugDescription: String { return "TODO" }
 }

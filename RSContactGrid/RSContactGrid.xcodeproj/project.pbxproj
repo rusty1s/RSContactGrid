@@ -10,11 +10,14 @@
 		6137B4CB1B38740A006AC4C5 /* RSContactGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 6137B4CA1B38740A006AC4C5 /* RSContactGrid.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6137B4D21B38740A006AC4C5 /* RSContactGrid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6137B4C71B38740A006AC4C5 /* RSContactGrid.framework */; };
 		6137B4D71B38740A006AC4C5 /* RSContactGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6137B4D61B38740A006AC4C5 /* RSContactGridTests.swift */; };
-		6137B4E21B389B90006AC4C5 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6137B4E11B389B90006AC4C5 /* Protocols.swift */; };
-		614B304E1B399BAE00B9EB4E /* _ContactGridDelegateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B304D1B399BAE00B9EB4E /* _ContactGridDelegateType.swift */; };
+		614B304E1B399BAE00B9EB4E /* _ContactGridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B304D1B399BAE00B9EB4E /* _ContactGridDelegate.swift */; };
 		614B30501B399BE500B9EB4E /* _ContactGridType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B304F1B399BE500B9EB4E /* _ContactGridType.swift */; };
 		614B30521B399BF600B9EB4E /* _ContactGridSegmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30511B399BF600B9EB4E /* _ContactGridSegmentType.swift */; };
 		614B30541B399C0000B9EB4E /* _ContactGridSegmentEdgeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30531B399C0000B9EB4E /* _ContactGridSegmentEdgeType.swift */; };
+		614B30581B3B105D00B9EB4E /* ContactGridSegmentEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30571B3B105D00B9EB4E /* ContactGridSegmentEdge.swift */; };
+		614B305A1B3B4BB300B9EB4E /* ContactGridSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30591B3B4BB300B9EB4E /* ContactGridSegment.swift */; };
+		614B305C1B3B59FE00B9EB4E /* ContactGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B305B1B3B59FE00B9EB4E /* ContactGrid.swift */; };
+		614B305E1B3B5B5A00B9EB4E /* ContactGridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B305D1B3B5B5A00B9EB4E /* ContactGridDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,11 +37,14 @@
 		6137B4D11B38740A006AC4C5 /* RSContactGridTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSContactGridTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6137B4D61B38740A006AC4C5 /* RSContactGridTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSContactGridTests.swift; sourceTree = "<group>"; };
 		6137B4D81B38740A006AC4C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6137B4E11B389B90006AC4C5 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
-		614B304D1B399BAE00B9EB4E /* _ContactGridDelegateType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ContactGridDelegateType.swift; sourceTree = "<group>"; };
+		614B304D1B399BAE00B9EB4E /* _ContactGridDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ContactGridDelegate.swift; sourceTree = "<group>"; };
 		614B304F1B399BE500B9EB4E /* _ContactGridType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ContactGridType.swift; sourceTree = "<group>"; };
 		614B30511B399BF600B9EB4E /* _ContactGridSegmentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ContactGridSegmentType.swift; sourceTree = "<group>"; };
 		614B30531B399C0000B9EB4E /* _ContactGridSegmentEdgeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ContactGridSegmentEdgeType.swift; sourceTree = "<group>"; };
+		614B30571B3B105D00B9EB4E /* ContactGridSegmentEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGridSegmentEdge.swift; sourceTree = "<group>"; };
+		614B30591B3B4BB300B9EB4E /* ContactGridSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGridSegment.swift; sourceTree = "<group>"; };
+		614B305B1B3B59FE00B9EB4E /* ContactGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGrid.swift; sourceTree = "<group>"; };
+		614B305D1B3B5B5A00B9EB4E /* ContactGridDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGridDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +87,10 @@
 		6137B4C91B38740A006AC4C5 /* RSContactGrid */ = {
 			isa = PBXGroup;
 			children = (
+				614B30561B3B104300B9EB4E /* Implementation */,
 				614B30551B399C3800B9EB4E /* Protocols */,
 				6137B4CA1B38740A006AC4C5 /* RSContactGrid.h */,
 				6137B4CC1B38740A006AC4C5 /* Info.plist */,
-				6137B4E11B389B90006AC4C5 /* Protocols.swift */,
 			);
 			path = RSContactGrid;
 			sourceTree = "<group>";
@@ -104,9 +110,20 @@
 				614B304F1B399BE500B9EB4E /* _ContactGridType.swift */,
 				614B30511B399BF600B9EB4E /* _ContactGridSegmentType.swift */,
 				614B30531B399C0000B9EB4E /* _ContactGridSegmentEdgeType.swift */,
-				614B304D1B399BAE00B9EB4E /* _ContactGridDelegateType.swift */,
+				614B304D1B399BAE00B9EB4E /* _ContactGridDelegate.swift */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		614B30561B3B104300B9EB4E /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				614B305B1B3B59FE00B9EB4E /* ContactGrid.swift */,
+				614B30591B3B4BB300B9EB4E /* ContactGridSegment.swift */,
+				614B30571B3B105D00B9EB4E /* ContactGridSegmentEdge.swift */,
+				614B305D1B3B5B5A00B9EB4E /* ContactGridDelegate.swift */,
+			);
+			name = Implementation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,11 +234,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				614B305A1B3B4BB300B9EB4E /* ContactGridSegment.swift in Sources */,
+				614B305E1B3B5B5A00B9EB4E /* ContactGridDelegate.swift in Sources */,
 				614B30521B399BF600B9EB4E /* _ContactGridSegmentType.swift in Sources */,
-				6137B4E21B389B90006AC4C5 /* Protocols.swift in Sources */,
 				614B30501B399BE500B9EB4E /* _ContactGridType.swift in Sources */,
-				614B304E1B399BAE00B9EB4E /* _ContactGridDelegateType.swift in Sources */,
+				614B304E1B399BAE00B9EB4E /* _ContactGridDelegate.swift in Sources */,
+				614B305C1B3B59FE00B9EB4E /* ContactGrid.swift in Sources */,
 				614B30541B399C0000B9EB4E /* _ContactGridSegmentEdgeType.swift in Sources */,
+				614B30581B3B105D00B9EB4E /* ContactGridSegmentEdge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
