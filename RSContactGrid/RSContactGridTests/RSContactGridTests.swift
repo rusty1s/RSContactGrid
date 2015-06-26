@@ -31,6 +31,10 @@ class RSContactGridTests: XCTestCase {
         let set = Set<Int>()
         print(set)
         print(set.debugDescription)
+        
+        let dict = ["awdaw": 1]
+        print(dict)
+        print(dict.debugDescription)
     }
     
     func testPerformanceExample() {

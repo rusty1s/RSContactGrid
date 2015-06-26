@@ -10,11 +10,11 @@ protocol _ContactGridDelegate {
     
     // MARK: Associated types
     
-    typealias Element: _ContactGridSegmentType
+    typealias Element: ContactGridElementType
     
     // MARK: Instance methods
     
     func didBeginResolveContacts()
-    func didResolveContactInSegment(segment: Element)
+    func didResolveContactInElement(element: Element)
     func didEndResolveContacts()
 }

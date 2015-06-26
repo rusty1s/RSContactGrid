@@ -6,50 +6,33 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-struct ContactGrid : _ContactGridType {
+struct ContactGrid : GridType {
     
-    // MARK: Associated types
-    
-    typealias Element = ContactGridSegment
 
-    // MARK: Initializers
+}
+
+extension ContactGrid : ContactGridType {
     
-    init() {
-        segments = Set<Element>()
-    }
+}
+
+// MARK: Hashable
+
+extension ContactGrid {
     
-    init(minimumCapacity: Int) {
-        segments = Set<Element>(minimumCapacity: minimumCapacity)
-    }
+    var hashValue: Int { return 0 }
+}
+
+// MARK: Equatable
+
+extension ContactGrid {}
+func == (lhs: ContactGrid, rhs: ContactGrid) -> Bool {
+    return true
+}
+
+// MARK: CustomStringConvertible / CustomDebugStringConvertible
+
+extension ContactGrid {
     
-    init<S : SequenceType where S.Generator.Element == Element>(_ sequence: S) {
-        segments = Set<Element>()
-        // TODO
-    }
-    
-    // MARK: Instance variables
-    
-    private var segments: Set<Element>()
-    
-    // MARK: Instance methods
-    
-    func segmentAtPoint(point: Index) -> Element? {
-        return segments[segments.indexOf(point)]
-    }
-    
-    mutating func insertAtPoint(point: Index) {
-        
-    }
-    
-    mutating func removeAtPoint(point: Index) -> Element? {
-        segments.removeAtIndex(point)
-    }
-    
-    mutating func removeAll(keepCapacity keepCapacity: Bool = true) {
-        segments.removeAll(keepCapacity: keepCapacity)
-    }
-    
-    mutating func addPolygon(polygon: [CGPoint], withEffect: (Element -> ()), allowInsertingSegments: Bool) {
-        
-    }
+    /// A textual representation of `self`, suitable for debugging.
+    var debugDescription: String { return "ContactGrid(\(self))" }
 }

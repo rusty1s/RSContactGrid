@@ -10,5 +10,5 @@ protocol ContactGridDelegate : _ContactGridDelegate {
     
     // MARK: Associated types
     
-    typealias Element = ContactGridSegment
+    typealias Element = ContactGridElement
 }
