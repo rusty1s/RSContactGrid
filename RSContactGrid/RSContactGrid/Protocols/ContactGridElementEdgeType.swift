@@ -6,7 +6,7 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-protocol ContactGridElementEdgeType : Hashable, Equatable, RawRepresentable, CustomStringConvertible, CustomDebugStringConvertible {
+public protocol ContactGridElementEdgeType : Hashable, Equatable, RawRepresentable, CustomStringConvertible, CustomDebugStringConvertible {
     
     // MARK: Associated types
     
@@ -37,24 +37,24 @@ protocol ContactGridElementEdgeType : Hashable, Equatable, RawRepresentable, Cus
 
 extension ContactGridElementEdgeType {
     
-    final var contacted: Bool { return contactedObject != nil }
+    final public var contacted: Bool { return contactedObject != nil }
     
-    final var hasContent: Bool { return content != nil }
+    final public var hasContent: Bool { return content != nil }
 }
 
 // MARK: Hashable
 
 extension ContactGridElementEdgeType {
     
-    final var hashValue: Int { return edge.hashValue }
+    final public var hashValue: Int { return edge.hashValue }
 }
 
 // MARK: CustomStringConvertible / CustomDebugStringConvertible
 
 extension ContactGridElementEdgeType {
     
-    /// A textual representation of `self`.
-    var description: String {
+    /// A textual representation of `selfpublic `.
+    public var description: String {
         return "{edge: \(edge)"
               + (contacted ? ", contactedObject: \(contactedObject)" : "")
               + (hasContent ? ", content: \(content)" : "")
@@ -62,5 +62,5 @@ extension ContactGridElementEdgeType {
     }
     
     /// A textual representation of `self`, suitable for debugging.
-    var debugDescription: String { return "ContactGridElementEdgeType\(self)" }
+    public var debugDescription: String { return "ContactGridElementEdgeType\(self)" }
 }

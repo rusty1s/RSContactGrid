@@ -23,25 +23,5 @@ class RSContactGridTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
-        let array = Array<Int>()
-        print(array)
-        print(array.debugDescription)
-        
-        let set = Set<Int>()
-        print(set)
-        print(set.debugDescription)
-        
-        let dict = ["awdaw": 1]
-        print(dict)
-        print(dict.debugDescription)
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }

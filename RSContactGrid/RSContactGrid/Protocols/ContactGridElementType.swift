@@ -6,7 +6,7 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-protocol ContactGridElementType : GridElementType {
+public protocol ContactGridElementType : GridElementType {
     
     // MARK: Associated types
     
@@ -21,15 +21,22 @@ protocol ContactGridElementType : GridElementType {
 
 extension ContactGridElementType {
     
-    final var deletedEdges: Set<Element.EdgeType> { return Element.allEdges.subtract(remainingEdges.map { $0.edge }) }
+    final public var deletedEdges: Set<Element.EdgeType> {
+        return Element.allEdges.subtract(remainingEdges.map { $0.edge })
+    }
     
-    final var contactedEdges: Set<Element> { return Set(remainingEdges.filter { $0.contactedObject != nil }) }
+    final public var contactedEdges: Set<Element> {
+        return Set(remainingEdges.filter { $0.contactedObject != nil })
+    }
 }
 
 // MARK: CustomStringConvertible / CustomDebugStringConvertible
 
 extension ContactGridElementType {
     
+    /// A textual representation of `self`.
+    public var description: String { return "{x: \(x), y: \(y), remaining edges: \(remainingEdges)}"}
+    
     /// A textual representation of `self`, suitable for debugging.
-    var debugDescription: String { return "ContactGridElementType(\(self))" }
+    public var debugDescription: String { return "ContactGridElementType(\(self))" }
 }

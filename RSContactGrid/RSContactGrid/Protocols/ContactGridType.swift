@@ -6,7 +6,7 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-protocol ContactGridType : GridType {
+public protocol ContactGridType : GridType {
     
     // MARK: Associated types
     
@@ -22,5 +22,5 @@ protocol ContactGridType : GridType {
 extension ContactGridType {
     
     /// A textual representation of `self`, suitable for debugging.
-    var debugDescription: String { return "ContactGridType(\(self))" }
+    public var debugDescription: String { return "ContactGridType(\(self))" }
 }

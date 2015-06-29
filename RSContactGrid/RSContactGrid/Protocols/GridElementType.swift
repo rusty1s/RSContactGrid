@@ -6,7 +6,7 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-protocol GridElementType : Hashable, Comparable, CustomStringConvertible, CustomDebugStringConvertible {
+public protocol GridElementType : Hashable, Comparable, CustomStringConvertible, CustomDebugStringConvertible {
     
     // MARK: Initializiers
     
@@ -25,7 +25,7 @@ protocol GridElementType : Hashable, Comparable, CustomStringConvertible, Custom
 
 extension GridElementType {
     
-    final var hashValue: Int { return "\(x):\(y)".hashValue }
+    final public var hashValue: Int { return "\(x):\(y)".hashValue }
 }
 
 // MARK: CustomStringConvertible / CustomDebugStringConvertible
@@ -33,8 +33,8 @@ extension GridElementType {
 extension GridElementType {
     
     /// A textual representation of `self`.
-    var description: String { return "{x: \(x), y: \(y)}" }
+    public var description: String { return "{x: \(x), y: \(y)}" }
     
     /// A textual representation of `self`, suitable for debugging.
-    var debugDescription: String { return "GridElementType(\(self))" }
+    public var debugDescription: String { return "GridElementType(\(self))" }
 }
