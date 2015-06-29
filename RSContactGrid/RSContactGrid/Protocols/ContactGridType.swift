@@ -10,17 +10,11 @@ public protocol ContactGridType : GridType {
     
     // MARK: Associated types
     
-    typealias Element: ContactGridElementType
+    typealias SegmentType: ContactGridSegmentType
+    
+    typealias SegmentEdgeType: ContactGridSegmentEdgeType
     
     // MARK: Instance methods
     
-    mutating func addPolygon(polygon: [CGPoint], withEffect: (Element -> ()), allowInsertingElements: Bool)
-}
-
-// MARK: CustomStringConvertible / CustomDebugStringConvertible
-
-extension ContactGridType {
-    
-    /// A textual representation of `self`, suitable for debugging.
-    public var debugDescription: String { return "ContactGridType(\(self))" }
+    mutating func addPolygon(polygon: [CGPoint], withContactEdgeEffect: (SegmentEdgeType -> ()), allowInsertingSegments: Bool)
 }

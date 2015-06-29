@@ -10,7 +10,7 @@ public protocol GridType : Hashable, Equatable, SequenceType, ArrayLiteralConver
     
     // MARK: Associated types
     
-    typealias Element: GridElementType
+    typealias SegmentType: GridSegmentType
     
     // MARK: Initializers
     
@@ -18,7 +18,7 @@ public protocol GridType : Hashable, Equatable, SequenceType, ArrayLiteralConver
     
     init(minimumCapacity: Int)
     
-    init<S : SequenceType where S.Generator.Element == Element>(_ sequence: S)
+    init<S : SequenceType where S.Generator.Element == SegmentType>(_ sequence: S)
     
     // MARK: Instance variables
     
@@ -26,15 +26,15 @@ public protocol GridType : Hashable, Equatable, SequenceType, ArrayLiteralConver
     
     // MARK: Instance methods
     
-    mutating func insert(element: Element)
+    mutating func insert(segment: SegmentType)
     
-    mutating func remove(element: Element) -> Element?
+    mutating func remove(element: SegmentType) -> SegmentType?
     
     mutating func removeAll(keepCapacity keepCapacity: Bool)
     
     // MARK: Subscripts
     
-    subscript(x: Int, y: Int) -> Element? { get }
+    subscript(x: Int, y: Int) -> SegmentType? { get }
 }
 
 // MARK: Default implementations
@@ -43,16 +43,16 @@ extension GridType {
     
     final public var isEmpty: Bool { return count == 0 }
     
-    final public mutating func insertAtX(x: Int, y: Int) { insert(Element(x: x, y: y)) }
+    final public mutating func insertAtX(x: Int, y: Int) { insert(SegmentType(x: x, y: y)) }
     
-    final public mutating func removeAtX(x: Int, y: Int) -> Element? { return remove(Element(x: x, y: y)) }
+    final public mutating func removeAtX(x: Int, y: Int) -> SegmentType? { return remove(SegmentType(x: x, y: y)) }
 }
 
 // MARK: ArrayLiteralConvertible
 
 extension GridType {
     
-    public init(arrayLiteral elements: Element...) { self.init(elements) }
+    public init(arrayLiteral segments: SegmentType...) { self.init(segments) }
 }
 
 // MARK: Reflectable
@@ -70,5 +70,5 @@ extension GridType {
     public var description: String { return "\(Array(self))" }
     
     /// A textual representation of `self`, suitable for debugging.
-    public var debugDescription: String { return "GridType(\(self))" }
+    public var debugDescription: String { return "\(self)" }
 }

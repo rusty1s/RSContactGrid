@@ -2,87 +2,59 @@
 //  ContactGrid.swift
 //  RSContactGrid
 //
-//  Created by Matthias Fey on 24.06.15.
+//  Created by Matthias Fey on 29.06.15.
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-public struct ContactGrid : ContactGridType {
+extension ContactGrid : ContactGridType {
     
-    // MARK: Associated types
+    public typealias SegmentEdgeType = Segment.Edge
     
-    public typealias Element = ContactGridElement
-    
-    // MARK: Initializers
-    
-    public init() { elements = Set() }
-    
-    public init(minimumCapacity: Int) { elements = Set(minimumCapacity: minimumCapacity) }
-    
-    public init<S : SequenceType where S.Generator.Element == Element>(_ sequence: S) {
-        elements = Set(sequence)
-    }
-    
-    // MARK: Instance variables
-    
-    private var elements: Set<Element>
-    
-    public var delegate: ContactGridDelegate?
-    
-    public var count: Int { return elements.count }
-    
-    // MARK: Instance methods
-    
-    public mutating func insert(element: Element) { elements.insert(element) }
-    
-    public mutating func remove(element: Element) -> Element? { return elements.remove(element) }
-    
-    public mutating func removeAll(keepCapacity keepCapacity: Bool = false) {
-        elements.removeAll(keepCapacity: keepCapacity)
-    }
-    
-    public mutating func addPolygon(polygon: [CGPoint], withEffect: (Element -> ()), allowInsertingElements: Bool = true) {
+    public mutating func addPolygon(polygon: [CGPoint], withContactEdgeEffect: (SegmentEdgeType -> ()), allowInsertingSegments: Bool = true) {
+        
+        // MARK: Helper
+        
+        struct LineSegment {
+            
+            var startPoint: CGPoint
+            var endPoint: CGPoint
+            
+            var isHorizontal: Bool { return startPoint.y == endPoint.y }
+            var isVertical: Bool { return startPoint.x == endPoint.x }
+            
+            func function(x: CGFloat) -> CGFloat {
+                if isVertical { fatalError("line is vertical") }
+                return startPoint.y + ((endPoint.y-startPoint.y)/(endPoint.x-startPoint.x)) * (x - startPoint.x)
+            }
+            
+            func inverseFunction(y: CGFloat) -> CGFloat {
+                if isHorizontal { fatalError("line is horizontal") }
+                return startPoint.x + ((endPoint.x-startPoint.x)/(endPoint.y-startPoint.y)) * (y - startPoint.y)
+            }
+        }
+        
+        // MARK: Calculations
+        
+        guard polygon.count > 2 else { return }
+        
+        let relPolygon = polygon.map { CGPoint(x: $0.x/Segment.width, y: $0.y/Segment.height) }
+        let lines = Array<Int>(0...polygon.endIndex).map {
+            LineSegment(startPoint: relPolygon[$0], endPoint: relPolygon[$0+1%polygon.count])
+        }
+        
+        for line in lines {
+            
+            if line.isHorizontal {
+                
+            }
+            else if line.isVertical {
+                
+            }
+            else {
+                
+            }
+        }
+        
         // TODO
     }
-    
-    // MARK: Subscripts
-    
-    public subscript(x: Int, y: Int) -> Element? {
-        let element = Element(x: x, y: y)
-        
-        guard let index = elements.indexOf(element) else { return nil }
-        return elements[index]
-    }
-}
-
-// MARK: Hashable
-
-extension ContactGrid {
-    
-    public var hashValue: Int { return elements.hashValue }
-}
-
-// MARK: Equatable / Comparable
-
-extension ContactGrid {}
-public func == (lhs: ContactGrid, rhs: ContactGrid) -> Bool {
-    return lhs.elements == rhs.elements
-}
-
-// MARK: SequenceType
-
-extension ContactGrid {
-    
-    public typealias Generator = SetGenerator<Element>
-    
-    public func generate() -> Generator {
-        return elements.generate()
-    }
-}
-
-// MARK: CustomStringConvertible / CustomDebugStringConvertible
-
-extension ContactGrid {
-    
-    /// A textual representation of `self`, suitable for debugging.
-    public var debugDescription: String { return "ContactGrid(\(self))" }
 }

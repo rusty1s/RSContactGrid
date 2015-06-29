@@ -1,16 +1,16 @@
 //
-//  ContactGridElementEdgeType.swift
+//  ContactGridSegmentEdgeType.swift
 //  RSContactGrid
 //
 //  Created by Matthias Fey on 23.06.15.
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-public protocol ContactGridElementEdgeType : Hashable, Equatable, RawRepresentable, CustomStringConvertible, CustomDebugStringConvertible {
+public protocol ContactGridSegmentEdgeType : Hashable, Equatable, RawRepresentable, CustomStringConvertible, CustomDebugStringConvertible {
     
     // MARK: Associated types
     
-    typealias EdgeType: Hashable, Equatable, CustomStringConvertible
+    typealias EdgeValue: Hashable, Equatable, CustomStringConvertible
     
     typealias ContactedObject
     
@@ -18,11 +18,11 @@ public protocol ContactGridElementEdgeType : Hashable, Equatable, RawRepresentab
     
     // MARK: Initializers
     
-    init(edge: EdgeType)
+    init(value: EdgeValue)
     
     // MARK: Instance variables
     
-    var edge: EdgeType { get }
+    var value: EdgeValue { get }
     
     var contactedObject: ContactedObject? { get set }
     
@@ -30,12 +30,12 @@ public protocol ContactGridElementEdgeType : Hashable, Equatable, RawRepresentab
     
     // MARK: Static variables
     
-    static var allEdges: Set<EdgeType> { get }
+    static var allEdges: Set<EdgeValue> { get }
 }
 
 // MARK: Default implementations
 
-extension ContactGridElementEdgeType {
+extension ContactGridSegmentEdgeType {
     
     final public var contacted: Bool { return contactedObject != nil }
     
@@ -44,23 +44,23 @@ extension ContactGridElementEdgeType {
 
 // MARK: Hashable
 
-extension ContactGridElementEdgeType {
+extension ContactGridSegmentEdgeType {
     
-    final public var hashValue: Int { return edge.hashValue }
+    final public var hashValue: Int { return value.hashValue }
 }
 
-// MARK: CustomStringConvertible / CustomDebugStringConvertible
+// MARK: CustomStringConvertible
 
-extension ContactGridElementEdgeType {
+extension ContactGridSegmentEdgeType {
     
-    /// A textual representation of `selfpublic `.
+    /// A textual representation of `self`.
     public var description: String {
-        return "{edge: \(edge)"
+        return "{edge: \(value)"
               + (contacted ? ", contactedObject: \(contactedObject)" : "")
               + (hasContent ? ", content: \(content)" : "")
               + "}"
     }
     
     /// A textual representation of `self`, suitable for debugging.
-    public var debugDescription: String { return "ContactGridElementEdgeType\(self)" }
+    public var debugDescription: String { return "\(self)" }
 }

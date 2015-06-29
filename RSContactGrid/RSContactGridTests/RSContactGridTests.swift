@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import RSContactGrid
 
 class RSContactGridTests: XCTestCase {
     
@@ -23,5 +24,10 @@ class RSContactGridTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        var grid = ContactGrid()
+        grid.insertAtX(0, y: 0)
+        print(grid.description)
+
     }
 }

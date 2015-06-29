@@ -1,12 +1,12 @@
 //
-//  GridElementType.swift
+//  GridSegmentType.swift
 //  RSContactGrid
 //
 //  Created by Matthias Fey on 25.06.15.
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-public protocol GridElementType : Hashable, Comparable, CustomStringConvertible, CustomDebugStringConvertible {
+public protocol GridSegmentType : Hashable, Comparable, CustomStringConvertible, CustomDebugStringConvertible {
     
     // MARK: Initializiers
     
@@ -23,18 +23,18 @@ public protocol GridElementType : Hashable, Comparable, CustomStringConvertible,
 
 // MARK: Hashable
 
-extension GridElementType {
+extension GridSegmentType {
     
     final public var hashValue: Int { return "\(x):\(y)".hashValue }
 }
 
 // MARK: CustomStringConvertible / CustomDebugStringConvertible
 
-extension GridElementType {
+extension GridSegmentType {
     
     /// A textual representation of `self`.
     public var description: String { return "{x: \(x), y: \(y)}" }
     
     /// A textual representation of `self`, suitable for debugging.
-    public var debugDescription: String { return "GridElementType(\(self))" }
+    public var debugDescription: String { return "\(self)" }
 }

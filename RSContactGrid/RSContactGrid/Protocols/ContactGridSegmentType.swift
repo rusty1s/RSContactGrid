@@ -1,42 +1,42 @@
 //
-//  ContactGridElementType.swift
+//  ContactGridSegmentType.swift
 //  RSContactGrid
 //
 //  Created by Matthias Fey on 23.06.15.
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-public protocol ContactGridElementType : GridElementType {
+public protocol ContactGridSegmentType : GridSegmentType {
     
     // MARK: Associated types
     
-    typealias Element: ContactGridElementEdgeType
+    typealias EdgeType: ContactGridSegmentEdgeType
     
     // MARK: Instance variables
     
-    var remainingEdges: Set<Element> { get set }
+    var remainingEdges: Set<EdgeType> { get set }
 }
 
 // MARK: Default implementations
 
-extension ContactGridElementType {
+extension ContactGridSegmentType {
     
-    final public var deletedEdges: Set<Element.EdgeType> {
-        return Element.allEdges.subtract(remainingEdges.map { $0.edge })
+    final public var deletedEdges: Set<EdgeType.EdgeValue> {
+        return EdgeType.allEdges.subtract(remainingEdges.map { $0.value })
     }
     
-    final public var contactedEdges: Set<Element> {
+    final public var contactedEdges: Set<EdgeType> {
         return Set(remainingEdges.filter { $0.contactedObject != nil })
     }
 }
 
 // MARK: CustomStringConvertible / CustomDebugStringConvertible
 
-extension ContactGridElementType {
+extension ContactGridSegmentType {
     
     /// A textual representation of `self`.
     public var description: String { return "{x: \(x), y: \(y), remaining edges: \(remainingEdges)}"}
     
     /// A textual representation of `self`, suitable for debugging.
-    public var debugDescription: String { return "ContactGridElementType(\(self))" }
+    public var debugDescription: String { return "\(self)" }
 }

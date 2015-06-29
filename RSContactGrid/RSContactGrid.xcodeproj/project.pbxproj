@@ -10,15 +10,17 @@
 		6137B4CB1B38740A006AC4C5 /* RSContactGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 6137B4CA1B38740A006AC4C5 /* RSContactGrid.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6137B4D21B38740A006AC4C5 /* RSContactGrid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6137B4C71B38740A006AC4C5 /* RSContactGrid.framework */; };
 		6137B4D71B38740A006AC4C5 /* RSContactGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6137B4D61B38740A006AC4C5 /* RSContactGridTests.swift */; };
-		614B307E1B41554E00B9EB4E /* ContactGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B307A1B41554E00B9EB4E /* ContactGrid.swift */; };
+		614B307E1B41554E00B9EB4E /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B307A1B41554E00B9EB4E /* Grid.swift */; };
 		614B307F1B41554E00B9EB4E /* ContactGridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B307B1B41554E00B9EB4E /* ContactGridDelegate.swift */; };
-		614B30801B41554E00B9EB4E /* ContactGridElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B307C1B41554E00B9EB4E /* ContactGridElement.swift */; };
-		614B30811B41554E00B9EB4E /* ContactGridElementEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B307D1B41554E00B9EB4E /* ContactGridElementEdge.swift */; };
-		614B30871B41555B00B9EB4E /* ContactGridElementEdgeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30821B41555B00B9EB4E /* ContactGridElementEdgeType.swift */; };
-		614B30881B41555B00B9EB4E /* ContactGridElementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30831B41555B00B9EB4E /* ContactGridElementType.swift */; };
+		614B30801B41554E00B9EB4E /* ContactGrid.Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B307C1B41554E00B9EB4E /* ContactGrid.Segment.swift */; };
+		614B30811B41554E00B9EB4E /* ContactGrid.Segment.Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B307D1B41554E00B9EB4E /* ContactGrid.Segment.Edge.swift */; };
+		614B30871B41555B00B9EB4E /* ContactGridSegmentEdgeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30821B41555B00B9EB4E /* ContactGridSegmentEdgeType.swift */; };
+		614B30881B41555B00B9EB4E /* ContactGridSegmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30831B41555B00B9EB4E /* ContactGridSegmentType.swift */; };
 		614B30891B41555B00B9EB4E /* ContactGridType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30841B41555B00B9EB4E /* ContactGridType.swift */; };
-		614B308A1B41555B00B9EB4E /* GridElementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30851B41555B00B9EB4E /* GridElementType.swift */; };
+		614B308A1B41555B00B9EB4E /* GridSegmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30851B41555B00B9EB4E /* GridSegmentType.swift */; };
 		614B308B1B41555B00B9EB4E /* GridType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30861B41555B00B9EB4E /* GridType.swift */; };
+		614B30961B41A27300B9EB4E /* ContactGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30951B41A27300B9EB4E /* ContactGrid.swift */; };
+		614B30981B41A30800B9EB4E /* ContactGrid.Segment.Edge.Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30971B41A30800B9EB4E /* ContactGrid.Segment.Edge.Value.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,15 +40,17 @@
 		6137B4D11B38740A006AC4C5 /* RSContactGridTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSContactGridTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6137B4D61B38740A006AC4C5 /* RSContactGridTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSContactGridTests.swift; sourceTree = "<group>"; };
 		6137B4D81B38740A006AC4C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		614B307A1B41554E00B9EB4E /* ContactGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGrid.swift; path = Implementation/ContactGrid.swift; sourceTree = "<group>"; };
+		614B307A1B41554E00B9EB4E /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = Implementation/Grid.swift; sourceTree = "<group>"; };
 		614B307B1B41554E00B9EB4E /* ContactGridDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGridDelegate.swift; path = Implementation/ContactGridDelegate.swift; sourceTree = "<group>"; };
-		614B307C1B41554E00B9EB4E /* ContactGridElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGridElement.swift; path = Implementation/ContactGridElement.swift; sourceTree = "<group>"; };
-		614B307D1B41554E00B9EB4E /* ContactGridElementEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGridElementEdge.swift; path = Implementation/ContactGridElementEdge.swift; sourceTree = "<group>"; };
-		614B30821B41555B00B9EB4E /* ContactGridElementEdgeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGridElementEdgeType.swift; path = Protocols/ContactGridElementEdgeType.swift; sourceTree = "<group>"; };
-		614B30831B41555B00B9EB4E /* ContactGridElementType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGridElementType.swift; path = Protocols/ContactGridElementType.swift; sourceTree = "<group>"; };
+		614B307C1B41554E00B9EB4E /* ContactGrid.Segment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGrid.Segment.swift; path = Implementation/ContactGrid.Segment.swift; sourceTree = "<group>"; };
+		614B307D1B41554E00B9EB4E /* ContactGrid.Segment.Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGrid.Segment.Edge.swift; path = Implementation/ContactGrid.Segment.Edge.swift; sourceTree = "<group>"; };
+		614B30821B41555B00B9EB4E /* ContactGridSegmentEdgeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGridSegmentEdgeType.swift; path = Protocols/ContactGridSegmentEdgeType.swift; sourceTree = "<group>"; };
+		614B30831B41555B00B9EB4E /* ContactGridSegmentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGridSegmentType.swift; path = Protocols/ContactGridSegmentType.swift; sourceTree = "<group>"; };
 		614B30841B41555B00B9EB4E /* ContactGridType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGridType.swift; path = Protocols/ContactGridType.swift; sourceTree = "<group>"; };
-		614B30851B41555B00B9EB4E /* GridElementType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridElementType.swift; path = Protocols/GridElementType.swift; sourceTree = "<group>"; };
+		614B30851B41555B00B9EB4E /* GridSegmentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridSegmentType.swift; path = Protocols/GridSegmentType.swift; sourceTree = "<group>"; };
 		614B30861B41555B00B9EB4E /* GridType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridType.swift; path = Protocols/GridType.swift; sourceTree = "<group>"; };
+		614B30951B41A27300B9EB4E /* ContactGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGrid.swift; path = Implementation/ContactGrid.swift; sourceTree = "<group>"; };
+		614B30971B41A30800B9EB4E /* ContactGrid.Segment.Edge.Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGrid.Segment.Edge.Value.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,10 +114,10 @@
 			isa = PBXGroup;
 			children = (
 				614B30861B41555B00B9EB4E /* GridType.swift */,
-				614B30851B41555B00B9EB4E /* GridElementType.swift */,
+				614B30851B41555B00B9EB4E /* GridSegmentType.swift */,
 				614B30841B41555B00B9EB4E /* ContactGridType.swift */,
-				614B30831B41555B00B9EB4E /* ContactGridElementType.swift */,
-				614B30821B41555B00B9EB4E /* ContactGridElementEdgeType.swift */,
+				614B30831B41555B00B9EB4E /* ContactGridSegmentType.swift */,
+				614B30821B41555B00B9EB4E /* ContactGridSegmentEdgeType.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -121,9 +125,11 @@
 		614B30561B3B104300B9EB4E /* Implementation */ = {
 			isa = PBXGroup;
 			children = (
-				614B307A1B41554E00B9EB4E /* ContactGrid.swift */,
-				614B307C1B41554E00B9EB4E /* ContactGridElement.swift */,
-				614B307D1B41554E00B9EB4E /* ContactGridElementEdge.swift */,
+				614B307A1B41554E00B9EB4E /* Grid.swift */,
+				614B30951B41A27300B9EB4E /* ContactGrid.swift */,
+				614B307C1B41554E00B9EB4E /* ContactGrid.Segment.swift */,
+				614B307D1B41554E00B9EB4E /* ContactGrid.Segment.Edge.swift */,
+				614B30971B41A30800B9EB4E /* ContactGrid.Segment.Edge.Value.swift */,
 				614B307B1B41554E00B9EB4E /* ContactGridDelegate.swift */,
 			);
 			name = Implementation;
@@ -237,15 +243,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				614B30811B41554E00B9EB4E /* ContactGridElementEdge.swift in Sources */,
-				614B30801B41554E00B9EB4E /* ContactGridElement.swift in Sources */,
-				614B308A1B41555B00B9EB4E /* GridElementType.swift in Sources */,
+				614B30811B41554E00B9EB4E /* ContactGrid.Segment.Edge.swift in Sources */,
+				614B30801B41554E00B9EB4E /* ContactGrid.Segment.swift in Sources */,
+				614B308A1B41555B00B9EB4E /* GridSegmentType.swift in Sources */,
 				614B308B1B41555B00B9EB4E /* GridType.swift in Sources */,
-				614B307E1B41554E00B9EB4E /* ContactGrid.swift in Sources */,
-				614B30871B41555B00B9EB4E /* ContactGridElementEdgeType.swift in Sources */,
+				614B30961B41A27300B9EB4E /* ContactGrid.swift in Sources */,
+				614B307E1B41554E00B9EB4E /* Grid.swift in Sources */,
+				614B30871B41555B00B9EB4E /* ContactGridSegmentEdgeType.swift in Sources */,
+				614B30981B41A30800B9EB4E /* ContactGrid.Segment.Edge.Value.swift in Sources */,
 				614B307F1B41554E00B9EB4E /* ContactGridDelegate.swift in Sources */,
 				614B30891B41555B00B9EB4E /* ContactGridType.swift in Sources */,
-				614B30881B41555B00B9EB4E /* ContactGridElementType.swift in Sources */,
+				614B30881B41555B00B9EB4E /* ContactGridSegmentType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

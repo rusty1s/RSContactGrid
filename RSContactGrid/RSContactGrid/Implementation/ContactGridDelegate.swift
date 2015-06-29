@@ -12,7 +12,7 @@ public protocol ContactGridDelegate {
     
     func didBeginResolveContacts()
     
-    func didResolveContactInElement(element: ContactGridElement)
+    func didResolveContactInSegment(segment: ContactGrid.Segment)
     
     func didEndResolveContacts()
 }
