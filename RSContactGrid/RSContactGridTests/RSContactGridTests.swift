@@ -27,7 +27,7 @@ class RSContactGridTests: XCTestCase {
         
         var grid = ContactGrid()
         grid.insertAtX(0, y: 0)
-        print(grid.description)
+        print(grid.debugDescription)
 
     }
 }

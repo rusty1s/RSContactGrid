@@ -39,6 +39,13 @@ extension ContactGrid.Segment.Edge {
     public var rawValue: RawValue { return value.rawValue }
 }
 
+// MARK: Equatable
+
+extension ContactGrid.Segment.Edge {}
+public func == (lhs: ContactGrid.Segment.Edge, rhs: ContactGrid.Segment.Edge) -> Bool {
+    return lhs.value == rhs.value
+}
+
 // MARK: CustomDebugStringConvertible
 
 extension ContactGrid.Segment.Edge {

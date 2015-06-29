@@ -35,7 +35,7 @@ extension ContactGridSegmentType {
 extension ContactGridSegmentType {
     
     /// A textual representation of `self`.
-    public var description: String { return "{x: \(x), y: \(y), remaining edges: \(remainingEdges)}"}
+    public var description: String { return "{x: \(x), y: \(y), remaining edges: \(remainingEdges.map { $0.description })}"}
     
     /// A textual representation of `self`, suitable for debugging.
     public var debugDescription: String { return "\(self)" }
