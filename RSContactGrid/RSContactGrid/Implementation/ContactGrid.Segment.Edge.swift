@@ -21,7 +21,7 @@ extension ContactGrid.Segment.Edge {
 
 extension ContactGrid.Segment.Edge {
 
-    public static var allEdges: Set<EdgeValue> { return Set([.Left, .Top, .Right, .Bottom]) }
+    public static var allValues: Set<EdgeValue> { return Set([.Left, .Top, .Right, .Bottom]) }
 }
 
 // MARK: RawRepresentable

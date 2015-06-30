@@ -30,7 +30,7 @@ class ContactGridSegmentEdgeTests: XCTestCase {
         XCTAssert(!edge2.hasContent)
         XCTAssert(edge2.contacted)
         
-        XCTAssertEqual(ContactGrid.Segment.Edge.allEdges.count, 4)
-        XCTAssertEqual(ContactGrid.Segment.Edge.allEdges, Set([.Left, .Top, .Right, .Bottom]))
+        XCTAssertEqual(ContactGrid.Segment.Edge.allValues.count, 4)
+        XCTAssertEqual(ContactGrid.Segment.Edge.allValues, Set([.Left, .Top, .Right, .Bottom]))
     }
 }

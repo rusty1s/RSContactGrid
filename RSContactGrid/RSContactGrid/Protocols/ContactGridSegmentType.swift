@@ -22,7 +22,7 @@ public protocol ContactGridSegmentType : GridSegmentType {
 extension ContactGridSegmentType {
     
     final public var deletedEdges: Set<EdgeType.EdgeValue> {
-        return EdgeType.allEdges.subtract(remainingEdges.map { $0.value })
+        return EdgeType.allValues.subtract(remainingEdges.map { $0.value })
     }
     
     final public var contactedEdges: Set<EdgeType> {

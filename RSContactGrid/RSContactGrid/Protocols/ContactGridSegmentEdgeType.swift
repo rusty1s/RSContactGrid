@@ -30,7 +30,7 @@ public protocol ContactGridSegmentEdgeType : Hashable, Equatable, RawRepresentab
     
     // MARK: Static variables
     
-    static var allEdges: Set<EdgeValue> { get }
+    static var allValues: Set<EdgeValue> { get }
 }
 
 // MARK: Default implementations

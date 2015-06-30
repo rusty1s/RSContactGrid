@@ -44,7 +44,7 @@ public struct ContactGrid : GridType {
         
         public let y: Int
         
-        public var remainingEdges = Set(EdgeType.allEdges.map { EdgeType(value: $0) })
+        public var remainingEdges = Set(EdgeType.allValues.map { EdgeType(value: $0) })
         
         // MARK: Static variables
         
