@@ -21,17 +21,17 @@ public struct ContactGrid : GridType {
             
             public typealias EdgeValue = Value
             
-            public typealias ContactedObject = AnyObject
-            
             public typealias Content = AnyObject
+            
+            public typealias ContactedObject = AnyObject
             
             // MARK: Instance variables
             
             public let value: EdgeValue
             
-            public var contactedObject: ContactedObject?
-            
             public var content: Content?
+            
+            public var contactedObject: ContactedObject?
         }
         
         // MARK: Associated types

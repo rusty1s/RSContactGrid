@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6137B4CB1B38740A006AC4C5 /* RSContactGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 6137B4CA1B38740A006AC4C5 /* RSContactGrid.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6137B4D21B38740A006AC4C5 /* RSContactGrid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6137B4C71B38740A006AC4C5 /* RSContactGrid.framework */; };
-		6137B4D71B38740A006AC4C5 /* RSContactGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6137B4D61B38740A006AC4C5 /* RSContactGridTests.swift */; };
+		6137B4D71B38740A006AC4C5 /* GridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6137B4D61B38740A006AC4C5 /* GridTests.swift */; };
 		614B307E1B41554E00B9EB4E /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B307A1B41554E00B9EB4E /* Grid.swift */; };
 		614B307F1B41554E00B9EB4E /* ContactGridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B307B1B41554E00B9EB4E /* ContactGridDelegate.swift */; };
 		614B30801B41554E00B9EB4E /* ContactGrid.Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B307C1B41554E00B9EB4E /* ContactGrid.Segment.swift */; };
@@ -21,6 +21,9 @@
 		614B308B1B41555B00B9EB4E /* GridType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30861B41555B00B9EB4E /* GridType.swift */; };
 		614B30961B41A27300B9EB4E /* ContactGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30951B41A27300B9EB4E /* ContactGrid.swift */; };
 		614B30981B41A30800B9EB4E /* ContactGrid.Segment.Edge.Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30971B41A30800B9EB4E /* ContactGrid.Segment.Edge.Value.swift */; };
+		614B309A1B42904100B9EB4E /* ContactGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30991B42904100B9EB4E /* ContactGridTests.swift */; };
+		614B309C1B42905100B9EB4E /* ContactGridSegmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B309B1B42905100B9EB4E /* ContactGridSegmentTests.swift */; };
+		614B309E1B42906600B9EB4E /* ContactGridSegmentEdgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B309D1B42906600B9EB4E /* ContactGridSegmentEdgeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +41,7 @@
 		6137B4CA1B38740A006AC4C5 /* RSContactGrid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSContactGrid.h; sourceTree = "<group>"; };
 		6137B4CC1B38740A006AC4C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6137B4D11B38740A006AC4C5 /* RSContactGridTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSContactGridTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6137B4D61B38740A006AC4C5 /* RSContactGridTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSContactGridTests.swift; sourceTree = "<group>"; };
+		6137B4D61B38740A006AC4C5 /* GridTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridTests.swift; sourceTree = "<group>"; };
 		6137B4D81B38740A006AC4C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		614B307A1B41554E00B9EB4E /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = Implementation/Grid.swift; sourceTree = "<group>"; };
 		614B307B1B41554E00B9EB4E /* ContactGridDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGridDelegate.swift; path = Implementation/ContactGridDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +54,9 @@
 		614B30861B41555B00B9EB4E /* GridType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridType.swift; path = Protocols/GridType.swift; sourceTree = "<group>"; };
 		614B30951B41A27300B9EB4E /* ContactGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGrid.swift; path = Implementation/ContactGrid.swift; sourceTree = "<group>"; };
 		614B30971B41A30800B9EB4E /* ContactGrid.Segment.Edge.Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGrid.Segment.Edge.Value.swift; sourceTree = "<group>"; };
+		614B30991B42904100B9EB4E /* ContactGridTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGridTests.swift; sourceTree = "<group>"; };
+		614B309B1B42905100B9EB4E /* ContactGridSegmentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGridSegmentTests.swift; sourceTree = "<group>"; };
+		614B309D1B42906600B9EB4E /* ContactGridSegmentEdgeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGridSegmentEdgeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +110,10 @@
 		6137B4D51B38740A006AC4C5 /* RSContactGridTests */ = {
 			isa = PBXGroup;
 			children = (
-				6137B4D61B38740A006AC4C5 /* RSContactGridTests.swift */,
+				6137B4D61B38740A006AC4C5 /* GridTests.swift */,
+				614B30991B42904100B9EB4E /* ContactGridTests.swift */,
+				614B309B1B42905100B9EB4E /* ContactGridSegmentTests.swift */,
+				614B309D1B42906600B9EB4E /* ContactGridSegmentEdgeTests.swift */,
 				6137B4D81B38740A006AC4C5 /* Info.plist */,
 			);
 			path = RSContactGridTests;
@@ -261,7 +270,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6137B4D71B38740A006AC4C5 /* RSContactGridTests.swift in Sources */,
+				614B309C1B42905100B9EB4E /* ContactGridSegmentTests.swift in Sources */,
+				614B309A1B42904100B9EB4E /* ContactGridTests.swift in Sources */,
+				6137B4D71B38740A006AC4C5 /* GridTests.swift in Sources */,
+				614B309E1B42906600B9EB4E /* ContactGridSegmentEdgeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

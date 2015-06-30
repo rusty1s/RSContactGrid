@@ -6,7 +6,7 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-public protocol GridType : Hashable, Equatable, SequenceType, ArrayLiteralConvertible, Reflectable, CustomStringConvertible, CustomDebugStringConvertible {
+public protocol GridType : Hashable, Equatable, SequenceType, ArrayLiteralConvertible, CustomStringConvertible, CustomDebugStringConvertible {
     
     // MARK: Associated types
     
@@ -53,13 +53,6 @@ extension GridType {
 extension GridType {
     
     public init(arrayLiteral segments: SegmentType...) { self.init(segments) }
-}
-
-// MARK: Reflectable
-
-extension ContactGrid {
-    
-    public func getMirror() -> MirrorType { return reflect(self) }
 }
 
 // MARK: CustomStringConvertible / CustomDebugStringConvertible

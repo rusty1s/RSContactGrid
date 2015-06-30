@@ -11,10 +11,10 @@ public protocol ContactGridSegmentEdgeType : Hashable, Equatable, RawRepresentab
     // MARK: Associated types
     
     typealias EdgeValue: Hashable, Equatable, CustomStringConvertible
+
+    typealias Content
     
     typealias ContactedObject
-    
-    typealias Content
     
     // MARK: Initializers
     
@@ -24,9 +24,9 @@ public protocol ContactGridSegmentEdgeType : Hashable, Equatable, RawRepresentab
     
     var value: EdgeValue { get }
     
-    var contactedObject: ContactedObject? { get set }
-    
     var content: Content? { get set }
+    
+    var contactedObject: ContactedObject? { get set }
     
     // MARK: Static variables
     
@@ -37,9 +37,15 @@ public protocol ContactGridSegmentEdgeType : Hashable, Equatable, RawRepresentab
 
 extension ContactGridSegmentEdgeType {
     
-    final public var contacted: Bool { return contactedObject != nil }
+    public init(value: EdgeValue, content: Content?, contactedObject: ContactedObject?) {
+        self.init(value: value)
+        self.content = content
+        self.contactedObject = contactedObject
+    }
     
     final public var hasContent: Bool { return content != nil }
+    
+    final public var contacted: Bool { return contactedObject != nil }
 }
 
 // MARK: Hashable
