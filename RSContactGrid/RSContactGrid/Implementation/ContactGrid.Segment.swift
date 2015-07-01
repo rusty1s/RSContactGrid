@@ -39,6 +39,5 @@ public func < (lhs: ContactGrid.Segment, rhs: ContactGrid.Segment) -> Bool {
 
 extension ContactGrid.Segment {
 
-    /// A textual representation of `self`, suitable for debugging.
     public var debugDescription: String { return "ContactGrid.Segment(\(self)" }
 }

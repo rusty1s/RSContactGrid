@@ -18,18 +18,21 @@ class ContactGridSegmentTests: XCTestCase {
         XCTAssertEqual(segment.frame, CGRect(x: 0, y: 0, width: 20, height: 20))
         
         XCTAssertEqual(segment.remainingEdges.count, 4)
-        XCTAssertEqual(segment.contactedEdges.count, 0)
+        XCTAssertEqual(segment.edgesWithContentBody.count, 0)
+        XCTAssertEqual(segment.edgesWithContactBody.count, 0)
         XCTAssertEqual(segment.deletedEdges.count, 0)
         
-        let edge = ContactGrid.Segment.Edge(value: .Left, content: nil, contactedObject: "foo")
+        let edge = ContactGrid.Segment.Edge(value: .Left, contentBody: nil, contactBody: "foo")
         segment.remainingEdges.insert(edge)
         XCTAssertEqual(segment.remainingEdges.count, 4)
-        XCTAssertEqual(segment.contactedEdges.count, 1)
+        XCTAssertEqual(segment.edgesWithContentBody.count, 0)
+        XCTAssertEqual(segment.edgesWithContactBody.count, 1)
         XCTAssertEqual(segment.deletedEdges.count, 0)
         
         segment.remainingEdges.removeFirst()
         XCTAssertEqual(segment.remainingEdges.count, 3)
-        XCTAssertLessThanOrEqual(segment.contactedEdges.count, 1)
+        XCTAssertEqual(segment.edgesWithContentBody.count, 0)
+        XCTAssertLessThanOrEqual(segment.edgesWithContactBody.count, 1)
         XCTAssertEqual(segment.deletedEdges.count, 1)
         
         var newSegment = ContactGrid.Segment(x: 0, y: 0)

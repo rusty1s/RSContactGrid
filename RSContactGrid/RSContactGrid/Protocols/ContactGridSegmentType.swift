@@ -14,6 +14,7 @@ public protocol ContactGridSegmentType : GridSegmentType {
     
     // MARK: Instance variables
     
+    /// The remaining edges of the segment.
     var remainingEdges: Set<EdgeType> { get set }
 }
 
@@ -21,12 +22,19 @@ public protocol ContactGridSegmentType : GridSegmentType {
 
 extension ContactGridSegmentType {
     
+    /// The edges, which were already deleted from the segment.
     final public var deletedEdges: Set<EdgeType.EdgeValue> {
         return EdgeType.allValues.subtract(remainingEdges.map { $0.value })
     }
     
-    final public var contactedEdges: Set<EdgeType> {
-        return Set(remainingEdges.filter { $0.contactedObject != nil })
+    /// The remaining edges with a content body.
+    final public var edgesWithContentBody: Set<EdgeType> {
+        return Set(remainingEdges.filter { $0.hasContentBody })
+    }
+    
+    /// The remaining edges with a contact body.
+    final public var edgesWithContactBody: Set<EdgeType> {
+        return Set(remainingEdges.filter { $0.hasContactBody })
     }
 }
 
@@ -34,9 +42,7 @@ extension ContactGridSegmentType {
 
 extension ContactGridSegmentType {
     
-    /// A textual representation of `self`.
     public var description: String { return "{x: \(x), y: \(y), remaining edges: \(remainingEdges.map { $0.description })}"}
     
-    /// A textual representation of `self`, suitable for debugging.
     public var debugDescription: String { return "\(self)" }
 }

@@ -14,7 +14,7 @@ extension ContactGrid : ContactGridType {
     
     // MARK: Instance methods
     
-    public mutating func addPolygon(var polygon: [CGPoint], withContactEdgeEffect: (SegmentEdgeType -> ()), allowInsertingSegments: Bool = true) {
+    public mutating func addPolygon(var polygon: [CGPoint], @noescape withContactEdgeEffect contactEdgeEffect: (SegmentEdgeType -> ()), allowInsertingSegments: Bool) {
         
         guard polygon.count > 2 else { return } // polygons must at least form a triangle
         for index in Array(0...polygon.count-1).filter({ polygon[$0] == polygon[($0+1)%polygon.count] }).reverse() {

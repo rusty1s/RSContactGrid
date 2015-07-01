@@ -12,8 +12,8 @@ extension ContactGrid.Segment.Edge {
 
     public init(value: EdgeValue) {
         self.value = value
-        self.contactedObject = nil
-        self.content = nil
+        self.contentBody = nil
+        self.contactBody = nil
     }
 }
 
@@ -49,7 +49,6 @@ public func == (lhs: ContactGrid.Segment.Edge, rhs: ContactGrid.Segment.Edge) ->
 // MARK: CustomDebugStringConvertible
 
 extension ContactGrid.Segment.Edge {
-    
-    /// A textual representation of `self`, suitable for debugging.
+
     public var debugDescription: String { return "ContactGrid.Segment.Edge(\(self)" }
 }

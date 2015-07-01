@@ -13,7 +13,7 @@ class ContactGridSegmentEdgeTests: XCTestCase {
     
     func testEdge() {
         let edge1 = ContactGrid.Segment.Edge(value: .Left)
-        let edge2 = ContactGrid.Segment.Edge(value: .Top, content: nil, contactedObject: "foo")
+        let edge2 = ContactGrid.Segment.Edge(value: .Top, contentBody: nil, contactBody: "foo")
         let edge3 = ContactGrid.Segment.Edge(rawValue: 1)
         let edge4 = ContactGrid.Segment.Edge(rawValue: 5)
         
@@ -25,10 +25,10 @@ class ContactGridSegmentEdgeTests: XCTestCase {
         XCTAssertNotEqual(edge1.hashValue, edge2.hashValue)
         XCTAssertNotEqual(edge1, edge2)
         
-        XCTAssert(!edge1.hasContent)
-        XCTAssert(!edge1.contacted)
-        XCTAssert(!edge2.hasContent)
-        XCTAssert(edge2.contacted)
+        XCTAssert(!edge1.hasContentBody)
+        XCTAssert(!edge1.hasContactBody)
+        XCTAssert(!edge2.hasContentBody)
+        XCTAssert(edge2.hasContactBody)
         
         XCTAssertEqual(ContactGrid.Segment.Edge.allValues.count, 4)
         XCTAssertEqual(ContactGrid.Segment.Edge.allValues, Set([.Left, .Top, .Right, .Bottom]))

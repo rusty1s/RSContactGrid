@@ -12,24 +12,31 @@ public protocol ContactGridSegmentEdgeType : Hashable, Equatable, RawRepresentab
     
     typealias EdgeValue: Hashable, Equatable, CustomStringConvertible
 
-    typealias Content
+    typealias ContentBody
     
-    typealias ContactedObject
+    typealias ContactBody
     
     // MARK: Initializers
     
+    /// Create a `ContactGridSegmentEdgeType` with an edge value
+    /// and empty content and contact bodies.
     init(value: EdgeValue)
     
     // MARK: Instance variables
     
+    /// Returns the edge value.
     var value: EdgeValue { get }
     
-    var content: Content? { get set }
+    /// The content body stored by the edge.
+    var contentBody: ContentBody? { get set }
     
-    var contactedObject: ContactedObject? { get set }
+    /// The contact body stored by the edge used for collision detection
+    /// with the content body.
+    var contactBody: ContactBody? { get set }
     
     // MARK: Static variables
     
+    /// Returns all possible edge values.
     static var allValues: Set<EdgeValue> { get }
 }
 
@@ -37,15 +44,19 @@ public protocol ContactGridSegmentEdgeType : Hashable, Equatable, RawRepresentab
 
 extension ContactGridSegmentEdgeType {
     
-    public init(value: EdgeValue, content: Content?, contactedObject: ContactedObject?) {
+    /// Create a `ContactGridSegmentEdgeType` with an edge value
+    /// and content and contact bodies.
+    public init(value: EdgeValue, contentBody: ContentBody?, contactBody: ContactBody?) {
         self.init(value: value)
-        self.content = content
-        self.contactedObject = contactedObject
+        self.contentBody = contentBody
+        self.contactBody = contactBody
     }
     
-    final public var hasContent: Bool { return content != nil }
+    /// `true` if the edge has a content body.
+    final public var hasContentBody: Bool { return contentBody != nil }
     
-    final public var contacted: Bool { return contactedObject != nil }
+    /// `true` if the edge has a contact body.
+    final public var hasContactBody: Bool { return contactBody != nil }
 }
 
 // MARK: Hashable
@@ -59,14 +70,12 @@ extension ContactGridSegmentEdgeType {
 
 extension ContactGridSegmentEdgeType {
     
-    /// A textual representation of `self`.
     public var description: String {
         return "{edge: \(value)"
-              + (contacted ? ", contactedObject: \(contactedObject)" : "")
-              + (hasContent ? ", content: \(content)" : "")
+              + (hasContentBody ? ", content body: \(contentBody)" : "")
+              + (hasContactBody ? ", contact body: \(contactBody)" : "")
               + "}"
     }
     
-    /// A textual representation of `self`, suitable for debugging.
     public var debugDescription: String { return "\(self)" }
 }

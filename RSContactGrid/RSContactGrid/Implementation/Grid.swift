@@ -21,17 +21,17 @@ public struct ContactGrid : GridType {
             
             public typealias EdgeValue = Value
             
-            public typealias Content = AnyObject
+            public typealias ContentBody = AnyObject
             
-            public typealias ContactedObject = AnyObject
+            public typealias ContactBody = AnyObject
             
             // MARK: Instance variables
             
             public let value: EdgeValue
             
-            public var content: Content?
+            public var contentBody: ContentBody?
             
-            public var contactedObject: ContactedObject?
+            public var contactBody: ContactBody?
         }
         
         // MARK: Associated types
@@ -48,9 +48,11 @@ public struct ContactGrid : GridType {
         
         // MARK: Static variables
         
-        public static let width: CGFloat = 20
+        /// The width of a segment.
+        public static var width: CGFloat = 20
         
-        public static let height: CGFloat = 20
+        /// The height of a segment.
+        public static var height: CGFloat = 20
     }
     
     // MARK: Associated types
@@ -61,6 +63,8 @@ public struct ContactGrid : GridType {
     
     private var segments: Set<SegmentType>
     
+    /// A delegate that is called when a polygon is added into the grid
+    /// and possibly overlays segments.
     public var delegate: ContactGridDelegate?
 }
 
@@ -137,6 +141,5 @@ extension ContactGrid {
 
 extension ContactGrid {
     
-    /// A textual representation of `self`, suitable for debugging.
     public var debugDescription: String { return "ContactGrid(\(self)" }
 }

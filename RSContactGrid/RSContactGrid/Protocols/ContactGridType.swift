@@ -16,5 +16,10 @@ public protocol ContactGridType : GridType {
     
     // MARK: Instance methods
     
-    mutating func addPolygon(polygon: [CGPoint], withContactEdgeEffect: (SegmentEdgeType -> ()), allowInsertingSegments: Bool)
+    /// Adds a polygon, a finite sequence of `CGPoint`'s, into the grid.
+    /// `contactEdgeEffect` describes the behavior of all `SegmentEdgeType`'s
+    /// in the grid, that overlay the polygon.
+    /// `allowInsertingSegments` allows the grid to insert segments, which
+    /// overlay the polygon, but are not yet inserted into the grid.
+    mutating func addPolygon(polygon: [CGPoint], @noescape withContactEdgeEffect contactEdgeEffect: (SegmentEdgeType -> ()), allowInsertingSegments: Bool)
 }

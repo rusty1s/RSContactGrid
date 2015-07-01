@@ -10,7 +10,6 @@
 
 extension ContactGrid.Segment.Edge.Value : CustomDebugStringConvertible {
     
-    /// A textual representation of `self`.
     public var description: String {
         switch self {
         case .Left: return "left"
@@ -20,6 +19,5 @@ extension ContactGrid.Segment.Edge.Value : CustomDebugStringConvertible {
         }
     }
     
-    /// A textual representation of `self`, suitable for debugging.
     public var debugDescription: String { return "ContactGrid.Segment.Edge.Value(\(self)" }
 }

@@ -14,26 +14,38 @@ public protocol GridType : Hashable, Equatable, SequenceType, ArrayLiteralConver
     
     // MARK: Initializers
     
+    /// Create an empty `GridType`.
     init()
     
+    /// Create an empty `GridType` with at least the given number of
+    /// segments worth of storage.  The actual capacity will be the
+    /// smallest power of 2 that's >= `minimumCapacity`.
     init(minimumCapacity: Int)
     
+    /// Create a `GridType` from a finite sequence of segments.
     init<S : SequenceType where S.Generator.Element == SegmentType>(_ sequence: S)
     
     // MARK: Instance variables
     
+    /// Returns the number of segments.
     var count: Int { get }
     
     // MARK: Instance methods
     
+    /// Insert a segment into the grid.
     mutating func insert(segment: SegmentType)
     
-    mutating func remove(element: SegmentType) -> SegmentType?
+    /// Remove the segment from the grid and return it if it was present.
+    mutating func remove(segment: SegmentType) -> SegmentType?
     
+    /// Erase all the segments.  If `keepCapacity` is `true`, `capacity`
+    /// will not decrease.
     mutating func removeAll(keepCapacity keepCapacity: Bool)
     
     // MARK: Subscripts
     
+    /// Returns the segment of a given position, or `nil` if the position is not
+    /// present in the grid.
     subscript(x: Int, y: Int) -> SegmentType? { get }
 }
 
@@ -41,10 +53,14 @@ public protocol GridType : Hashable, Equatable, SequenceType, ArrayLiteralConver
 
 extension GridType {
     
+    /// `true` if the grid is empty.
     final public var isEmpty: Bool { return count == 0 }
     
+    /// Insert an initial segment at position `x`, `y` into the grid.
     final public mutating func insertAtX(x: Int, y: Int) { insert(SegmentType(x: x, y: y)) }
     
+    /// Remove the segment at position `x`, `y` from the grid and return it if
+    /// it was present.
     final public mutating func removeAtX(x: Int, y: Int) -> SegmentType? { return remove(SegmentType(x: x, y: y)) }
 }
 
@@ -52,16 +68,14 @@ extension GridType {
 
 extension GridType {
     
-    public init(arrayLiteral segments: SegmentType...) { self.init(segments) }
+    public init(arrayLiteral elements: SegmentType...) { self.init(elements) }
 }
 
 // MARK: CustomStringConvertible / CustomDebugStringConvertible
 
 extension GridType {
     
-    /// A textual representation of `self`.
     public var description: String { return "\(Array(self))" }
     
-    /// A textual representation of `self`, suitable for debugging.
     public var debugDescription: String { return "\(self)" }
 }
