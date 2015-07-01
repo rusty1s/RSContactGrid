@@ -19,7 +19,7 @@ class ContactGridTests: XCTestCase {
         grid = ContactGrid()
     }
     
-    func testAddPolygon() {  
+    func testAddPolygon() {
         grid.addPolygon([CGPoint(x: 10, y: 10), CGPoint(x: 30, y: 30), CGPoint(x: 50, y: 10)], withContactEdgeEffect: {
             print($0)
             }, allowInsertingSegments: true)

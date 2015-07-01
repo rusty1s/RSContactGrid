@@ -16,10 +16,13 @@ public protocol ContactGridType : GridType {
     
     // MARK: Instance methods
     
-    /// Adds a polygon, a finite sequence of `CGPoint`'s, into the grid.
-    /// `contactEdgeEffect` describes the behavior of all `SegmentEdgeType`'s
-    /// in the grid, that overlay the polygon.
-    /// `allowInsertingSegments` allows the grid to insert segments, which
-    /// overlay the polygon, but are not yet inserted into the grid.
-    mutating func addPolygon(polygon: [CGPoint], @noescape withContactEdgeEffect contactEdgeEffect: (SegmentEdgeType -> ()), allowInsertingSegments: Bool)
+    /// Adds a virtual polygon into the grid and defines behavior for
+    /// overlayed segment edges.
+    /// - Parameter polygon: a finite sequence of `CGPoint`.
+    /// Lines of a polygon aren't allowed to intersect each other.
+    /// - Parameter contactEdgeEffect: the behavior of a `SegmentType`
+    /// and its specific `SegmentEdgeType`, that is overlayed by the polygon.
+    /// - Parameter allowInsertingSegments: allows the grid to insert segments,
+    /// which are overlayed by the polygon, but are not yet inserted into the grid.
+    mutating func addPolygon(polygon: [CGPoint], allowInsertingSegments: Bool, @noescape resolveContact: ((SegmentType, SegmentEdgeType) -> ()))
 }
