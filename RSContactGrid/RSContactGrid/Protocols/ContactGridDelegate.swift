@@ -2,7 +2,7 @@
 //  ContactGridDelegate.swift
 //  RSContactGrid
 //
-//  Created by Matthias Fey on 24.06.15.
+//  Created by Matthias Fey on 03.07.15.
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
@@ -13,12 +13,8 @@ public protocol ContactGridDelegate {
     /// Called when a polygon is about to be added to the grid.
     func didBeginResolveContacts()
     
-    /// Called when the polygon overlays a `ContactGrid.Segment.Edge`.
-    func didResolveContactInSegmentEdge(edge: ContactGrid.Segment.Edge)
-    
-    /// Called when the polygon overlays at least
-    /// one edge in `ContactGrid.Segment`.
-    func didResolveContactInSegment(segment: ContactGrid.Segment)
+    /// Called when the polygon overlays a `ContactGridElementType`.
+    func didResolveContactInElement(element: AnyObject)
     
     /// Called when a polygon has been virtually added to the grid.
     func didEndResolveContacts()

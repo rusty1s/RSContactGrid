@@ -6,140 +6,96 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-public struct ContactGrid : GridType {
-    
-    public struct Segment : ContactGridSegmentType {
-        
-        public struct Edge : ContactGridSegmentEdgeType {
-
-            public enum Value: Int, CustomStringConvertible {
-                case Left = 1
-                case Top, Right, Bottom
-            }
-            
-            // MARK: Associated types
-            
-            public typealias EdgeValue = Value
-            
-            public typealias ContentBody = AnyObject
-            
-            public typealias ContactBody = AnyObject
-            
-            // MARK: Instance variables
-            
-            public let value: EdgeValue
-            
-            public var contentBody: ContentBody?
-            
-            public var contactBody: ContactBody?
-        }
-        
-        // MARK: Associated types
-        
-        public typealias EdgeType = Edge
-        
-        // MARK: Instance variables
-        
-        public let x: Int
-        
-        public let y: Int
-        
-        public var remainingEdges = Set(EdgeType.allValues.map { EdgeType(value: $0) })
-        
-        // MARK: Static variables
-        
-        /// The width of a segment.
-        public static var width: CGFloat = 20
-        
-        /// The height of a segment.
-        public static var height: CGFloat = 20
-    }
+public struct Grid<T : ContactGridElementType> : ContactGridType {
     
     // MARK: Associated types
     
-    public typealias SegmentType = Segment
-
+    public typealias ElementType = T
+    
     // MARK: Instance variables
     
-    private var segments: Set<SegmentType>
+    private var elements: Set<ElementType>
     
-    /// A delegate that is called when a polygon is added into the grid
-    /// and possibly overlays segments.
-    public var delegate: ContactGridDelegate?
+    //public var delegate: ContactGridDelegate?
 }
 
 // MARK: Initializers
 
-extension ContactGrid {
+extension Grid {
     
     public init() {
-        segments = Set()
+        elements = Set()
     }
     
     public init(minimumCapacity: Int) {
-        segments = Set(minimumCapacity: minimumCapacity)
+        elements = Set(minimumCapacity: minimumCapacity)
     }
     
-    public init<S : SequenceType where S.Generator.Element == SegmentType>(_ sequence: S) {
-        segments = Set(sequence)
+    public init<S : SequenceType where S.Generator.Element == ElementType>(_ sequence: S) {
+        elements = Set(sequence)
     }
+}
+
+// MARK: Instance variables
+
+extension Grid {
+    
+    public var count: Int { return elements.count }
 }
 
 // MARK: Instance methods
 
-extension ContactGrid {
-    
-    public var count: Int { return segments.count }
+extension Grid {
 
-    public mutating func insert(segment: SegmentType) { segments.insert(segment) }
+    public mutating func insert(element: ElementType) { elements.insert(element) }
     
-    public mutating func remove(segment: SegmentType) -> SegmentType? { return segments.remove(segment) }
+    public mutating func remove(element: ElementType) -> ElementType? { return elements.remove(element) }
     
     public mutating func removeAll(keepCapacity keepCapacity: Bool = false) {
-        segments.removeAll(keepCapacity: keepCapacity)
+        elements.removeAll(keepCapacity: keepCapacity)
     }
 }
 
 // MARK: Subscripts
 
-extension ContactGrid {
+extension Grid {
 
-    public subscript(x: Int, y: Int) -> SegmentType? {
-        let segment = SegmentType(x: x, y: y)
+    public subscript(x: Int, y: Int) -> ElementType? {
+        let element = ElementType(x: x, y: y)
         
-        guard let index = segments.indexOf(segment) else { return nil }
-        return segments[index]
+        guard let index = elements.indexOf(element) else { return nil }
+        return elements[index]
     }
 }
 
 // MARK: Hashable
 
-extension ContactGrid {
+extension Grid {
     
-    public var hashValue: Int { return segments.hashValue }
+    public var hashValue: Int { return elements.hashValue }
 }
 
 // MARK: Equatable
 
-extension ContactGrid {}
-public func == (lhs: ContactGrid, rhs: ContactGrid) -> Bool {
-    return lhs.segments == rhs.segments
+extension Grid {}
+public func == <T: ContactGridElementType>(lhs: Grid<T>, rhs: Grid<T>) -> Bool {
+    return lhs.elements == rhs.elements
 }
 
 // MARK: SequenceType
 
-extension ContactGrid {
+extension Grid {
     
-    public typealias Generator = SetGenerator<SegmentType>
+    public typealias Generator = SetGenerator<ElementType>
     
     public func generate() -> Generator {
-        return segments.generate()
+        return elements.generate()
     }
 }
 
 // MARK: CustomDebugStringConvertible
 
-extension ContactGrid {
+extension Grid {
     
-    public var debugDescription: String { return "ContactGrid(\(self)" }
+    public var debugDescription: String { return "Grid(\(self)" }
 }

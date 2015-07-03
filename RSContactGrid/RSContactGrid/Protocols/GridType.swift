@@ -10,7 +10,7 @@ public protocol GridType : Hashable, Equatable, SequenceType, ArrayLiteralConver
     
     // MARK: Associated types
     
-    typealias SegmentType: GridSegmentType
+    typealias ElementType: GridElementType
     
     // MARK: Initializers
     
@@ -18,35 +18,35 @@ public protocol GridType : Hashable, Equatable, SequenceType, ArrayLiteralConver
     init()
     
     /// Create an empty `GridType` with at least the given number of
-    /// segments worth of storage.  The actual capacity will be the
+    /// elements worth of storage.  The actual capacity will be the
     /// smallest power of 2 that's >= `minimumCapacity`.
     init(minimumCapacity: Int)
     
-    /// Create a `GridType` from a finite sequence of segments.
-    init<S : SequenceType where S.Generator.Element == SegmentType>(_ sequence: S)
+    /// Create a `GridType` from a finite sequence of elements.
+    init<S : SequenceType where S.Generator.Element == ElementType>(_ sequence: S)
     
     // MARK: Instance variables
     
-    /// Returns the number of segments.
+    /// Returns the number of elements.
     var count: Int { get }
     
     // MARK: Instance methods
     
-    /// Insert a segment into the grid.
-    mutating func insert(segment: SegmentType)
+    /// Insert a element into the grid.
+    mutating func insert(element: ElementType)
     
-    /// Remove the segment from the grid and return it if it was present.
-    mutating func remove(segment: SegmentType) -> SegmentType?
+    /// Remove the element from the grid and return it if it was present.
+    mutating func remove(element: ElementType) -> ElementType?
     
-    /// Erase all the segments.  If `keepCapacity` is `true`, `capacity`
+    /// Erase all elements.  If `keepCapacity` is `true`, `capacity`
     /// will not decrease.
     mutating func removeAll(keepCapacity keepCapacity: Bool)
     
     // MARK: Subscripts
     
-    /// Returns the segment of a given position, or `nil` if the position is not
+    /// Returns the element of a given position, or `nil` if the position is not
     /// present in the grid.
-    subscript(x: Int, y: Int) -> SegmentType? { get }
+    subscript(x: Int, y: Int) -> ElementType? { get }
 }
 
 // MARK: Default implementations
@@ -56,19 +56,19 @@ extension GridType {
     /// `true` if the grid is empty.
     final public var isEmpty: Bool { return count == 0 }
     
-    /// Insert an initial segment at position `x`, `y` into the grid.
-    final public mutating func insertAtX(x: Int, y: Int) { insert(SegmentType(x: x, y: y)) }
+    /// Insert an initial element at position `x`, `y` into the grid.
+    final public mutating func insertAtX(x: Int, y: Int) { insert(ElementType(x: x, y: y)) }
     
-    /// Remove the segment at position `x`, `y` from the grid and return it if
+    /// Remove the element at position `x`, `y` from the grid and return it if
     /// it was present.
-    final public mutating func removeAtX(x: Int, y: Int) -> SegmentType? { return remove(SegmentType(x: x, y: y)) }
+    final public mutating func removeAtX(x: Int, y: Int) -> ElementType? { return remove(ElementType(x: x, y: y)) }
 }
 
 // MARK: ArrayLiteralConvertible
 
 extension GridType {
     
-    public init(arrayLiteral elements: SegmentType...) { self.init(elements) }
+    public init(arrayLiteral elements: ElementType...) { self.init(elements) }
 }
 
 // MARK: CustomStringConvertible / CustomDebugStringConvertible
