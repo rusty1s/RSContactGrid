@@ -38,7 +38,7 @@ public protocol GridElementType : Hashable, Comparable, CustomStringConvertible,
 extension GridElementType {
     
     /// Create a `GridElementType` at x- and y-coordinates with a specific content.
-    init(x: Int, y: Int, content: Content?) {
+    public init(x: Int, y: Int, content: Content?) {
         self.init(x: x, y: y)
         self.content = content
     }

@@ -11,18 +11,16 @@ import RSContactGrid
 
 class GridTests: XCTestCase {
     
-    var grid: ContactGrid!
-    
-    override func setUp() {
-        super.setUp()
-        
-        grid = ContactGrid()
-    }
-    
     func testInsertingAndRemoving() {
+        
+        let data = Datastructure<TestClass>()
+        data.doSomething()
+        
+        var grid = Grid<SquareElement>()
+        
         XCTAssert(grid.isEmpty)
         XCTAssertEqual(grid.count, 0)
-        grid.insert(ContactGrid.Segment(x: 0, y: 0))
+        grid.insert(SquareElement(x: 0, y: 0))
         XCTAssert(!grid.isEmpty)
         XCTAssertEqual(grid.count, 1)
         grid.insertAtX(1, y: 0)
@@ -37,21 +35,21 @@ class GridTests: XCTestCase {
         grid.removeAtX(2, y: 0)
         XCTAssert(!grid.isEmpty)
         XCTAssertEqual(grid.count, 1)
-        grid.remove(ContactGrid.Segment(x: 2, y: 0))
+        grid.remove(SquareElement(x: 2, y: 0))
         XCTAssert(!grid.isEmpty)
         XCTAssertEqual(grid.count, 1)
-        grid.remove(ContactGrid.Segment(x: 0, y: 0))
+        grid.remove(SquareElement(x: 0, y: 0))
         XCTAssert(grid.isEmpty)
         XCTAssertEqual(grid.count, 0)
         
         grid.insertAtX(0, y: 0)
         grid.insertAtX(2, y: 0)
-        let segment1 = grid[0, 0]
-        XCTAssert(segment1 != nil)
-        XCTAssertEqual(segment1!.x, 0)
-        XCTAssertEqual(segment1!.y, 0)
-        let segment2 = grid[1, 0]
-        XCTAssert(segment2 == nil)
+        let element1 = grid[0, 0]
+        XCTAssert(element1 != nil)
+        XCTAssertEqual(element1!.x, 0)
+        XCTAssertEqual(element1!.y, 0)
+        let element2 = grid[1, 0]
+        XCTAssert(element2 == nil)
         XCTAssert(!grid.isEmpty)
         XCTAssertEqual(grid.count, 2)
         grid.removeAll()
@@ -60,10 +58,10 @@ class GridTests: XCTestCase {
     }
     
     func testHashingAndEquality() {
-        var grid1 = ContactGrid()
+        var grid1 = Grid<SquareElement>()
         grid1.insertAtX(0, y: 0)
         
-        var grid2 = ContactGrid()
+        var grid2 = Grid<SquareElement>()
         grid2.insertAtX(1, y: 0)
         
         XCTAssertNotEqual(grid1.hashValue, grid2.hashValue)
@@ -77,28 +75,29 @@ class GridTests: XCTestCase {
     }
     
     func testInitialising() {
-        let grid1 = ContactGrid()
+        let grid1 = Grid<SquareElement>()
         XCTAssertEqual(grid1.count, 0)
         XCTAssert(grid1.isEmpty)
         
-        let grid2 = ContactGrid(minimumCapacity: 10)
+        let grid2 = Grid<SquareElement>(minimumCapacity: 10)
         XCTAssertEqual(grid2.count, 0)
         XCTAssert(grid2.isEmpty)
         
-        let grid3: ContactGrid = [ContactGrid.Segment(x: 0, y: 0), ContactGrid.Segment(x: 1, y: 0)]
+        let grid3: Grid = [SquareElement(x: 0, y: 0), SquareElement(x: 1, y: 0)]
         XCTAssertEqual(grid3.count, 2)
         XCTAssert(!grid3.isEmpty)
         
-        let grid4 = ContactGrid(Set([ContactGrid.Segment(x: 0, y: 0), ContactGrid.Segment(x: 1, y: 0)]))
+        let grid4 = Grid(Set([SquareElement(x: 0, y: 0), SquareElement(x: 1, y: 0)]))
         XCTAssertEqual(grid4.count, 2)
         XCTAssert(!grid4.isEmpty)
         
-        let grid5 = ContactGrid([ContactGrid.Segment(x: 0, y: 0), ContactGrid.Segment(x: 1, y: 0), ContactGrid.Segment(x: 1, y: 0)])
+        let grid5 = Grid([SquareElement(x: 0, y: 0), SquareElement(x: 1, y: 0), SquareElement(x: 1, y: 0)])
         XCTAssertEqual(grid5.count, 2)
         XCTAssert(!grid5.isEmpty)
     }
     
     func testSequenceType() {
+        var grid = Grid<SquareElement>()
         grid.insertAtX(0, y: 0)
         grid.insertAtX(1, y: 0)
         grid.insertAtX(2, y: 0)
@@ -109,7 +108,7 @@ class GridTests: XCTestCase {
             XCTAssertLessThan(segment.x, 3)
         }
         
-        let filteredGrid = ContactGrid(grid.filter { $0.x == 0 })
+        let filteredGrid = Grid(grid.filter { $0.x == 0 })
         XCTAssertEqual(filteredGrid.count, 1)
         XCTAssert(!filteredGrid.isEmpty)
         

@@ -16,7 +16,7 @@ public protocol ContactGridType : GridType {
     
     /// A delegate that is called when a polygon is added into the grid
     /// and possibly overlays elements.
-    //var delegate: ContactGridDelegate? { get set }
+    var delegate: ContactGridDelegate? { get set }
 }
 
 // MARK: Default implementations
@@ -27,13 +27,20 @@ extension ContactGridType {
     /// overlayed elements.
     /// - Parameter polygon: The vertices of the polygon as a clockwise finite
     /// sequence of `CGPoint`.
-    /// - Parameter resolveContact: the behavior of a `ElementType` that is overlayed
-    /// by the polygon.
     /// - Parameter allowInsertingElements: allows the grid to insert element,
     /// which are overlayed by the polygon, but are not yet inserted into the grid.
-    mutating func addPolygon(var polygon: [CGPoint], allowInsertingElements: Bool = true, @noescape resolveContact: ElementType -> ElementType) {
+    /// - Parameter resolveContact: the behavior of a `ElementType` that is overlayed
+    /// by the polygon.
+    final public mutating func addPolygon(var polygon: [CGPoint], allowInsertingElements: Bool = true, @noescape resolveContact: ElementType -> ElementType) {
         
-        // error handling
+        //ElementType.self.elementsInRect(CGRectZero)
+        
+        print(ElementType(x: 0, y: 0).test1())
+        
+        //ElementType.elementsInLineFromPoint(CGPointZero, toPoint: CGPointZero)
+        //ElementType.elementsInRect(CGRectZero)
+        
+        /*// error handling
         guard polygon.count > 2 else { return } // polygon must at least form a triangle
         for index in Array(0...polygon.count-1).filter({ polygon[$0] == polygon[($0+1)%polygon.count] }).reverse() {
             polygon.removeAtIndex(index)    // delete equal neighbors
@@ -56,7 +63,6 @@ extension ContactGridType {
         }
         
         let polygonFrame = CGRect(x: minX, y: minY, width: maxX-minX, height: maxY-minY)
-        
         // get all elements that may be overlayed by the polygon
         var elements = ElementType.elementsInRect(polygonFrame)
         
@@ -75,31 +81,42 @@ extension ContactGridType {
         // http://stackoverflow.com/questions/11716268/point-in-polygon-algorithm
         elements.subtractInPlace(contactedElements)
         for element in elements {
+            var even = true
+            
             for index in indexes {
-                print(index)
+                let startPoint = polygon[index]
+                let endPoint = polygon[(index+1)%polygon.count]
+                let point = element.center
+                
+                // point must be between start and end point y coordinates
+                let pointBetweenYCoordinates = point.y <= max(startPoint.y, endPoint.y) && point.y >= min(startPoint.y, endPoint.y)
+                // check if vertical line
+                let verticalLine = startPoint.y == endPoint.y && point.x < min(startPoint.x, endPoint.x)
+                // check if point is on the left side of the line
+                let pointOnLeftSide = point.x < startPoint.x+((endPoint.x-startPoint.x)/(endPoint.y-startPoint.y))*(point.y-startPoint.y)
+                
+                if pointBetweenYCoordinates && (verticalLine || pointOnLeftSide) { even = !even }
             }
             
-            
-            let center = element.center
-            print(center)
+            if !even { contactedElements.insert(element) }
         }
         
         // iterate through contacted elements and resolve contacts
-        // delegate?.didBeginResolveContacts()
+        delegate?.didBeginResolveContacts()
         for element in contactedElements {
             if let removedElement = remove(element) {
                 let resolvedElement = resolveContact(removedElement)
                 insert(resolvedElement)
-                // delegate?.didResolveContactInElement(resolvedElement)
+                delegate?.didResolveContactInElement(resolvedElement)
             }
             else {
                 if allowInsertingElements {
                     let resolvedElement = resolveContact(element)
                     insert(resolvedElement)
-                    // delegate?.didResolveContactInElement(resolvedElement)
+                    delegate?.didResolveContactInElement(resolvedElement)
                 }
             }
         }
-        // delegate?.didEndResolveContacts()
+        delegate?.didEndResolveContacts()*/
     }
 }

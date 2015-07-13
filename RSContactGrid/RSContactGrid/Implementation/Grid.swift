@@ -16,7 +16,7 @@ public struct Grid<T : ContactGridElementType> : ContactGridType {
     
     private var elements: Set<ElementType>
     
-    //public var delegate: ContactGridDelegate?
+    public var delegate: ContactGridDelegate?
 }
 
 // MARK: Initializers

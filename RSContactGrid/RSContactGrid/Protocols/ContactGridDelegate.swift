@@ -14,7 +14,7 @@ public protocol ContactGridDelegate {
     func didBeginResolveContacts()
     
     /// Called when the polygon overlays a `ContactGridElementType`.
-    func didResolveContactInElement(element: AnyObject)
+    func didResolveContactInElement(element: Any)
     
     /// Called when a polygon has been virtually added to the grid.
     func didEndResolveContacts()

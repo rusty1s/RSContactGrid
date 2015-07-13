@@ -19,9 +19,15 @@ public protocol ContactGridElementType : GridElementType {
     
     // MARK: Static functions
     
+    /// Returns the minimal inital elements that intersect with a line segment
+    /// from the start point to the end point.
     static func elementsInLineFromPoint(startPoint: CGPoint, toPoint endPoint: CGPoint) -> Set<Self>
     
+    /// Returns the minimal inital elements that are overlayed by the rect.
     static func elementsInRect(rect: CGRect) -> Set<Self>
+    
+    func test1()
+    func test2()
 }
 
 // MARK: Default implementations
@@ -30,7 +36,7 @@ extension ContactGridElementType {
     
     /// Create a `ContactGridElementType` at x- and y-coordinates with a specific content
     /// and contact.
-    init(x: Int, y: Int, content: Content?, contact: Contact?) {
+    public init(x: Int, y: Int, content: Content?, contact: Contact?) {
         self.init(x: x, y: y, content: content)
         self.contact = contact
     }
@@ -38,7 +44,7 @@ extension ContactGridElementType {
     /// The minimal frame rectangle, which describes the element's location and
     /// size in its grid's coordinate system.  The frame contains all vertices
     /// of the element.
-    var frame: CGRect {
+    public var frame: CGRect {
         var minX = CGFloat.max
         var maxX = CGFloat.min
         var minY = CGFloat.max
@@ -54,10 +60,9 @@ extension ContactGridElementType {
         return CGRect(x: minX, y: minY, width: maxX-minX, height: maxY-minY)
     }
     
-    
     /// The center of the element's frame rectangle.
-    var center: CGPoint {
+    final public var center: CGPoint {
         let frame = self.frame
-        return CGPoint(x: frame.origin.x+frame.size.width/2, y: frame.origin.y+frame.size.height)
+        return CGPoint(x: frame.origin.x+frame.size.width/2, y: frame.origin.y+frame.size.height/2)
     }
 }

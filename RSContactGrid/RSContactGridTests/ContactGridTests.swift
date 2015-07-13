@@ -11,15 +11,12 @@ import RSContactGrid
 
 class ContactGridTests: XCTestCase {
     
-    var grid: ContactGrid!
-    
-    override func setUp() {
-        super.setUp()
+    func testAddPolygonInSquareGrid() {
         
-        grid = ContactGrid()
-    }
-    
-    func testAddPolygon() {
+        var grid = Grid<SquareElement>()
+        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        
+        
         /*grid.addPolygon([CGPoint(x: 15, y: 10), CGPoint(x: 30, y: 25), CGPoint(x: 45, y: 10)]) { (segment: ContactGrid.Segment, var edge: ContactGrid.Segment.Edge) in
             edge.contactBody = true
         }*/
@@ -38,8 +35,8 @@ class ContactGridTests: XCTestCase {
         XCTAssertEqual(grid[1, 1]!.edgesWithContactBody.count, 1)
         XCTAssertEqual(Set(grid[1, 1]!.edgesWithContactBody.map { $0.value }), Set([ContactGrid.Segment.Edge.Value.Bottom]))*/
         
-        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 30), CGPoint(x: 60, y: 0)]) { (segment: ContactGrid.Segment, var edge: ContactGrid.Segment.Edge) in
+        /*grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 30), CGPoint(x: 60, y: 0)]) { (segment: ContactGrid.Segment, var edge: ContactGrid.Segment.Edge) in
             edge.contactBody = true
-        }
+        }*/
     }
 }
