@@ -12,7 +12,7 @@ import RSContactGrid
 class GridTests: XCTestCase {
     
     func testInsertingAndRemoving() {
-        var grid = Grid<SquareElement>()
+        var grid = Grid<SquareElement<Bool, Bool>>()
         
         XCTAssert(grid.isEmpty)
         XCTAssertEqual(grid.count, 0)
@@ -54,10 +54,10 @@ class GridTests: XCTestCase {
     }
     
     func testHashingAndEquality() {
-        var grid1 = Grid<SquareElement>()
+        var grid1 = Grid<SquareElement<Bool, Bool>>()
         grid1.insertAtX(0, y: 0)
         
-        var grid2 = Grid<SquareElement>()
+        var grid2 = Grid<SquareElement<Bool, Bool>>()
         grid2.insertAtX(1, y: 0)
         
         XCTAssertNotEqual(grid1.hashValue, grid2.hashValue)
@@ -71,29 +71,29 @@ class GridTests: XCTestCase {
     }
     
     func testInitialising() {
-        let grid1 = Grid<SquareElement>()
+        let grid1 = Grid<SquareElement<Bool, Bool>>()
         XCTAssertEqual(grid1.count, 0)
         XCTAssert(grid1.isEmpty)
         
-        let grid2 = Grid<SquareElement>(minimumCapacity: 10)
+        let grid2 = Grid<SquareElement<Bool, Bool>>(minimumCapacity: 10)
         XCTAssertEqual(grid2.count, 0)
         XCTAssert(grid2.isEmpty)
         
-        let grid3: Grid = [SquareElement(x: 0, y: 0), SquareElement(x: 1, y: 0)]
+        let grid3: Grid = [SquareElement<Bool, Bool>(x: 0, y: 0), SquareElement(x: 1, y: 0)]
         XCTAssertEqual(grid3.count, 2)
         XCTAssert(!grid3.isEmpty)
         
-        let grid4 = Grid(Set([SquareElement(x: 0, y: 0), SquareElement(x: 1, y: 0)]))
+        let grid4 = Grid(Set([SquareElement<Bool, Bool>(x: 0, y: 0), SquareElement(x: 1, y: 0)]))
         XCTAssertEqual(grid4.count, 2)
         XCTAssert(!grid4.isEmpty)
         
-        let grid5 = Grid([SquareElement(x: 0, y: 0), SquareElement(x: 1, y: 0), SquareElement(x: 1, y: 0)])
+        let grid5 = Grid([SquareElement<Bool, Bool>(x: 0, y: 0), SquareElement(x: 1, y: 0), SquareElement(x: 1, y: 0)])
         XCTAssertEqual(grid5.count, 2)
         XCTAssert(!grid5.isEmpty)
     }
     
     func testSequenceType() {
-        var grid = Grid<SquareElement>()
+        var grid = Grid<SquareElement<Bool, Bool>>()
         grid.insertAtX(0, y: 0)
         grid.insertAtX(1, y: 0)
         grid.insertAtX(2, y: 0)
