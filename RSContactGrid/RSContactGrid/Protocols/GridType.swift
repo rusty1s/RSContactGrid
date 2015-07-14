@@ -30,6 +30,10 @@ public protocol GridType : Hashable, Equatable, SequenceType, ArrayLiteralConver
     /// Returns the number of elements.
     var count: Int { get }
     
+    /// A delegate that is called when a polygon is added into the grid
+    /// and possibly overlays elements.
+    var delegate: GridDelegate? { get set }
+    
     // MARK: Instance methods
     
     /// Insert a element into the grid.

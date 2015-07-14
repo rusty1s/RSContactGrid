@@ -6,13 +6,15 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-public struct SquareElement : ContactGridElementType {
+public struct SquareElement : GridElementType {
     
-    // MARK: Associated types
+    // MARK: Initializers
     
-    public typealias Content = AnyObject
-    
-    public typealias Contact = AnyObject
+    public init(x: Int, y: Int, content: AnyObject?, contact: AnyObject?) {
+        self.init(x: x, y: y)
+        self.content = content
+        self.contact = contact
+    }
     
     // MARK: Instance variables
     
@@ -20,9 +22,9 @@ public struct SquareElement : ContactGridElementType {
     
     public let y: Int
     
-    public var content: Content?
+    public var content: AnyObject?
     
-    public var contact: Contact?
+    public var contact: AnyObject?
     
     // MARK: Static variables
     
@@ -33,12 +35,11 @@ public struct SquareElement : ContactGridElementType {
     public static var height: CGFloat = 20
 }
 
-
 // MARK: Initializers
 
 extension SquareElement {
 
-    public init (x: Int, y: Int) {
+    public init(x: Int, y: Int) {
         self.x = x
         self.y = y
     }
@@ -89,7 +90,7 @@ extension SquareElement {
             let directionIsPositive = startPoint.x < endPoint.x
             
             // the function of the line segment
-            let function: (CGFloat) -> (CGFloat) = { return startPoint.y + (endPoint.y-startPoint.y)/(endPoint.x-startPoint.x) * ($0 - startPoint.x) }
+            let function: (CGFloat) -> (CGFloat) = { return startPoint.y + ((endPoint.y-startPoint.y)/(endPoint.x-startPoint.x)) * ($0 - startPoint.x) }
             
             var elements = Set<SquareElement>()
             var tempStartY = directionIsPositive ? startSegment.1 : endSegment.1
@@ -97,15 +98,29 @@ extension SquareElement {
             // iterate through all relevant horizontal segments
             for x in min(startSegment.0, endSegment.0)...max(startSegment.0, endSegment.0) {
                
-                let realTempEndY = slopeIsPositive ? function(CGFloat(x+1)) : function(CGFloat(x))
+                let realTempEndY = directionIsPositive ? function(CGFloat(x+1)*SquareElement.width) : function(CGFloat(x)*SquareElement.width)
                 var tempEndY = segmentYOfCoordinate(realTempEndY)
-                tempEndY = slopeIsPositive ? min(tempEndY, endY) : max(tempEndY, endY)
                 
+                // adjust contacted elements when line segment goes through edge
+                // needs only adjustment if slope is positive
+                if slopeIsPositive && fmod(realTempEndY, width) == 0 {
+                    if directionIsPositive { tempEndY-- }
+                }
+                
+                tempEndY = slopeIsPositive ? min(tempEndY, endY) : max(tempEndY, endY)
+
                 // iterate through all relevant vertical segments in its x-coordinate
                 for y in min(tempStartY, tempEndY)...max(tempStartY, tempEndY) {
                     elements.insert(SquareElement(x: x, y: y))
                 }
                 tempStartY = tempEndY
+                
+                // adjust contacted elements when line segment goes through edge
+                // needs only adjustment if slope is positive
+                if slopeIsPositive && fmod(realTempEndY, width) == 0 {
+                    if directionIsPositive { tempStartY++ }
+                    else { tempStartY-- }
+                }
             }
             return elements
         }

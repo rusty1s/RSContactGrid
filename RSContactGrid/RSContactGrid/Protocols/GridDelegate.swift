@@ -1,12 +1,12 @@
 //
-//  ContactGridDelegate.swift
+//  GridDelegate.swift
 //  RSContactGrid
 //
 //  Created by Matthias Fey on 03.07.15.
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-public protocol ContactGridDelegate {
+public protocol GridDelegate {
     
     // MARK: Instance methods
     

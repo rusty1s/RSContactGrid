@@ -8,12 +8,6 @@
 
 public protocol GridElementType : Hashable, Comparable, CustomStringConvertible, CustomDebugStringConvertible {
     
-    // MARK: Associated types
-    
-    typealias Content
-    
-    typealias Contact
-    
     // MARK: Initializiers
     
     /// Create a `GridElementType` at x- and y-coordinates.
@@ -31,23 +25,43 @@ public protocol GridElementType : Hashable, Comparable, CustomStringConvertible,
     /// finite sequence of `CGPoint`.
     var vertices: [CGPoint] { get }
     
-    /// The content stored by the element.
-    var content: Content? { get set }
+    // MARK: Static functions
     
-    /// The contact stored by the element.
-    var contact: Contact? { get set }
+    /// Returns the minimal inital elements that intersect with a line segment
+    /// from the start point to the end point.
+    static func elementsInLineFromPoint(startPoint: CGPoint, toPoint endPoint: CGPoint) -> Set<Self>
+    
+    /// Returns the minimal inital elements that are overlayed by the rect.
+    static func elementsInRect(rect: CGRect) -> Set<Self>
 }
 
 // MARK: Default implementations
 
 extension GridElementType {
     
-    /// Create a `GridElementType` at x- and y-coordinates with a specific
-    /// content and contact.
-    public init(x: Int, y: Int, content: Content?, contact: Contact?) {
-        self.init(x: x, y: y)
-        self.content = content
-        self.contact = contact
+    /// The minimal frame rectangle, which describes the element's location and
+    /// size in its grid's coordinate system.  The frame contains all vertices
+    /// of the element.
+    public var frame: CGRect {
+        var minX = CGFloat.max
+        var maxX = CGFloat.min
+        var minY = CGFloat.max
+        var maxY = CGFloat.min
+        
+        for vertex in vertices {
+            minX = min(minX, vertex.x)
+            maxX = max(maxX, vertex.x)
+            minY = min(minY, vertex.y)
+            maxY = max(maxY, vertex.y)
+        }
+        
+        return CGRect(x: minX, y: minY, width: maxX-minX, height: maxY-minY)
+    }
+    
+    /// The center of the element's frame rectangle.
+    final public var center: CGPoint {
+        let frame = self.frame
+        return CGPoint(x: frame.origin.x+frame.size.width/2, y: frame.origin.y+frame.size.height/2)
     }
 }
 

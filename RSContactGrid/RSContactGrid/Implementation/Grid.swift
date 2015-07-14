@@ -6,7 +6,7 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-public struct Grid<T : ContactGridElementType> : ContactGridType {
+public struct Grid<T : GridElementType> : GridType {
     
     // MARK: Associated types
     
@@ -16,7 +16,7 @@ public struct Grid<T : ContactGridElementType> : ContactGridType {
     
     private var elements: Set<ElementType>
     
-    public var delegate: ContactGridDelegate?
+    public var delegate: GridDelegate?
 }
 
 // MARK: Initializers
@@ -78,7 +78,7 @@ extension Grid {
 // MARK: Equatable
 
 extension Grid {}
-public func == <T: ContactGridElementType>(lhs: Grid<T>, rhs: Grid<T>) -> Bool {
+public func == <T: GridElementType>(lhs: Grid<T>, rhs: Grid<T>) -> Bool {
     return lhs.elements == rhs.elements
 }
 

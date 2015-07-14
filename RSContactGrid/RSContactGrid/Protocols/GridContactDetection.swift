@@ -1,27 +1,14 @@
 //
-//  ContactGridType.swift
+//  GridContactDetection.swift
 //  RSContactGrid
 //
 //  Created by Matthias Fey on 23.06.15.
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-public protocol ContactGridType : GridType {
-    
-    // MARK: Associated types
-    
-    typealias ElementType: ContactGridElementType
-    
-    // MARK: Instance variables
-    
-    /// A delegate that is called when a polygon is added into the grid
-    /// and possibly overlays elements.
-    var delegate: ContactGridDelegate? { get set }
-}
-
 // MARK: Default implementations
 
-extension ContactGridType {
+extension GridType {
     
     /// Adds a virtual polygon into the grid and defines behavior for
     /// overlayed elements.

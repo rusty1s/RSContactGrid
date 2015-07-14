@@ -12,13 +12,12 @@
 		6137B4D71B38740A006AC4C5 /* GridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6137B4D61B38740A006AC4C5 /* GridTests.swift */; };
 		614B307E1B41554E00B9EB4E /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B307A1B41554E00B9EB4E /* Grid.swift */; };
 		614B30801B41554E00B9EB4E /* SquareElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B307C1B41554E00B9EB4E /* SquareElement.swift */; };
-		614B30881B41555B00B9EB4E /* ContactGridElementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30831B41555B00B9EB4E /* ContactGridElementType.swift */; };
-		614B30891B41555B00B9EB4E /* ContactGridType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30841B41555B00B9EB4E /* ContactGridType.swift */; };
+		614B30891B41555B00B9EB4E /* GridContactDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30841B41555B00B9EB4E /* GridContactDetection.swift */; };
 		614B308A1B41555B00B9EB4E /* GridElementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30851B41555B00B9EB4E /* GridElementType.swift */; };
 		614B308B1B41555B00B9EB4E /* GridType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30861B41555B00B9EB4E /* GridType.swift */; };
 		614B309A1B42904100B9EB4E /* ContactGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30991B42904100B9EB4E /* ContactGridTests.swift */; };
 		614B309C1B42905100B9EB4E /* GridElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B309B1B42905100B9EB4E /* GridElementTests.swift */; };
-		61D142301B46B6EF008EAA20 /* ContactGridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1422F1B46B6EF008EAA20 /* ContactGridDelegate.swift */; };
+		61D142301B46B6EF008EAA20 /* GridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1422F1B46B6EF008EAA20 /* GridDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,13 +39,12 @@
 		6137B4D81B38740A006AC4C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		614B307A1B41554E00B9EB4E /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = Implementation/Grid.swift; sourceTree = "<group>"; };
 		614B307C1B41554E00B9EB4E /* SquareElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SquareElement.swift; path = Implementation/SquareElement.swift; sourceTree = "<group>"; };
-		614B30831B41555B00B9EB4E /* ContactGridElementType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGridElementType.swift; path = Protocols/ContactGridElementType.swift; sourceTree = "<group>"; };
-		614B30841B41555B00B9EB4E /* ContactGridType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGridType.swift; path = Protocols/ContactGridType.swift; sourceTree = "<group>"; };
+		614B30841B41555B00B9EB4E /* GridContactDetection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridContactDetection.swift; path = Protocols/GridContactDetection.swift; sourceTree = "<group>"; };
 		614B30851B41555B00B9EB4E /* GridElementType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridElementType.swift; path = Protocols/GridElementType.swift; sourceTree = "<group>"; };
 		614B30861B41555B00B9EB4E /* GridType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridType.swift; path = Protocols/GridType.swift; sourceTree = "<group>"; };
 		614B30991B42904100B9EB4E /* ContactGridTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGridTests.swift; sourceTree = "<group>"; };
 		614B309B1B42905100B9EB4E /* GridElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridElementTests.swift; sourceTree = "<group>"; };
-		61D1422F1B46B6EF008EAA20 /* ContactGridDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactGridDelegate.swift; path = Protocols/ContactGridDelegate.swift; sourceTree = "<group>"; };
+		61D1422F1B46B6EF008EAA20 /* GridDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridDelegate.swift; path = Protocols/GridDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,10 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				614B30861B41555B00B9EB4E /* GridType.swift */,
-				614B30841B41555B00B9EB4E /* ContactGridType.swift */,
+				614B30841B41555B00B9EB4E /* GridContactDetection.swift */,
 				614B30851B41555B00B9EB4E /* GridElementType.swift */,
-				614B30831B41555B00B9EB4E /* ContactGridElementType.swift */,
-				61D1422F1B46B6EF008EAA20 /* ContactGridDelegate.swift */,
+				61D1422F1B46B6EF008EAA20 /* GridDelegate.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -238,12 +235,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				614B30801B41554E00B9EB4E /* SquareElement.swift in Sources */,
-				61D142301B46B6EF008EAA20 /* ContactGridDelegate.swift in Sources */,
+				61D142301B46B6EF008EAA20 /* GridDelegate.swift in Sources */,
 				614B308A1B41555B00B9EB4E /* GridElementType.swift in Sources */,
 				614B308B1B41555B00B9EB4E /* GridType.swift in Sources */,
 				614B307E1B41554E00B9EB4E /* Grid.swift in Sources */,
-				614B30891B41555B00B9EB4E /* ContactGridType.swift in Sources */,
-				614B30881B41555B00B9EB4E /* ContactGridElementType.swift in Sources */,
+				614B30891B41555B00B9EB4E /* GridContactDetection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
