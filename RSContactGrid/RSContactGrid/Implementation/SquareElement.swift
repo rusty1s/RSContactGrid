@@ -66,8 +66,6 @@ extension SquareElement {
 
     public static func elementsInLineFromPoint(startPoint: CGPoint, toPoint endPoint: CGPoint) -> Set<SquareElement> {
         
-        print("LINE")
-        
         let startSegment = segmentOfCoordinates(startPoint)
         let endSegment = segmentOfCoordinates(endPoint)
         
@@ -114,8 +112,6 @@ extension SquareElement {
     }
     
     public static func elementsInRect(rect: CGRect) -> Set<SquareElement> {
-        
-        print("RECT")
         
         let startSegment = segmentOfCoordinates(rect.origin)
         let endSegment = segmentOfCoordinates(CGPoint(x: rect.origin.x+rect.size.width, y: rect.origin.y+rect.size.height))

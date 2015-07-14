@@ -11,9 +11,47 @@ import RSContactGrid
 
 class ContactGridTests: XCTestCase {
     
+    func testAddPolygon() {
+        var grid1 = Grid<SquareElement>()
+        grid1.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], allowInsertingElements: false) { var element = $0; element.contact = true; return element }
+        
+        XCTAssert(grid1.isEmpty)
+        
+        grid1.insertAtX(0, y: 0)
+        grid1.insertAtX(1, y: 0)
+        grid1.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], allowInsertingElements: false) { var element = $0; element.contact = true; return element }
+        
+        XCTAssertFalse(grid1.isEmpty)
+        XCTAssertEqual(grid1.count, 2)
+        XCTAssert(grid1[0,0] != nil)
+        XCTAssertNotNil(grid1[0,0]!.contact)
+        XCTAssertEqual(grid1[0,0]!.contact as! Bool, true)
+        XCTAssert(grid1[1,0] != nil)
+        XCTAssertNotNil(grid1[1,0]!.contact)
+        XCTAssertEqual(grid1[1,0]!.contact as! Bool, true)
+        
+        // disabled
+    }
+    
     func testAddPolygonInSquareGrid() {
-        var grid = Grid<SquareElement>()
-        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        var grid1 = Grid<SquareElement>()
+        grid1.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        
+        XCTAssertFalse(grid1.isEmpty)
+        XCTAssertEqual(grid1.count, 4)
+        XCTAssert(grid1[0,0] != nil)
+        XCTAssertNotNil(grid1[0,0]!.contact)
+        XCTAssertEqual(grid1[0,0]!.contact as! Bool, true)
+        XCTAssert(grid1[0,1] != nil)
+        XCTAssertNotNil(grid1[0,1]!.contact)
+        XCTAssertEqual(grid1[0,1]!.contact as! Bool, true)
+        XCTAssert(grid1[1,1] != nil)
+        XCTAssertNotNil(grid1[1,1]!.contact)
+        XCTAssertEqual(grid1[1,1]!.contact as! Bool, true)
+        XCTAssert(grid1[1,0] != nil)
+        XCTAssertNotNil(grid1[1,0]!.contact)
+        XCTAssertEqual(grid1[1,0]!.contact as! Bool, true)
+        
         
         
         /*grid.addPolygon([CGPoint(x: 15, y: 10), CGPoint(x: 30, y: 25), CGPoint(x: 45, y: 10)]) { (segment: ContactGrid.Segment, var edge: ContactGrid.Segment.Edge) in
