@@ -12,10 +12,6 @@ import RSContactGrid
 class GridTests: XCTestCase {
     
     func testInsertingAndRemoving() {
-        
-        let data = Datastructure<TestClass>()
-        data.doSomething()
-        
         var grid = Grid<SquareElement>()
         
         XCTAssert(grid.isEmpty)

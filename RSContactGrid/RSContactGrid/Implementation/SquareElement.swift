@@ -31,14 +31,6 @@ public struct SquareElement : ContactGridElementType {
     
     // The height of an element.
     public static var height: CGFloat = 20
-    
-    public func test1() {
-        print("TEST 1")
-    }
-    
-    public func test2() {
-        print("TEST 2")
-    }
 }
 
 
@@ -56,12 +48,10 @@ extension SquareElement {
 
 extension SquareElement {
     
-    
-    
     public var frame: CGRect {
         return CGRect(x: CGFloat(x)*SquareElement.width, y: CGFloat(y)*SquareElement.height, width: SquareElement.width, height: SquareElement.height)
     }
-    
+
     public var vertices: [CGPoint] {
         return [CGPoint(x: CGFloat(x)*SquareElement.width, y: CGFloat(y)*SquareElement.height),
                 CGPoint(x: CGFloat(x)*SquareElement.width, y: CGFloat(y+1)*SquareElement.height),

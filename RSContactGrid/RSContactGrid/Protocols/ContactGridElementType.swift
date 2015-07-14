@@ -8,15 +8,6 @@
 
 public protocol ContactGridElementType : GridElementType {
     
-    // MARK: Associated types
-    
-    typealias Contact
-    
-    // MARK: Instance variables
-    
-    /// The contact stored by the element.
-    var contact: Contact? { get set }
-    
     // MARK: Static functions
     
     /// Returns the minimal inital elements that intersect with a line segment
@@ -25,21 +16,11 @@ public protocol ContactGridElementType : GridElementType {
     
     /// Returns the minimal inital elements that are overlayed by the rect.
     static func elementsInRect(rect: CGRect) -> Set<Self>
-    
-    func test1()
-    func test2()
 }
 
 // MARK: Default implementations
 
 extension ContactGridElementType {
-    
-    /// Create a `ContactGridElementType` at x- and y-coordinates with a specific content
-    /// and contact.
-    public init(x: Int, y: Int, content: Content?, contact: Contact?) {
-        self.init(x: x, y: y, content: content)
-        self.contact = contact
-    }
     
     /// The minimal frame rectangle, which describes the element's location and
     /// size in its grid's coordinate system.  The frame contains all vertices

@@ -12,6 +12,8 @@ public protocol GridElementType : Hashable, Comparable, CustomStringConvertible,
     
     typealias Content
     
+    typealias Contact
+    
     // MARK: Initializiers
     
     /// Create a `GridElementType` at x- and y-coordinates.
@@ -31,16 +33,21 @@ public protocol GridElementType : Hashable, Comparable, CustomStringConvertible,
     
     /// The content stored by the element.
     var content: Content? { get set }
+    
+    /// The contact stored by the element.
+    var contact: Contact? { get set }
 }
 
 // MARK: Default implementations
 
 extension GridElementType {
     
-    /// Create a `GridElementType` at x- and y-coordinates with a specific content.
-    public init(x: Int, y: Int, content: Content?) {
+    /// Create a `GridElementType` at x- and y-coordinates with a specific
+    /// content and contact.
+    public init(x: Int, y: Int, content: Content?, contact: Contact?) {
         self.init(x: x, y: y)
         self.content = content
+        self.contact = contact
     }
 }
 
@@ -57,5 +64,5 @@ extension GridElementType {
     
     public var description: String { return "{x: \(x), y: \(y)}" }
     
-    public var debugDescription: String { return "\(self)" }
+    public var debugDescription: String { return "GridElementType(\(self))" }
 }

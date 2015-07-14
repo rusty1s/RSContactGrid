@@ -77,5 +77,5 @@ extension GridType {
     
     public var description: String { return "\(Array(self))" }
     
-    public var debugDescription: String { return "\(self)" }
+    public var debugDescription: String { return "GridType(\(self))" }
 }

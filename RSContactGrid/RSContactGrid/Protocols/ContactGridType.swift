@@ -33,14 +33,7 @@ extension ContactGridType {
     /// by the polygon.
     final public mutating func addPolygon(var polygon: [CGPoint], allowInsertingElements: Bool = true, @noescape resolveContact: ElementType -> ElementType) {
         
-        //ElementType.self.elementsInRect(CGRectZero)
-        
-        print(ElementType(x: 0, y: 0).test1())
-        
-        //ElementType.elementsInLineFromPoint(CGPointZero, toPoint: CGPointZero)
-        //ElementType.elementsInRect(CGRectZero)
-        
-        /*// error handling
+        // error handling
         guard polygon.count > 2 else { return } // polygon must at least form a triangle
         for index in Array(0...polygon.count-1).filter({ polygon[$0] == polygon[($0+1)%polygon.count] }).reverse() {
             polygon.removeAtIndex(index)    // delete equal neighbors
@@ -117,6 +110,6 @@ extension ContactGridType {
                 }
             }
         }
-        delegate?.didEndResolveContacts()*/
+        delegate?.didEndResolveContacts()
     }
 }

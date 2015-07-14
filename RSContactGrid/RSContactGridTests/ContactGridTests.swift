@@ -12,7 +12,6 @@ import RSContactGrid
 class ContactGridTests: XCTestCase {
     
     func testAddPolygonInSquareGrid() {
-        
         var grid = Grid<SquareElement>()
         grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
         
