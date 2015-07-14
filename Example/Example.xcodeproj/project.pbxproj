@@ -11,7 +11,47 @@
 		619A643C1B553D170064370A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619A643B1B553D170064370A /* ViewController.swift */; };
 		619A643F1B553D170064370A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 619A643D1B553D170064370A /* Main.storyboard */; };
 		619A64411B553D170064370A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 619A64401B553D170064370A /* Assets.xcassets */; };
+		619A64561B553DFC0064370A /* RSContactGrid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 619A64511B553DCF0064370A /* RSContactGrid.framework */; };
+		619A64581B553E2B0064370A /* RSContactGrid.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 619A64511B553DCF0064370A /* RSContactGrid.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		619A64501B553DCF0064370A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 619A644B1B553DCF0064370A /* RSContactGrid.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6137B4C71B38740A006AC4C5;
+			remoteInfo = RSContactGrid;
+		};
+		619A64521B553DCF0064370A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 619A644B1B553DCF0064370A /* RSContactGrid.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6137B4D11B38740A006AC4C5;
+			remoteInfo = RSContactGridTests;
+		};
+		619A64541B553DF00064370A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 619A644B1B553DCF0064370A /* RSContactGrid.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6137B4C61B38740A006AC4C5;
+			remoteInfo = RSContactGrid;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		619A64571B553E0B0064370A /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				619A64581B553E2B0064370A /* RSContactGrid.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		619A64361B553D170064370A /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,6 +60,7 @@
 		619A643E1B553D170064370A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		619A64401B553D170064370A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		619A64451B553D170064370A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		619A644B1B553DCF0064370A /* RSContactGrid.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RSContactGrid.xcodeproj; path = ../RSContactGrid/RSContactGrid.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				619A64561B553DFC0064370A /* RSContactGrid.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,6 +78,7 @@
 		619A642D1B553D170064370A = {
 			isa = PBXGroup;
 			children = (
+				619A644B1B553DCF0064370A /* RSContactGrid.xcodeproj */,
 				619A64381B553D170064370A /* Example */,
 				619A64371B553D170064370A /* Products */,
 			);
@@ -61,6 +104,15 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
+		619A644C1B553DCF0064370A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				619A64511B553DCF0064370A /* RSContactGrid.framework */,
+				619A64531B553DCF0064370A /* RSContactGridTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,10 +123,12 @@
 				619A64321B553D170064370A /* Sources */,
 				619A64331B553D170064370A /* Frameworks */,
 				619A64341B553D170064370A /* Resources */,
+				619A64571B553E0B0064370A /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				619A64551B553DF00064370A /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -106,12 +160,35 @@
 			mainGroup = 619A642D1B553D170064370A;
 			productRefGroup = 619A64371B553D170064370A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 619A644C1B553DCF0064370A /* Products */;
+					ProjectRef = 619A644B1B553DCF0064370A /* RSContactGrid.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				619A64351B553D170064370A /* Example */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		619A64511B553DCF0064370A /* RSContactGrid.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RSContactGrid.framework;
+			remoteRef = 619A64501B553DCF0064370A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		619A64531B553DCF0064370A /* RSContactGridTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RSContactGridTests.xctest;
+			remoteRef = 619A64521B553DCF0064370A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		619A64341B553D170064370A /* Resources */ = {
@@ -136,6 +213,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		619A64551B553DF00064370A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RSContactGrid;
+			targetProxy = 619A64541B553DF00064370A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		619A643D1B553D170064370A /* Main.storyboard */ = {
