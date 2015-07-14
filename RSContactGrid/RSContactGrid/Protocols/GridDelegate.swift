@@ -13,7 +13,7 @@ public protocol GridDelegate {
     /// Called when a polygon is about to be added to the grid.
     func didBeginResolveContacts()
     
-    /// Called when the polygon overlays a `ContactGridElementType`.
+    /// Called when the polygon overlays a `GridElementType`.
     func didResolveContactInElement(element: Any)
     
     /// Called when a polygon has been virtually added to the grid.
