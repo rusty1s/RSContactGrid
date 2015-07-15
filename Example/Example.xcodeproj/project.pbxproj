@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		618B2A6C1B56606B001CF497 /* GridElementNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618B2A6B1B56606B001CF497 /* GridElementNode.swift */; };
 		619A643A1B553D170064370A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619A64391B553D170064370A /* AppDelegate.swift */; };
-		619A643C1B553D170064370A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619A643B1B553D170064370A /* ViewController.swift */; };
+		619A643C1B553D170064370A /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619A643B1B553D170064370A /* GameController.swift */; };
 		619A643F1B553D170064370A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 619A643D1B553D170064370A /* Main.storyboard */; };
 		619A64411B553D170064370A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 619A64401B553D170064370A /* Assets.xcassets */; };
 		619A64561B553DFC0064370A /* RSContactGrid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 619A64511B553DCF0064370A /* RSContactGrid.framework */; };
 		619A64581B553E2B0064370A /* RSContactGrid.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 619A64511B553DCF0064370A /* RSContactGrid.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		61D93F931B55500600CA3065 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D93F921B55500600CA3065 /* GameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,13 +56,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		618B2A6B1B56606B001CF497 /* GridElementNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridElementNode.swift; sourceTree = "<group>"; };
 		619A64361B553D170064370A /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		619A64391B553D170064370A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		619A643B1B553D170064370A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		619A643B1B553D170064370A /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		619A643E1B553D170064370A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		619A64401B553D170064370A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		619A64451B553D170064370A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		619A644B1B553DCF0064370A /* RSContactGrid.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RSContactGrid.xcodeproj; path = ../RSContactGrid/RSContactGrid.xcodeproj; sourceTree = "<group>"; };
+		61D93F921B55500600CA3065 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				619A64391B553D170064370A /* AppDelegate.swift */,
-				619A643B1B553D170064370A /* ViewController.swift */,
+				619A643B1B553D170064370A /* GameController.swift */,
+				61D93F921B55500600CA3065 /* GameScene.swift */,
+				618B2A6B1B56606B001CF497 /* GridElementNode.swift */,
 				619A643D1B553D170064370A /* Main.storyboard */,
 				619A64401B553D170064370A /* Assets.xcassets */,
 				619A64451B553D170064370A /* Info.plist */,
@@ -207,7 +213,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				619A643C1B553D170064370A /* ViewController.swift in Sources */,
+				61D93F931B55500600CA3065 /* GameScene.swift in Sources */,
+				619A643C1B553D170064370A /* GameController.swift in Sources */,
+				618B2A6C1B56606B001CF497 /* GridElementNode.swift in Sources */,
 				619A643A1B553D170064370A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +366,7 @@
 				619A644A1B553D170064370A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
