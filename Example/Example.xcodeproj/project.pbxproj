@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		618B2A6C1B56606B001CF497 /* GridElementNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618B2A6B1B56606B001CF497 /* GridElementNode.swift */; };
+		618B2A731B568643001CF497 /* SpaceshipNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618B2A721B568643001CF497 /* SpaceshipNode.swift */; };
 		619A643A1B553D170064370A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619A64391B553D170064370A /* AppDelegate.swift */; };
 		619A643C1B553D170064370A /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619A643B1B553D170064370A /* GameController.swift */; };
 		619A643F1B553D170064370A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 619A643D1B553D170064370A /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		618B2A6B1B56606B001CF497 /* GridElementNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridElementNode.swift; sourceTree = "<group>"; };
+		618B2A721B568643001CF497 /* SpaceshipNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceshipNode.swift; sourceTree = "<group>"; };
 		619A64361B553D170064370A /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		619A64391B553D170064370A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		619A643B1B553D170064370A /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				619A643B1B553D170064370A /* GameController.swift */,
 				61D93F921B55500600CA3065 /* GameScene.swift */,
 				618B2A6B1B56606B001CF497 /* GridElementNode.swift */,
+				618B2A721B568643001CF497 /* SpaceshipNode.swift */,
 				619A643D1B553D170064370A /* Main.storyboard */,
 				619A64401B553D170064370A /* Assets.xcassets */,
 				619A64451B553D170064370A /* Info.plist */,
@@ -215,6 +218,7 @@
 			files = (
 				61D93F931B55500600CA3065 /* GameScene.swift in Sources */,
 				619A643C1B553D170064370A /* GameController.swift in Sources */,
+				618B2A731B568643001CF497 /* SpaceshipNode.swift in Sources */,
 				618B2A6C1B56606B001CF497 /* GridElementNode.swift in Sources */,
 				619A643A1B553D170064370A /* AppDelegate.swift in Sources */,
 			);

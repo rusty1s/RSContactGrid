@@ -23,7 +23,7 @@ class GridElementNode : SKShapeNode {
         self.path = path
         lineWidth = 1
         strokeColor = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
-        if element.contact != nil && element.contact! == true {
+        if element.contact != nil {
             fillColor = SKColor.redColor()
         }
     }

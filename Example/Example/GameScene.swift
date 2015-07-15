@@ -20,15 +20,17 @@ class GameScene : SKScene {
     // MARK: Instance variables
     
     var grid = Grid<ElementType>()
-    let spaceship = SKSpriteNode()
+    let spaceshipNode = SpaceshipNode()
     
     // MARK: Setup
     
     func moveSpaceshipToLocation(location: CGPoint) {
-        spaceship.position = location
+        spaceshipNode.position = location
         
         grid = Grid(ElementType.elementsInRect(view!.bounds))
-        grid.addPolygon([CGPoint(x: 100, y: 100), CGPoint(x: 150, y: 150), CGPoint(x: 180, y: 60)], allowInsertingElements: false) {
+        let polygon = spaceshipNode.vertices.map { CGPoint(x: $0.x+spaceshipNode.position.x-spaceshipNode.size.width/2, y: $0.y+spaceshipNode.position.y-spaceshipNode.size.height/2) }
+        
+        grid.addPolygon(polygon, allowInsertingElements: false) {
             var element = $0
             element.contact = true
             return element
@@ -54,7 +56,7 @@ class GameScene : SKScene {
         gridNode.name = "grid"
         addChild(gridNode)
         
-        addChild(spaceship)
+        addChild(spaceshipNode)
         moveSpaceshipToLocation(CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2))
     }
     
