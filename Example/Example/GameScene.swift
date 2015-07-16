@@ -15,7 +15,12 @@ class GameScene : SKScene {
     
     typealias SquareElementType = SquareElement<Bool, Bool>
     
+    // MARK: BEGIN CUSTOMIZING
+    
+    // swap here for different element types!
     typealias ElementType = SquareElementType
+    
+    // MARK: END CUSTOMIZING
     
     // MARK: Instance variables
     

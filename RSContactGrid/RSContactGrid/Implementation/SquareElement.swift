@@ -74,71 +74,19 @@ extension SquareElement {
     }
 }
 
+// MARK: Instance functions
+
+extension SquareElement {
+    
+    public func intersectsLineThroughFrameAtEdgePoints(point1 point1: RelativeRectEdgePoint, point2: RelativeRectEdgePoint) -> Bool {
+        return true
+    }
+}
+
 // MARK: Static functions
 
 extension SquareElement {
 
-    public static func elementsInLineFromPoint<T, S>(startPoint: CGPoint, toPoint endPoint: CGPoint) -> Set<SquareElement<T, S>> {
-        
-        let startSegment = segmentOfCoordinates(startPoint)
-        let endSegment = segmentOfCoordinates(endPoint)
-        
-        if startPoint.y == endPoint.y {     // line is horizontal
-            var elements = Set<SquareElement<T, S>>(minimumCapacity: abs(endSegment.0-startSegment.0))
-            for x in min(startSegment.0, endSegment.0)...max(startSegment.0, endSegment.0) {
-                elements.insert(SquareElement<T, S>(x: x, y: startSegment.1))
-            }
-            return elements
-        }
-        else if startPoint.x == endPoint.x {    // line is vertical
-            var elements = Set<SquareElement<T, S>>(minimumCapacity: abs(endSegment.1-startSegment.1))
-            for y in min(startSegment.1, endSegment.1)...max(startSegment.1, endSegment.1) {
-                elements.insert(SquareElement<T, S>(x: startSegment.0, y: y))
-            }
-            return elements
-        }
-        else {
-            // get slope and direction of the line segment
-            let slopeIsPositive = startPoint.y < endPoint.y
-            let directionIsPositive = startPoint.x < endPoint.x
-            
-            // the function of the line segment
-            let function: (CGFloat) -> (CGFloat) = { return startPoint.y + ((endPoint.y-startPoint.y)/(endPoint.x-startPoint.x)) * ($0 - startPoint.x) }
-            
-            var elements = Set<SquareElement<T, S>>()
-            var tempStartY = directionIsPositive ? startSegment.1 : endSegment.1
-            let endY = directionIsPositive ? endSegment.1 : startSegment.1
-            // iterate through all relevant horizontal segments
-            for x in min(startSegment.0, endSegment.0)...max(startSegment.0, endSegment.0) {
-               
-                let realTempEndY = directionIsPositive ? function(CGFloat(x+1)*width) : function(CGFloat(x)*width)
-                var tempEndY = segmentYOfCoordinate(realTempEndY)
-                
-                // adjust contacted elements when line segment goes through edge
-                // needs only adjustment if slope is positive
-                if slopeIsPositive && fmod(realTempEndY, width) == 0 {
-                    if directionIsPositive { tempEndY-- }
-                }
-                
-                tempEndY = slopeIsPositive ? min(tempEndY, endY) : max(tempEndY, endY)
-
-                // iterate through all relevant vertical segments in its x-coordinate
-                for y in min(tempStartY, tempEndY)...max(tempStartY, tempEndY) {
-                    elements.insert(SquareElement<T, S>(x: x, y: y))
-                }
-                tempStartY = tempEndY
-                
-                // adjust contacted elements when line segment goes through edge
-                // needs only adjustment if slope is positive
-                if slopeIsPositive && fmod(realTempEndY, width) == 0 {
-                    if directionIsPositive { tempStartY++ }
-                    else { tempStartY-- }
-                }
-            }
-            return elements
-        }
-    }
-    
     public static func elementsInRect<T, S>(rect: CGRect) -> Set<SquareElement<T, S>> {
         
         let startSegment = segmentOfCoordinates(rect.origin)

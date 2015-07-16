@@ -12,7 +12,7 @@ extension GridType {
     
     /// Adds a virtual polygon into the grid and defines behavior for
     /// overlayed elements.
-    /// - Parameter polygon: The vertices of the polygon as a clockwise finite
+    /// - Parameter polygon: The vertices of the polygon as a finite
     /// sequence of `CGPoint`.
     /// - Parameter allowInsertingElements: allows the grid to insert element,
     /// which are overlayed by the polygon, but are not yet inserted into the grid.
@@ -27,9 +27,91 @@ extension GridType {
         }
         guard polygon.count > 2 else { return } // polygon must still at least form a triangle
 
-        let indexes = Array(0...polygon.count-1)
+        var contactedElements = Set<ElementType>()
         
-        // get frame rectangle of the polygon
+        // check if the line intersects with the given frame
+        // if `true`, the method returns the frame's collision points
+        func line(startPoint startPoint: CGPoint, endPoint: CGPoint, intersectsRect rect: CGRect) -> (RelativeRectEdgePoint, RelativeRectEdgePoint)? {
+            
+            if startPoint.y == endPoint.y { // line is horizontal
+                if startPoint.y >= rect.origin.y && startPoint.y <= rect.origin.y+rect.size.height {
+                    // line goes trough rect
+                    let collisionPoint = (startPoint.y-rect.origin.y)/rect.size.height
+                    return (RelativeRectEdgePoint(x: 0, y: collisionPoint)!, RelativeRectEdgePoint(x: 1, y: collisionPoint)!)
+                }
+                else { return nil }
+            }
+            
+            if startPoint.x == endPoint.x { // line is vertical
+                if startPoint.x >= rect.origin.x && startPoint.x <= rect.origin.x+rect.size.width {
+                    // line goes trough rect
+                    let collisionPoint = (startPoint.x-rect.origin.x)/rect.size.width
+                    return (RelativeRectEdgePoint(x: collisionPoint, y: 0)!, RelativeRectEdgePoint(x: collisionPoint, y: 1)!)
+                }
+                else { return nil }
+            }
+            
+            let function: CGFloat -> CGFloat = { return startPoint.y + ((endPoint.y-startPoint.y)/(endPoint.x-startPoint.x)) * ($0 - startPoint.x) }
+            let inverseFunction: CGFloat -> CGFloat = { return startPoint.x + ((endPoint.x-startPoint.x)/(endPoint.y-startPoint.y)) * ($0 - startPoint.y) }
+            
+            let y1 = (function(rect.origin.x)-rect.origin.y)/rect.size.height
+            let x1 = (inverseFunction(rect.origin.y)-rect.origin.x)/rect.size.width
+            let y2 = (function(rect.origin.x+rect.size.width)-rect.origin.y)/rect.size.height
+            let x2 = (inverseFunction(rect.origin.y+rect.size.height)-rect.origin.x)/rect.size.height
+            
+            var contactPoints = Set<CGPoint>()
+            if y1 >= 0 && y1 <= 1 { // left edge
+                contactPoints.insert(CGPoint(x: 0, y: y1))
+            }
+            if x1 >= 0 && x1 <= 1 { // bottom edge
+                contactPoints.insert(CGPoint(x: x1, y: 0))
+            }
+            if y2 >= 0 && y2 <= 1 { // right edge
+                contactPoints.insert(CGPoint(x: 1, y: y2))
+            }
+            if x2 >= 0 && x2 <= 1 { // top edge
+                contactPoints.insert(CGPoint(x: x2, y: 1))
+            }
+            
+            assert(contactPoints.count <= 2)
+            if contactPoints.count == 1 && contactPoints.first! != CGPoint(x: 0, y: 0) { return nil }
+            
+            if contactPoints.count == 1 {   // one collision point
+                let edgePoint = RelativeRectEdgePoint(x: 0, y: 0)!
+                return (edgePoint, edgePoint)
+            }
+            else if contactPoints.count == 2 {  // two collision points
+                let array = Array(contactPoints)
+                return (RelativeRectEdgePoint(x: array[0].x, y: array[0].y)!, RelativeRectEdgePoint(x: array[1].x, y: array[1].y)!)
+            }
+            else { return nil } // no collision point
+        }
+        
+        // mark all elements that intersect with the polygon's border as contacted
+        for index in Array(0...polygon.count-1) {
+            let startPoint = polygon[index]
+            let endPoint = polygon[(index+1)%polygon.count]
+            
+            // define rect built by the start and end points of the line segment
+            let lineRect = CGRect(x: min(startPoint.x, endPoint.x),
+                                  y: min(startPoint.y, endPoint.y),
+                                  width: abs(endPoint.x-startPoint.x),
+                                  height: abs(endPoint.y-startPoint.y))
+            
+            // get possible contacted elements by the line segment
+            let elements = ElementType.elementsInRect(lineRect)
+            for element in elements {
+                // detect rect edge points of the element's frame, if line intersects
+                if let edgePoints = line(startPoint: startPoint, endPoint: endPoint, intersectsRect: element.frame) {
+                    // detect if the line intersects the element
+                    if element.intersectsLineThroughFrameAtEdgePoints(point1: edgePoints.0, point2: edgePoints.1) {
+                        contactedElements.insert(element)
+                    }
+                }
+            }
+        }
+        
+        // get the frame of the polygon
         var minX = CGFloat.max
         var maxX = CGFloat.min
         var minY = CGFloat.max
@@ -41,32 +123,20 @@ extension GridType {
             minY = min(minY, point.y)
             maxY = max(maxY, point.y)
         }
-        
         let polygonFrame = CGRect(x: minX, y: minY, width: maxX-minX, height: maxY-minY)
-        // get all elements that may be overlayed by the polygon
-        var elements = ElementType.elementsInRect(polygonFrame)
         
-        // mark all elements that intersect with the polygon's border as contacted
-        var contactedElements = Set<ElementType>()
-        for index in indexes {
-            let startPoint = polygon[index]
-            let endPoint = polygon[(index+1)%polygon.count]
-            
-            contactedElements.unionInPlace(ElementType.elementsInLineFromPoint(startPoint, toPoint: endPoint))
-        }
+        // calculate remaining elements that may be contacted by the polygon
+        var remainingElements = ElementType.elementsInRect(polygonFrame)
+        remainingElements.subtractInPlace(contactedElements)
         
-        // iterate through all remaining elements
-        // and check if their center is inside or outside of the polygon
-        // if inside, mark the element as contacted
+        // point in polygon test (ray casting to the left)
         // http://stackoverflow.com/questions/11716268/point-in-polygon-algorithm
-        elements.subtractInPlace(contactedElements)
-        for element in elements {
+        func point(point: CGPoint, inPolygon polygon: [CGPoint]) -> Bool {
             var even = true
             
-            for index in indexes {
+            for index in Array(0...polygon.count-1) {
                 let startPoint = polygon[index]
                 let endPoint = polygon[(index+1)%polygon.count]
-                let point = element.center
                 
                 // point must be between start and end point y coordinates
                 let pointBetweenYCoordinates = point.y <= max(startPoint.y, endPoint.y) && point.y >= min(startPoint.y, endPoint.y)
@@ -78,7 +148,14 @@ extension GridType {
                 if pointBetweenYCoordinates && (verticalLine || pointOnLeftSide) { even = !even }
             }
             
-            if !even { contactedElements.insert(element) }
+            return !even
+        }
+        
+        // iterate through all remaining elements
+        // and check if their center is inside or outside of the polygon
+        // if inside, mark the element as contacted
+        for element in remainingElements {
+            if point(element.center, inPolygon: polygon) { contactedElements.insert(element) }
         }
         
         // iterate through contacted elements and resolve contacts
@@ -99,4 +176,11 @@ extension GridType {
         }
         delegate?.didEndResolveContacts()
     }
+}
+
+// MARK: Helper
+
+extension CGPoint : Hashable {
+    
+    public var hashValue: Int { return "\(x):\(y)".hashValue }
 }
