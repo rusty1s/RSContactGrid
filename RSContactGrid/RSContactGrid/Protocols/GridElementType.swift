@@ -6,15 +6,14 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-/// Relative edge point of any rect.  `x` and `y` are restricted to a value
-/// between `0` and `1`.  The point must have at least one coordinate with a
-/// value of `0` or `1`, defining their edge.
+/// Relative inner point of any rect.  `x` and `y` are restricted to a value
+/// between `0` and `1`.
 ///
 /// `x == 0`: left edge
 /// `x == 1`: right edge
 /// `y == 0`: bottom edge
 /// `y == 1`: top edge
-public struct RelativeRectEdgePoint {
+public struct RelativeRectPoint {
     
     public let x: CGFloat
     
@@ -23,7 +22,6 @@ public struct RelativeRectEdgePoint {
     public init?(x: CGFloat, y: CGFloat) {
         guard x >= 0 && x <= 1 else { return nil }
         guard y >= 0 && y <= 1 else { return nil }
-        guard (x != 0) || (x != 1) || (y != 0) || (y != 1) else { return nil }
         
         self.x = x
         self.y = y
@@ -59,18 +57,18 @@ public protocol GridElementType : Hashable, Comparable, CustomStringConvertible,
     // MARK: Instance functions
     
     /// `true` iff the element intersects with a line segment defined by two
-    /// edge points of the element's frame.
-    /// - Parameter point1: The start point of the line as a relative edge point of the
+    /// inner points of the element's frame.
+    /// - Parameter point1: The start point of the line as a relative inner point of the
     /// element's frame.  `point1.x` and `point1.y` are restricted to a value between `0`
-    /// and `1`.  The point must have at least one coordinate with a value of `0` or `1`.
-    /// - Parameter point2: The end point of the line as a relative edge point of the
+    /// and `1`.
+    /// - Parameter point2: The end point of the line as a relative inner point of the
     /// element's frame.  Follows the same guidelines as `point1`.
     /// - Desirable complexity: O(1).
-    func intersectsLineThroughFrameAtEdgePoints(point1 point1: RelativeRectEdgePoint, point2: RelativeRectEdgePoint) -> Bool
+    func intersectsRelativeLineSegment(point1 point1: RelativeRectPoint, point2: RelativeRectPoint) -> Bool
     
     // MARK: Static functions
     
-    /// Returns the minimal inital elements that are overlayed by the rect.
+    /// Returns the minimal count of inital elements that are overlayed by the rect.
     static func elementsInRect(rect: CGRect) -> Set<Self>
 }
 
@@ -98,10 +96,6 @@ extension GridElementType {
     final public var center: CGPoint {
         let frame = self.frame
         return CGPoint(x: frame.origin.x+frame.size.width/2, y: frame.origin.y+frame.size.height/2)
-    }
-    
-    func intersectsLineThroughFrameAtEdgePoints(point1 point1: RelativeRectEdgePoint, point2: RelativeRectEdgePoint) -> Bool {
-        return false
     }
 }
 

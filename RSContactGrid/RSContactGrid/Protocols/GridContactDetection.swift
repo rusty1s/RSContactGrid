@@ -29,62 +29,55 @@ extension GridType {
 
         var contactedElements = Set<ElementType>()
         
-        // check if the line intersects with the given frame
-        // if `true`, the method returns the frame's collision points
-        func line(startPoint startPoint: CGPoint, endPoint: CGPoint, intersectsRect rect: CGRect) -> (RelativeRectEdgePoint, RelativeRectEdgePoint)? {
+        // check if the line segment intersects the given rectangle
+        // if `true`, the method returns the rect's relative inner points
+        // https://gist.github.com/ChickenProp/3194723
+        func line(startPoint startPoint: CGPoint, endPoint: CGPoint, intersectsRect rect: CGRect) -> (RelativeRectPoint, RelativeRectPoint)? {
             
-            if startPoint.y == endPoint.y { // line is horizontal
-                if startPoint.y >= rect.origin.y && startPoint.y <= rect.origin.y+rect.size.height {
-                    // line goes trough rect
-                    let collisionPoint = (startPoint.y-rect.origin.y)/rect.size.height
-                    return (RelativeRectEdgePoint(x: 0, y: collisionPoint)!, RelativeRectEdgePoint(x: 1, y: collisionPoint)!)
+            let p = [-(endPoint.x-startPoint.x), endPoint.x-startPoint.x, -(endPoint.y-startPoint.y), endPoint.y-startPoint.y]
+            let q = [startPoint.x-rect.origin.x, rect.origin.x+rect.size.width-startPoint.x, startPoint.y-rect.origin.y, rect.origin.y+rect.size.height-startPoint.y]
+            
+            var u1 = CGFloat.min
+            var u2 = CGFloat.max
+            
+            for i in 0...3 {
+                if p[i] == 0 {
+                    if q[i] < 0 { return nil }
                 }
-                else { return nil }
-            }
-            
-            if startPoint.x == endPoint.x { // line is vertical
-                if startPoint.x >= rect.origin.x && startPoint.x <= rect.origin.x+rect.size.width {
-                    // line goes trough rect
-                    let collisionPoint = (startPoint.x-rect.origin.x)/rect.size.width
-                    return (RelativeRectEdgePoint(x: collisionPoint, y: 0)!, RelativeRectEdgePoint(x: collisionPoint, y: 1)!)
+                else {
+                    let t = q[i]/p[i]
+                    if p[i] < 0 && u1 < t { u1 = t }
+                    else if p[i] > 0 && u2 > t { u2 = t }
                 }
-                else { return nil }
             }
             
-            let function: CGFloat -> CGFloat = { return startPoint.y + ((endPoint.y-startPoint.y)/(endPoint.x-startPoint.x)) * ($0 - startPoint.x) }
-            let inverseFunction: CGFloat -> CGFloat = { return startPoint.x + ((endPoint.x-startPoint.x)/(endPoint.y-startPoint.y)) * ($0 - startPoint.y) }
+            let intersection1 = CGPoint(x: startPoint.x+u1*(endPoint.x-startPoint.x), y: startPoint.y+u1*(endPoint.y-startPoint.y))
+            let intersection2 = CGPoint(x: startPoint.x+u2*(endPoint.x-startPoint.x), y: startPoint.y+u2*(endPoint.y-startPoint.y))
             
-            let y1 = (function(rect.origin.x)-rect.origin.y)/rect.size.height
-            let x1 = (inverseFunction(rect.origin.y)-rect.origin.x)/rect.size.width
-            let y2 = (function(rect.origin.x+rect.size.width)-rect.origin.y)/rect.size.height
-            let x2 = (inverseFunction(rect.origin.y+rect.size.height)-rect.origin.x)/rect.size.height
+            let relIntersection1 = RelativeRectPoint(x: min(max((intersection1.x-rect.origin.x)/rect.size.width, 0), 1), y: min(max((intersection1.y-rect.origin.y)/rect.size.height, 0), 1))!
+            let relIntersection2 = RelativeRectPoint(x: min(max((intersection2.x-rect.origin.x)/rect.size.width, 0), 1), y: min(max((intersection2.y-rect.origin.y)/rect.size.height, 0), 1))!
+            let relStart = RelativeRectPoint(x: min(max((startPoint.x-rect.origin.x)/rect.size.width, 0), 1), y: min(max((startPoint.y-rect.origin.y)/rect.size.height, 0), 1))!
+            let relEnd = RelativeRectPoint(x: min(max((endPoint.x-rect.origin.x)/rect.size.width, 0), 1), y: min(max((endPoint.y-rect.origin.y)/rect.size.height, 0), 1))!
             
-            var contactPoints = Set<CGPoint>()
-            if y1 >= 0 && y1 <= 1 { // left edge
-                contactPoints.insert(CGPoint(x: 0, y: y1))
-            }
-            if x1 >= 0 && x1 <= 1 { // bottom edge
-                contactPoints.insert(CGPoint(x: x1, y: 0))
-            }
-            if y2 >= 0 && y2 <= 1 { // right edge
-                contactPoints.insert(CGPoint(x: 1, y: y2))
-            }
-            if x2 >= 0 && x2 <= 1 { // top edge
-                contactPoints.insert(CGPoint(x: x2, y: 1))
+            // if u1 > u2, the line segment is entirely outside the rectangle
+            if u1 > u2 { return nil }
+            
+            // if u1 <= 0 && 1 <= u2, the line segment is entirely inside the rectangle
+            else if u1 <= 0 && 1 <= u2 { return (relStart, relEnd) }
+            
+            // if 0 < u1 < u2 < 1, the line segment both starts and finishes outside the rectangle; but they intersect with the rect
+            else if 0 < u1 && u1 < u2 && u2 < 1 { return (relIntersection1, relIntersection2) }
+            
+            // otherwise, one end is inside and one end is outside. Two subcases:
+            else {
+                // if 0 < u1 < 1, the line starts outside and moves inside, intersecting at u1
+                if 0 < u1 && u1 < 1 { return (relIntersection1, relEnd) }
+            
+                // if 0 < u2 < 1, the line starts inside and moves outside, intersecting at u2
+                else if 0 < u2 && u2 < 1 { return (relStart, relIntersection2) }
             }
             
-            assert(contactPoints.count <= 2)
-            if contactPoints.count == 1 && contactPoints.first! != CGPoint(x: 0, y: 0) { return nil }
-            
-            if contactPoints.count == 1 {   // one collision point
-                let edgePoint = RelativeRectEdgePoint(x: 0, y: 0)!
-                return (edgePoint, edgePoint)
-            }
-            else if contactPoints.count == 2 {  // two collision points
-                let array = Array(contactPoints)
-                return (RelativeRectEdgePoint(x: array[0].x, y: array[0].y)!, RelativeRectEdgePoint(x: array[1].x, y: array[1].y)!)
-            }
-            else { return nil } // no collision point
+            return nil
         }
         
         // mark all elements that intersect with the polygon's border as contacted
@@ -101,10 +94,10 @@ extension GridType {
             // get possible contacted elements by the line segment
             let elements = ElementType.elementsInRect(lineRect)
             for element in elements {
-                // detect rect edge points of the element's frame, if line intersects
-                if let edgePoints = line(startPoint: startPoint, endPoint: endPoint, intersectsRect: element.frame) {
+                // detect relative inner points of the element's frame, if line intersects
+                if let points = line(startPoint: startPoint, endPoint: endPoint, intersectsRect: element.frame) {
                     // detect if the line intersects the element
-                    if element.intersectsLineThroughFrameAtEdgePoints(point1: edgePoints.0, point2: edgePoints.1) {
+                    if element.intersectsRelativeLineSegment(point1: points.0, point2: points.1) {
                         contactedElements.insert(element)
                     }
                 }
@@ -176,11 +169,4 @@ extension GridType {
         }
         delegate?.didEndResolveContacts()
     }
-}
-
-// MARK: Helper
-
-extension CGPoint : Hashable {
-    
-    public var hashValue: Int { return "\(x):\(y)".hashValue }
 }

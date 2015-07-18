@@ -40,10 +40,10 @@ public struct SquareElement<T, S> : GridElementType {
     
     public let y: Int
     
-    /// The content stored by the `SquareElement`.
+    /// The content stored by the element.
     public var content: T?
     
-    /// The contact stored by the `SquareElement`.
+    /// The contact stored by the element.
     public var contact: S?
     
     // MARK: Static variables
@@ -78,7 +78,7 @@ extension SquareElement {
 
 extension SquareElement {
     
-    public func intersectsLineThroughFrameAtEdgePoints(point1 point1: RelativeRectEdgePoint, point2: RelativeRectEdgePoint) -> Bool {
+    public func intersectsRelativeLineSegment(point1 point1: RelativeRectPoint, point2: RelativeRectPoint) -> Bool {
         return true
     }
 }

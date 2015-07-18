@@ -14,11 +14,12 @@ class GameScene : SKScene {
     // MARK: Associated types
     
     typealias SquareElementType = SquareElement<Bool, Bool>
+    typealias TriangularElementType = TriangularElement<Bool, Bool>
     
     // MARK: BEGIN CUSTOMIZING
     
     // swap here for different element types!
-    typealias ElementType = SquareElementType
+    typealias ElementType = TriangularElementType
     
     // MARK: END CUSTOMIZING
     
@@ -54,6 +55,9 @@ class GameScene : SKScene {
     override func didMoveToView(view: SKView) {
         SquareElementArea.width = 40
         SquareElementArea.height = 40
+        
+        TriangularElementArea.width = 40
+        TriangularElementArea.height = sqrt(3) * 40/2
         
         backgroundColor = SKColor.whiteColor()
         
