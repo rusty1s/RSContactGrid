@@ -1,9 +1,35 @@
 # RSContactGrid
 
+`RSContactGrid` is a datastructure for holding elements that can be addressed by coordinates `x` and `y` implemented in Swift 2.0. Actual there are four different grid types to choose from (triangular, square, rotated square and hexagonal).
+
+`RSContactGrid` also implements a collision detection for all those four different grid types. It detects the elements in the grid which are overlayed by any polygon defined over a finite sequence of `CGPoint`. The images below showcases the different grid types and the collision detection.
+
 ![alt Triangular grid](triangular-grid.png)
 ![alt Square grid](square-grid.png)
 ![alt Rotated square grid](rotated-square-grid.png)
 ![alt Hexagonal grid](hexagonal-grid.png)
+
+`RSContactGrid` is totally easy to use.
+
+1. Choose a grid element type.
+	* `TriangularElement`
+	* `SquareElement`
+	* `RotatedSquareElement`
+	* `HexagonalElement`
+2. Set its width and height, e.g.: `SquareElement<Bool, Bool>.width = 40`. Note the generic type of `SquareElement`. The first type declares the type of the `content` of the element, the second declares the type of the `contact`.
+3. Set up the grid: `let grid = Grid<SquareElement<Bool, Bool>()`
+4. Add elements to the grid: `grid.insertAtX(0, y: 0)`
+5. **Do the collision detection!**
+
+```
+let polygon = [CGPoint(x: 0, y: 0), CGPoint(x: 50, y: 50), CGPoint(x: 80, y: -20)]
+grid.addPolygon(polygon, allowInsertingElements: false) {
+    var element = $0
+    element.contact = true
+    return element
+}
+````
+6. Your element should now be marked as contacted: `grid[0, 0].contact == true`
 
 ## Example project
 
@@ -151,14 +177,12 @@ Returns all inital elements that are overlayed by the rect.
 	
 #### Default implementations
 
+	var center: CGPoint { get }
+The center of the element's frame rectangle.
+
     var frame: CGRect { get }
 The minimal frame rectangle, which describes the element's location and size in its grid's coordinate system.  The frame contains all vertices of the element.
 * **Desirable complexity:** O(1).
-
-
-
-	var center: CGPoint { get }
-The center of the element's frame rectangle.
 
 ## Delegation
 
