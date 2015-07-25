@@ -6,6 +6,21 @@ used in
 	<img src="https://github.com/rusty1s/RSContactGrid/blob/master/dig-deeper.png?raw=true" alt="Dig Deeper - the Mining / Crafting / Trading game"/>
 </p>
 
+## Writing own grid element types
+
+You can easily write your own grid element type by conforming to the `GridElementType` protocol. That means you have to implement:
+
+* `var x: Int { get }`
+* `var y: Int { get }`
+* `init(x: Int, y: Int)`
+* `var vertices: [CGPoint] { get }`
+* a more efficient version of `var frame: CGRect { get }` (optional)
+* `func intersectsRelativeLineSegment(point1 point1: RelativeRectPoint, point2: RelativeRectPoint) -> Bool`
+* `static func elementsInRect(rect: CGRect) -> Set<Self>`
+* conforming to the `Comparable` protocol
+
+You can look up the existing element types (`TriangularElement`, `SquareElement`, `RotatedSquareElement` and `HexagonalElement`) to give you a hint on how to conform to `GridElementType`.
+
 ## License
 
 Copyright (c) 2015 Matthias Fey <matthias.fey@tu-dortmund.de>
