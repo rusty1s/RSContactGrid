@@ -31,6 +31,8 @@ grid.addPolygon(polygon, allowInsertingElements: false) {
 ````
 Your element should now be marked as contacted: `grid[0, 0].contact == true`
 
+For more information, browse the documentation section or play with the example project as described in the section below.
+
 ## Example project
 
 You can play with the example project and different grid element types by just switching the typealias for `ElementType` in `GameScene.swift`.
@@ -187,7 +189,7 @@ The minimal frame rectangle, which describes the element's location and size in 
 ## Delegation
 
 	protocol GridDelegate { ... }
-You can get informed which elements were contacted by any polygon after invoking `addPolygon` from the grid. Therefore add a delegate to the grid that conforms to `GridDelegate`.
+You can get informed which elements were contacted by a polygon after invoking `addPolygon` from the grid. Therefore add a delegate to the grid that conforms to `GridDelegate`.
 
 #### Instance methods
 
