@@ -2,7 +2,7 @@
 
 `RSContactGrid` is a datastructure for holding elements that can be addressed by coordinates `x` and `y` implemented in Swift 2.0. Actual there are four different grid types to choose from (triangular, square, rotated square and hexagonal).
 
-`RSContactGrid` also implements a collision detection for all those four different grid types. It detects the elements in the grid which are overlayed by any polygon defined over a finite sequence of `CGPoint`. The images below showcases the different grid types and the collision detection.
+`RSContactGrid` also implements a collision detection for all those four different grid types. It detects the elements in the grid which are overlayed by any polygon defined over a finite sequence of `CGPoint`. The images below showcase the different grid types and the collision detection:
 
 ![alt Triangular grid](triangular-grid.png)
 ![alt Square grid](square-grid.png)
@@ -17,7 +17,7 @@
 	* `RotatedSquareElement`
 	* `HexagonalElement`
 2. Set its width and height, e.g.: `SquareElement<Bool, Bool>.width = 40`. Note the generic type of `SquareElement`. The first type declares the type of the `content` of the element, the second declares the type of the `contact`.
-3. Set up the grid: `let grid = Grid<SquareElement<Bool, Bool>()`
+3. Set up the grid: `let grid = Grid<SquareElement<Bool, Bool>>()`
 4. Add elements to the grid: `grid.insertAtX(0, y: 0)`
 5. **Do the collision detection!**
 
@@ -29,7 +29,7 @@ grid.addPolygon(polygon, allowInsertingElements: false) {
     return element
 }
 ````
-6. Your element should now be marked as contacted: `grid[0, 0].contact == true`
+Your element should now be marked as contacted: `grid[0, 0].contact == true`
 
 ## Example project
 
