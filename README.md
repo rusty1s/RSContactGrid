@@ -1,6 +1,6 @@
 # RSContactGrid
 
-`RSContactGrid` is a datastructure for holding elements that can be addressed by coordinates `x` and `y` implemented in Swift 2.0. Actual there are four different grid types to choose from (triangular, square, rotated square and hexagonal).
+`RSContactGrid` is a grid datastructure for holding elements that can be addressed by coordinates implemented in **Swift 2.0**. Actual there are four different grid types to choose from (triangular, square, rotated square and hexagonal).
 
 `RSContactGrid` also implements a collision detection for all those four different grid types. It detects the elements in the grid which are overlayed by any polygon defined over a finite sequence of `CGPoint`. The images below showcase the different grid types and the collision detection:
 
@@ -9,7 +9,7 @@
 ![alt Rotated square grid](rotated-square-grid.png)
 ![alt Hexagonal grid](hexagonal-grid.png)
 
-`RSContactGrid` is totally easy to use.
+`RSContactGrid` is totally easy to use:
 
 1. Choose a grid element type.
 	* `TriangularElement`
