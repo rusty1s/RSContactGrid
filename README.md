@@ -1,9 +1,9 @@
 # RSContactGrid
 
-![alt Triangular grid](../triangular-grid.png)
-![alt Square grid](../square-grid.png)
-![alt Rotated square grid](../rotated-square-grid.png)
-![alt Hexagonal grid](../hexagonal-grid.png)
+![alt Triangular grid](triangular-grid.png)
+![alt Square grid](square-grid.png)
+![alt Rotated square grid](rotated-square-grid.png)
+![alt Hexagonal grid](hexagonal-grid.png)
 
 ## Documentation
 
