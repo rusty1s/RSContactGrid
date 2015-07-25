@@ -15,11 +15,16 @@ E.g. if you want to play with a triangular grid, just change line 24 in `GameSce
 
 ## Documentation
 
-`RSContactGrid` is programmed in the *protocol orientated* way introduced in Swift 2.0. That means you can easily switch the implementations by just confirming to the protocols `GridType` and `GridElementType`. These two protocols come with a bunch of default implementations that don't need to be implemented twice.
+`RSContactGrid` is programmed in the *protocol orientated* way introduced in Swift 2.0. That means you can easily switch the implementations by just conforming to the protocols `GridType` and `GridElementType`. These two protocols come with a bunch of default implementations that don't need to be implemented twice.
 
 ### GridType
 
 	protocol GridType { ... }
+A datastructure that holds elements conforming to `GridElementType` and addresses these elements by coordinates `x` and `y`. Implements a collision detection for any polygon and the elements in the grid.
+
+#### Implementations:
+
+* `Grid`
 	
 #### Inheritance
 
@@ -33,7 +38,7 @@ E.g. if you want to play with a triangular grid, just change line 24 in `GameSce
 #### Associated types
     
 	typealias ElementType: GridElementType
-    
+	
 #### Initializers
 
 	init()
@@ -91,11 +96,28 @@ A textual representation of `self`, suitable for debugging.
 		
 	mutating func addPolygon(var polygon: [CGPoint], allowInsertingElements: Bool = true, @noescape resolveContact: ElementType -> ElementType)
 Adds a virtual polygon into the grid and defines behavior for overlayed elements.
-* Parameter `polygon`: The vertices of the polygon as a finite sequence of `CGPoint`.
-* Parameter `allowInsertingElements`: Allows the grid to insert element, which are overlayed by the polygon, but are not yet inserted into the grid.
-* Parameter `resolveContact`: Returns the new behavior of a `ElementType` that is overlayed by the polygon.
+* **Parameter** `polygon`: The vertices of the polygon as a finite sequence of `CGPoint`.
+* **Parameter** `allowInsertingElements`: Allows the grid to insert element, which are overlayed by the polygon, but are not yet inserted into the grid.
+* **Parameter** `resolveContact`: Returns the new behavior of a `ElementType` that is overlayed by the polygon.
+
+### GridElementType
 
 ## Delegation
+
+	protocol GridDelegate { ... }
+You can get informed which elements were contacted by any polygon after invoking `addPolygon` from the grid. Therefore add a delegate to the grid that conforms to `GridDelegate`.
+
+### Instance methods
+
+    func didBeginResolveContacts()
+Called when a polygon is about to be virtually added to the grid.
+
+    func didResolveContactInElement(element: Any)
+Called when the polygon overlays a `GridElementType`.
+**Note the `Any` in the parameter clause! Do a typecheck when implementing this method!**
+
+    func didEndResolveContacts()
+Called when a polygon has been virtually added to the grid.
 
 ## Writing your own grid element types
 
