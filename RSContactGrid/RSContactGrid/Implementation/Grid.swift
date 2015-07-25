@@ -6,9 +6,6 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-/// A datastructure that holds elements conforming to `GridElementType` and
-/// addresses these elements by coordinates `x` and `y`.  Implements a collision
-/// detection for any polygon and the elements in the grid.
 public struct Grid<T : GridElementType> : GridType {
     
     // MARK: Associated types

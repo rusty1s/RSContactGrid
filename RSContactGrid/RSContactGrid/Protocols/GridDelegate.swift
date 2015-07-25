@@ -10,12 +10,12 @@ public protocol GridDelegate {
     
     // MARK: Instance methods
     
-    /// Called when a polygon is about to be added to the grid.
+    /// Called when the grid begins to resolve contacts with a polygon.
     func didBeginResolveContacts()
     
-    /// Called when the polygon overlays a `GridElementType`.
+    /// Called when a polygon overlays a `GridElementType`.
     func didResolveContactInElement(element: Any)
     
-    /// Called when a polygon has been virtually added to the grid.
+    /// Called when the grid resolved all contacts with a polygon.
     func didEndResolveContacts()
 }

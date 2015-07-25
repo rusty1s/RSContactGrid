@@ -28,6 +28,7 @@ public struct RelativeRectPoint {
     }
 }
 
+/// An element that can be inserted into an implementation of `GridType`.
 public protocol GridElementType : Hashable, Comparable, CustomStringConvertible, CustomDebugStringConvertible {
     
     // MARK: Initializiers

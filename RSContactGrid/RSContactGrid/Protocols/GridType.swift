@@ -6,6 +6,9 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
+/// A datastructure that holds elements conforming to `GridElementType` and
+/// addresses these elements by coordinates `x` and `y`.  Implements a collision
+/// detection for any polygon with the elements in the grid.
 public protocol GridType : Hashable, Equatable, SequenceType, ArrayLiteralConvertible, CustomStringConvertible, CustomDebugStringConvertible {
     
     // MARK: Associated types
