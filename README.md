@@ -10,13 +10,13 @@ You can easily write your own grid element type by conforming to the `GridElemen
 * a more efficient version of `var frame: CGRect { get }` (optional)
 * `func intersectsRelativeLineSegment(point1 point1: RelativeRectPoint, point2: RelativeRectPoint) -> Bool`
 * `static func elementsInRect(rect: CGRect) -> Set<Self>`
-* `==` and `<` operands for the `Comparable` protocol
+* `==` and `<` operands for adopting to the `Comparable` protocol
 
 You can look up the existing element types (`TriangularElement`, `SquareElement`, `RotatedSquareElement` and `HexagonalElement`) to give you a hint on how to conform to `GridElementType`.
 
 ## Additional information
 
-`RSContactGrid` was developed and implemented for the use in the game "Dig Deeper - the Mining / Crafting / Trading game". "Dig Depper" is currently in Developement and has its own GitHub project [here](../DigDeeper).
+`RSContactGrid` was developed and implemented for the use in *Dig Deeper - the Mining / Crafting / Trading game*. *Dig Depper* is currently in developement and has its own *GitHub* project [here](../../DigDeeper).
 
 <p align="center">
 	<img src="https://github.com/rusty1s/RSContactGrid/blob/master/dig-deeper.png?raw=true" alt="Dig Deeper - the Mining / Crafting / Trading game"/>
