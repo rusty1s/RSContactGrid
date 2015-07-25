@@ -14,10 +14,10 @@ extension GridType {
     /// overlayed elements.
     /// - Parameter polygon: The vertices of the polygon as a finite
     /// sequence of `CGPoint`.
-    /// - Parameter allowInsertingElements: allows the grid to insert element,
+    /// - Parameter allowInsertingElements: Allows the grid to insert element,
     /// which are overlayed by the polygon, but are not yet inserted into the grid.
-    /// - Parameter resolveContact: the behavior of a `ElementType` that is overlayed
-    /// by the polygon.
+    /// - Parameter resolveContact: Returns the new behavior of a `ElementType` that
+    /// is overlayed by the polygon.
     final public mutating func addPolygon(var polygon: [CGPoint], allowInsertingElements: Bool = true, @noescape resolveContact: ElementType -> ElementType) {
         
         // error handling

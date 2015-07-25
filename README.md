@@ -23,7 +23,12 @@ E.g. if you want to play with a triangular grid, just change line 24 in `GameSce
 	
 #### Inheritance
 
-	Hashable, Equatable, SequenceType, ArrayLiteralConvertible, CustomStringConvertible, CustomDebugStringConvertible
+* `Hashable`
+* `Equatable`
+* `SequenceType`
+* `ArrayLiteralConvertible`
+* `CustomStringConvertible`
+* `CustomDebugStringConvertible`
 
 #### Associated types
     
@@ -65,6 +70,30 @@ Erase all elements.  If `keepCapacity` is `true`, `capacity` will not decrease.
 Returns the element of a given position, or `nil` if the position is not present in the grid.
 
 #### Default implementations
+
+	var isEmpty: Bool { get }
+`true` if the grid is empty.
+    
+    mutating func insertAtX(x: Int, y: Int)
+Insert an initial element at position `x`, `y` into the grid.
+    
+    mutating func removeAtX(x: Int, y: Int) -> ElementType
+Remove the element at position `x`, `y` from the grid and return it if it was present.
+	
+	init(arrayLiteral elements: ElementType...)
+Create an instance initialized with elements.
+	
+	var description: String { get }
+A textual representation of `self`.
+	
+	var debugDescription: String { get }
+A textual representation of `self`, suitable for debugging.
+		
+	mutating func addPolygon(var polygon: [CGPoint], allowInsertingElements: Bool = true, @noescape resolveContact: ElementType -> ElementType)
+Adds a virtual polygon into the grid and defines behavior for overlayed elements.
+* Parameter `polygon`: The vertices of the polygon as a finite sequence of `CGPoint`.
+* Parameter `allowInsertingElements`: Allows the grid to insert element, which are overlayed by the polygon, but are not yet inserted into the grid.
+* Parameter `resolveContact`: Returns the new behavior of a `ElementType` that is overlayed by the polygon.
 
 ## Delegation
 
