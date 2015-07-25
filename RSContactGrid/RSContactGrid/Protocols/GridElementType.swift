@@ -68,7 +68,7 @@ public protocol GridElementType : Hashable, Comparable, CustomStringConvertible,
     
     // MARK: Static functions
     
-    /// Returns the minimal count of inital elements that are overlayed by the rect.
+    /// Returns all inital elements that are overlayed by the rect.
     static func elementsInRect(rect: CGRect) -> Set<Self>
 }
 

@@ -6,15 +6,11 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-public struct SquareElementArea {
+private struct SquareElementData {
     
-    // MARK: Static variables
+    private static var width: CGFloat = 20
     
-    /// Defines the width of a squared element.
-    public static var width: CGFloat = 20
-    
-    /// Defines the height of a squared element.
-    public static var height: CGFloat = 20
+    private static var height: CGFloat = 20
 }
 
 public struct SquareElement<T, S> : GridElementType {
@@ -48,11 +44,17 @@ public struct SquareElement<T, S> : GridElementType {
     
     // MARK: Static variables
     
-    // The width of the element.
-    public static var width: CGFloat { return SquareElementArea.width }
+    // The width of the element.  The width has a minimum value of 1.
+    public static var width: CGFloat {
+        set { SquareElementData.width = max(1, newValue) }
+        get { return SquareElementData.width }
+    }
     
-    // The height of the element.
-    public static var height: CGFloat { return SquareElementArea.height }
+    // The height of the element.  The height has a minimum value of 1.
+    public static var height: CGFloat {
+        set { SquareElementData.height = max(1, newValue) }
+        get { return SquareElementData.height }
+    }
 }
 
 // MARK: Instance variables
@@ -61,16 +63,16 @@ extension SquareElement {
     
     public var frame: CGRect {
         return CGRect(x: CGFloat(x)*SquareElement<T, S>.width,
-                      y: CGFloat(y)*SquareElement<T, S>.height,
-                      width: SquareElement<T, S>.width,
-                      height: SquareElement<T, S>.height)
+            y: CGFloat(y)*SquareElement<T, S>.height,
+            width: SquareElement<T, S>.width,
+            height: SquareElement<T, S>.height)
     }
 
     public var vertices: [CGPoint] {
         return [CGPoint(x: CGFloat(x)*SquareElement<T, S>.width, y: CGFloat(y)*SquareElement<T, S>.height),
-                CGPoint(x: CGFloat(x)*SquareElement<T, S>.width, y: CGFloat(y+1)*SquareElement<T, S>.height),
-                CGPoint(x: CGFloat(x+1)*SquareElement<T, S>.width, y: CGFloat(y+1)*SquareElement<T, S>.height),
-                CGPoint(x: CGFloat(x+1)*SquareElement<T, S>.width, y: CGFloat(y)*SquareElement<T, S>.height)]
+            CGPoint(x: CGFloat(x)*SquareElement<T, S>.width, y: CGFloat(y+1)*SquareElement<T, S>.height),
+            CGPoint(x: CGFloat(x+1)*SquareElement<T, S>.width, y: CGFloat(y+1)*SquareElement<T, S>.height),
+            CGPoint(x: CGFloat(x+1)*SquareElement<T, S>.width, y: CGFloat(y)*SquareElement<T, S>.height)]
     }
 }
 

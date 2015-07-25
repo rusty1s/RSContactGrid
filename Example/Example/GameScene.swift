@@ -13,8 +13,10 @@ class GameScene : SKScene {
     
     // MARK: Associated types
     
-    typealias SquareElementType = SquareElement<Bool, Bool>
     typealias TriangularElementType = TriangularElement<Bool, Bool>
+    typealias SquareElementType = SquareElement<Bool, Bool>
+    typealias RotatedSquareElementType = RotatedSquareElement<Bool, Bool>
+    typealias HexagonalElementType = HexagonalElement<Bool, Bool>
     
     // MARK: BEGIN CUSTOMIZING
     
@@ -53,11 +55,18 @@ class GameScene : SKScene {
     }
     
     override func didMoveToView(view: SKView) {
-        SquareElementArea.width = 40
-        SquareElementArea.height = 40
+        TriangularElement<Bool, Bool>.width = 40
+        TriangularElement<Bool, Bool>.height = sqrt(3) * 40/2
         
-        TriangularElementArea.width = 40
-        TriangularElementArea.height = sqrt(3) * 40/2
+        SquareElement<Bool, Bool>.width = 40
+        SquareElement<Bool, Bool>.height = 40
+        
+        RotatedSquareElement<Bool, Bool>.width = 40
+        RotatedSquareElement<Bool, Bool>.height = 40
+        
+        HexagonalElement<Bool, Bool>.width = 40
+        HexagonalElement<Bool, Bool>.horizontalLength = 20
+        HexagonalElement<Bool, Bool>.height = sqrt(3) * 20
         
         backgroundColor = SKColor.whiteColor()
         

@@ -18,6 +18,8 @@
 		614B309A1B42904100B9EB4E /* ContactGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30991B42904100B9EB4E /* ContactGridTests.swift */; };
 		614B309C1B42905100B9EB4E /* GridElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B309B1B42905100B9EB4E /* GridElementTests.swift */; };
 		61A7BCC21B57FEF800FEB7B0 /* TriangularElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A7BCC11B57FEF800FEB7B0 /* TriangularElement.swift */; };
+		61A7BCC71B5A94EC00FEB7B0 /* RotatedSquareElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A7BCC61B5A94EC00FEB7B0 /* RotatedSquareElement.swift */; };
+		61A7BCC91B5AA5E400FEB7B0 /* HexagonalElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A7BCC81B5AA5E400FEB7B0 /* HexagonalElement.swift */; };
 		61D142301B46B6EF008EAA20 /* GridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1422F1B46B6EF008EAA20 /* GridDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,8 @@
 		614B30991B42904100B9EB4E /* ContactGridTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGridTests.swift; sourceTree = "<group>"; };
 		614B309B1B42905100B9EB4E /* GridElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridElementTests.swift; sourceTree = "<group>"; };
 		61A7BCC11B57FEF800FEB7B0 /* TriangularElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangularElement.swift; sourceTree = "<group>"; };
+		61A7BCC61B5A94EC00FEB7B0 /* RotatedSquareElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatedSquareElement.swift; sourceTree = "<group>"; };
+		61A7BCC81B5AA5E400FEB7B0 /* HexagonalElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HexagonalElement.swift; path = Implementation/HexagonalElement.swift; sourceTree = "<group>"; };
 		61D1422F1B46B6EF008EAA20 /* GridDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridDelegate.swift; path = Protocols/GridDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,8 +127,10 @@
 			isa = PBXGroup;
 			children = (
 				614B307A1B41554E00B9EB4E /* Grid.swift */,
-				614B307C1B41554E00B9EB4E /* SquareElement.swift */,
 				61A7BCC11B57FEF800FEB7B0 /* TriangularElement.swift */,
+				614B307C1B41554E00B9EB4E /* SquareElement.swift */,
+				61A7BCC61B5A94EC00FEB7B0 /* RotatedSquareElement.swift */,
+				61A7BCC81B5AA5E400FEB7B0 /* HexagonalElement.swift */,
 			);
 			name = Implementation;
 			sourceTree = "<group>";
@@ -240,6 +246,8 @@
 				614B30801B41554E00B9EB4E /* SquareElement.swift in Sources */,
 				61D142301B46B6EF008EAA20 /* GridDelegate.swift in Sources */,
 				61A7BCC21B57FEF800FEB7B0 /* TriangularElement.swift in Sources */,
+				61A7BCC91B5AA5E400FEB7B0 /* HexagonalElement.swift in Sources */,
+				61A7BCC71B5A94EC00FEB7B0 /* RotatedSquareElement.swift in Sources */,
 				614B308A1B41555B00B9EB4E /* GridElementType.swift in Sources */,
 				614B308B1B41555B00B9EB4E /* GridType.swift in Sources */,
 				614B307E1B41554E00B9EB4E /* Grid.swift in Sources */,

@@ -6,15 +6,11 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-public struct TriangularElementArea {
+private struct TriangularElementData {
     
-    // MARK: Static variables
-    
-    /// Defines the width of a triangular element.
-    public static var width: CGFloat = 20
-    
-    /// Defines the height of a triangular element.
-    public static var height: CGFloat = 20
+    private static var width: CGFloat = 20
+
+    private static var height: CGFloat = 20
 }
 
 public struct TriangularElement<T, S> : GridElementType {
@@ -48,11 +44,17 @@ public struct TriangularElement<T, S> : GridElementType {
     
     // MARK: Static variables
     
-    // The width of the element.
-    public static var width: CGFloat { return TriangularElementArea.width }
+    // The width of the element.  The width has a minimum value of 1.
+    public static var width: CGFloat {
+        set { TriangularElementData.width = max(1, newValue) }
+        get { return TriangularElementData.width }
+    }
     
-    // The height of the element.
-    public static var height: CGFloat { return TriangularElementArea.height }
+    // The height of the element.  The height has a minimum value of 1.
+    public static var height: CGFloat {
+        set { TriangularElementData.height = max(1, newValue) }
+        get { return TriangularElementData.height }
+    }
 }
 
 // MARK: Instance variables
@@ -84,15 +86,15 @@ extension TriangularElement {
             let realX = y%2 == 0 ? width * CGFloat(x/2) : width * (CGFloat(x/2)+0.5)
             
             return [CGPoint(x: realX, y: realY),
-                    CGPoint(x: realX+width/2, y: realY+height),
-                    CGPoint(x: realX+width, y: realY)]
+                CGPoint(x: realX+width/2, y: realY+height),
+                CGPoint(x: realX+width, y: realY)]
         }
         else {  // apex of the triangle is at the bottom
             let realX = y%2 == 0 ? width * CGFloat((x+1)/2) : width * (CGFloat(x/2)+0.5)
             
             return [CGPoint(x: realX, y: realY),
-                    CGPoint(x: realX-width/2, y: realY+height),
-                    CGPoint(x: realX+width/2, y: realY+height)]
+                CGPoint(x: realX-width/2, y: realY+height),
+                CGPoint(x: realX+width/2, y: realY+height)]
         }
     }
 }
