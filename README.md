@@ -1,5 +1,13 @@
 # RSContactGrid
-## Writing own grid element types
+
+![alt Triangular grid](../triangular-grid.png)
+![alt Square grid](../square-grid.png)
+![alt Rotated square grid](../rotated-square-grid.png)
+![alt Hexagonal grid](../hexagonal-grid.png)
+
+## Documentation
+
+## Writing your own grid element types
 
 You can easily write your own grid element type by conforming to the `GridElementType` protocol. That means you have to implement:
 
