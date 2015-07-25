@@ -5,9 +5,17 @@
 ![alt Rotated square grid](rotated-square-grid.png)
 ![alt Hexagonal grid](hexagonal-grid.png)
 
-## Documentation
-
 ## Example project
+
+You can play with the example project and different grid element types by just switching the typealias for `ElementType` in `GameScene.swift`.
+
+E.g. if you want to play with a triangular grid, just change line 24 in `GameScene.swift` to:
+
+```
+typealias ElementType = TriangularElementType
+````
+
+## Documentation
 
 ## Writing your own grid element types
 
