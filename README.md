@@ -155,6 +155,8 @@ Returns all inital elements that are overlayed by the rect.
 The minimal frame rectangle, which describes the element's location and size in its grid's coordinate system.  The frame contains all vertices of the element.
 * **Desirable complexity:** O(1).
 
+
+
 	var center: CGPoint { get }
 The center of the element's frame rectangle.
 
