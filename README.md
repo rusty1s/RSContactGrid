@@ -7,6 +7,8 @@
 
 ## Documentation
 
+## Example project
+
 ## Writing your own grid element types
 
 You can easily write your own grid element type by conforming to the `GridElementType` protocol. That means you have to implement:
