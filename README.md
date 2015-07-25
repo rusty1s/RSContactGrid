@@ -16,11 +16,9 @@ You can look up the existing element types (`TriangularElement`, `SquareElement`
 
 ## Additional information
 
-`RSContactGrid` was developed and implemented for the use in *Dig Deeper - the Mining / Crafting / Trading game*. *Dig Depper* is currently in developement and has its own *GitHub* project [here](../../DigDeeper).
+`RSContactGrid` was developed and implemented for the use in *Dig Deeper - the Mining / Crafting / Trading game*. *Dig Depper* is currently in developement and has its own *GitHub* project [here](../../../DigDeeper).
 
-<p align="center">
-	<img src="https://github.com/rusty1s/RSContactGrid/blob/master/dig-deeper.png?raw=true" alt="Dig Deeper - the Mining / Crafting / Trading game"/>
-</p>
+![alt Dig Deeper](../../../DigDepper/blob/master/dig-deeper.png)
 
 ## License
 
