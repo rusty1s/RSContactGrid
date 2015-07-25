@@ -11,11 +11,62 @@ You can play with the example project and different grid element types by just s
 
 E.g. if you want to play with a triangular grid, just change line 24 in `GameScene.swift` to:
 
-```
-typealias ElementType = TriangularElementType
-````
+	typealias ElementType = TriangularElementType
 
 ## Documentation
+
+`RSContactGrid` is programmed in the *protocol orientated* way introduced in Swift 2.0. That means you can easily switch the implementations by just confirming to the protocols `GridType` and `GridElementType`. These two protocols come with a bunch of default implementations that don't need to be implemented twice.
+
+### GridType
+
+	protocol GridType { ... }
+	
+#### Inheritance
+
+	Hashable, Equatable, SequenceType, ArrayLiteralConvertible, CustomStringConvertible, CustomDebugStringConvertible
+
+#### Associated types
+    
+	typealias ElementType: GridElementType
+    
+#### Initializers
+
+	init()
+Create an empty `GridType`.
+
+    init(minimumCapacity: Int)
+Create an empty `GridType` with at least the given number of elements worth of storage.  The actual capacity will be the smallest power of 2 that's >= `minimumCapacity`.
+    
+    init<S : SequenceType where S.Generator.Element == ElementType>(_ sequence: S)
+Create a `GridType` from a finite sequence of elements.
+	
+#### Instance variables
+    
+    var count: Int { get }
+Returns the number of elements.
+    
+    var delegate: GridDelegate? { get set }
+ A delegate that is called when a polygon is added into the grid and possibly overlays elements.
+    
+#### Instance methods
+    
+    mutating func insert(element: ElementType)
+Insert a element into the grid.
+	
+    mutating func remove(element: ElementType) -> ElementType?
+Remove the element from the grid and return it if it was present.
+    
+    mutating func removeAll(keepCapacity keepCapacity: Bool)
+Erase all elements.  If `keepCapacity` is `true`, `capacity` will not decrease.
+    
+#### Subscripts
+    
+    subscript(x: Int, y: Int) -> ElementType? { get }
+Returns the element of a given position, or `nil` if the position is not present in the grid.
+
+#### Default implementations
+
+## Delegation
 
 ## Writing your own grid element types
 
