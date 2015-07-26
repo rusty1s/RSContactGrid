@@ -29,7 +29,7 @@ grid.addPolygon(polygon, allowInsertingElements: false) {
     return element
 }
 ````
-Your element should now be marked as contacted: `grid[0, 0].contact == true`
+Your element should now be marked as contacted: `grid[0, 0]!.contact == true`
 
 For more information, browse the documentation section or play with the example project as described in the section below.
 
