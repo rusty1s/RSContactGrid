@@ -35,7 +35,7 @@ For more information, browse the documentation section or play with the example 
 
 ## Example project
 
-You can play with the example project and different grid element types by just switching the typealias for `ElementType` in `GameScene.swift`.
+You can play with the different grid element types in the example project by just switching the typealias for `ElementType` in `GameScene.swift`.
 
 E.g. if you want to play with a triangular grid, just change line 24 in `GameScene.swift` to:
 
@@ -43,7 +43,7 @@ E.g. if you want to play with a triangular grid, just change line 24 in `GameSce
 
 ## Documentation
 
-`RSContactGrid` is programmed in the *protocol orientated* way introduced in Swift 2.0. That means you can easily switch the implementations by just conforming to the protocols `GridType` and `GridElementType`. These two protocols come with a bunch of default implementations that don't need to be implemented twice.
+`RSContactGrid` is programmed the *protocol orientated* way introduced by Swift 2.0. That means you can easily switch the implementations by just conforming to the protocols `GridType` and `GridElementType`.
 
 ### GridType
 
