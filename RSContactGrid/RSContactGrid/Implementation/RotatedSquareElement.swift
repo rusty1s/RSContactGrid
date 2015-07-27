@@ -63,7 +63,7 @@ extension RotatedSquareElement {
     
     public var frame: CGRect {
         return CGRect(x: CGFloat(x)*RotatedSquareElement<T, S>.width + (abs(y)%2 == 1 ? RotatedSquareElement<T, S>.width/2 : 0),
-            y: CGFloat(y/2)*RotatedSquareElement<T, S>.height + (abs(y)%2 == 1 ? RotatedSquareElement<T, S>.height/2 : 0),
+            y: CGFloat((y+1)/2)*RotatedSquareElement<T, S>.height - (abs(y)%2 == 1 ? RotatedSquareElement<T, S>.height/2 : 0),
             width: RotatedSquareElement<T, S>.width,
             height: RotatedSquareElement<T, S>.height)
     }
@@ -115,13 +115,13 @@ extension RotatedSquareElement {
         var elements = Set<RotatedSquareElement<T, S>>(minimumCapacity: (1+evenEndX-evenStartX)*(1+(evenEndY-evenStartY)/2)+(1+oddEndX-oddStartX)*(1+(oddEndY-oddStartY)/2))
         
         for x in evenStartX...evenEndX {
-            for var y = evenStartY; y <= evenEndX; y+=2 {
+            for var y = evenStartY; y <= evenEndY; y+=2 {
                 elements.insert(RotatedSquareElement<T, S>(x: x, y: y))
             }
         }
         
         for x in oddStartX...oddEndX {
-            for var y = oddStartY; y <= oddEndX; y+=2 {
+            for var y = oddStartY; y <= oddEndY; y+=2 {
                 elements.insert(RotatedSquareElement<T, S>(x: x, y: y))
             }
         }

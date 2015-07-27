@@ -174,8 +174,16 @@ class GridElementTests: XCTestCase {
         XCTAssertEqual(element5.vertices.count, 4)
         XCTAssertEqual(element5.vertices, [CGPoint(x: -10, y: 20), CGPoint(x: 0, y: 30), CGPoint(x: 10, y: 20), CGPoint(x: 0, y: 10)])
         
+        let element6 = RotatedSquareElement<String, String>(x: -1, y: -1)
+        XCTAssertEqual(element6.x, -1)
+        XCTAssertEqual(element6.y, -1)
+        XCTAssertEqual(element6.frame, CGRect(x: -10, y: -10, width: 20, height: 20))
+        XCTAssertEqual(element6.center, CGPoint(x: 0, y: 0))
+        XCTAssertEqual(element6.vertices.count, 4)
+        XCTAssertEqual(element6.vertices, [CGPoint(x: -10, y: 0), CGPoint(x: 0, y: 10), CGPoint(x: 10, y: 0), CGPoint(x: 0, y: -10)])
+        
         let elements: Set<RotatedSquareElement<String, String>> = RotatedSquareElement<String, String>.elementsInRect(CGRect(x: 10, y: 10, width: 40, height: 20))
-        XCTAssertEqual(elements.count, 9)
+        XCTAssertEqual(elements.count, 12)
         XCTAssert(elements.contains(RotatedSquareElement<String, String>(x: 0, y: 0)))
         XCTAssert(elements.contains(RotatedSquareElement<String, String>(x: 1, y: 0)))
         XCTAssert(elements.contains(RotatedSquareElement<String, String>(x: 2, y: 0)))
@@ -185,6 +193,9 @@ class GridElementTests: XCTestCase {
         XCTAssert(elements.contains(RotatedSquareElement<String, String>(x: 0, y: 2)))
         XCTAssert(elements.contains(RotatedSquareElement<String, String>(x: 1, y: 2)))
         XCTAssert(elements.contains(RotatedSquareElement<String, String>(x: 2, y: 2)))
+        XCTAssert(elements.contains(RotatedSquareElement<String, String>(x: 0, y: 3)))
+        XCTAssert(elements.contains(RotatedSquareElement<String, String>(x: 1, y: 3)))
+        XCTAssert(elements.contains(RotatedSquareElement<String, String>(x: 2, y: 3)))
     }
     
     func testHexagonalElement() {
