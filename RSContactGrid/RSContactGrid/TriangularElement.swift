@@ -62,39 +62,37 @@ public struct TriangularElement<T, S> : GridElementType {
 extension TriangularElement {
     
     public var frame: CGRect {
-        let width = TriangularElement<T, S>.width
-        let height = TriangularElement<T, S>.height
-        let realY = height * CGFloat(y)
-        let realX: CGFloat!
+        let originX: CGFloat
         
-        if (x+y)%2 == 0 {    // apex of the triangle is on the top
-            realX = y%2 == 0 ? width * CGFloat(x/2) : width * (CGFloat(x/2)+0.5)
+        // apex of the triangle is on the top
+        if (x+y)%2 == 0 {
+            originX = y%2 == 0 ? TriangularElement<T, S>.width * CGFloat(x/2) : TriangularElement<T, S>.width * (CGFloat((x+1)/2)-0.5)
         }
-        else {  // apex of the triangle is at the bottom
-            realX = y%2 == 0 ? width * (CGFloat((x+1)/2) - 0.5) : width * CGFloat(x/2)
+        // apex of the triangle is at the bottom
+        else {
+            originX = y%2 == 0 ? TriangularElement<T, S>.width * (CGFloat((x+1)/2) - 0.5) : TriangularElement<T, S>.width * CGFloat(x/2)
         }
         
-        return CGRect(x: realX, y: realY, width: width, height: height)
+        return CGRect(x: originX,
+            y: CGFloat(y)*TriangularElement<T, S>.height,
+            width: TriangularElement<T, S>.width,
+            height: TriangularElement<T, S>.height)
     }
     
     public var vertices: [CGPoint] {
-        let width = TriangularElement<T, S>.width
-        let height = TriangularElement<T, S>.height
-        let realY = height * CGFloat(y)
+        let frame = self.frame
         
-        if (x+y)%2 == 0 {   // apex of the triangle is on the top
-            let realX = y%2 == 0 ? width * CGFloat(x/2) : width * (CGFloat(x/2)+0.5)
-            
-            return [CGPoint(x: realX, y: realY),
-                CGPoint(x: realX+width/2, y: realY+height),
-                CGPoint(x: realX+width, y: realY)]
+        // apex of the triangle is on the top
+        if (x+y)%2 == 0 {
+            return [CGPoint(x: frame.origin.x, y: frame.origin.y),
+                CGPoint(x: frame.origin.x+frame.size.width/2, y: frame.origin.y+frame.size.height),
+                CGPoint(x: frame.origin.x+frame.size.width, y: frame.origin.y)]
         }
-        else {  // apex of the triangle is at the bottom
-            let realX = y%2 == 0 ? width * CGFloat((x+1)/2) : width * (CGFloat(x/2)+0.5)
-            
-            return [CGPoint(x: realX, y: realY),
-                CGPoint(x: realX-width/2, y: realY+height),
-                CGPoint(x: realX+width/2, y: realY+height)]
+        // apex of the triangle is at the bottom
+        else {
+            return [CGPoint(x: frame.origin.x, y: frame.origin.y+frame.size.height),
+                CGPoint(x: frame.origin.x+frame.size.width, y: frame.origin.y+frame.size.height),
+                CGPoint(x: frame.origin.x+frame.size.width/2, y: frame.origin.y)]
         }
     }
 }
@@ -104,12 +102,18 @@ extension TriangularElement {
 extension TriangularElement {
     
     public func intersectsRelativeLineSegment(point1 point1: RelativeRectPoint, point2: RelativeRectPoint) -> Bool {
-        if (x+y)%2 == 0 {   // apex of the triangle is on the top
+        // apex of the triangle is on the top
+        if (x+y)%2 == 0 {
+            // top left
             if point1.x < 0.5 && point1.y > 2*point1.x && point2.x < 0.5 && point2.y > 2*point2.x { return false }
+            // top right
             if point1.x > 0.5 && point1.y > 2*(1-point1.x) && point2.x > 0.5 && point2.y > 2*(1-point2.x) { return false }
         }
-        else {  // apex of the triangle is at the bottom
+        // apex of the triangle is at the bottom
+        else {
+            // bottom left
             if point1.x < 0.5 && (1-point1.y) > 2*point1.x && point2.x < 0.5 && (1-point2.y) > 2*point2.x { return false }
+            // bottom right
             if point1.x > 0.5 && (1-point1.y) > 2*(1-point1.x) && point2.x > 0.5 && (1-point2.y) > 2*(1-point2.x) { return false }
         }
         
@@ -125,10 +129,10 @@ extension TriangularElement {
         
         let startX = segmentXOfCoordinate(rect.origin.x)
         let startY = segmentYOfCoordinate(rect.origin.y)
-        let endX = segmentXOfCoordinate(rect.origin.x+rect.size.width)
+        let endX = segmentXOfCoordinate(rect.origin.x+rect.size.width)+1
         let endY = segmentYOfCoordinate(rect.origin.y+rect.size.height)
         
-        var elements = Set<TriangularElement<T, S>>(minimumCapacity: (endX-startX)*(endY-startY))
+        var elements = Set<TriangularElement<T, S>>(minimumCapacity: (1+endX-startX)*(1+endY-startY))
         for x in startX...endX {
             for y in startY...endY {
                 elements.insert(TriangularElement<T, S>(x: x, y: y))

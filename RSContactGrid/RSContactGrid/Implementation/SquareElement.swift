@@ -69,10 +69,12 @@ extension SquareElement {
     }
 
     public var vertices: [CGPoint] {
-        return [CGPoint(x: CGFloat(x)*SquareElement<T, S>.width, y: CGFloat(y)*SquareElement<T, S>.height),
-            CGPoint(x: CGFloat(x)*SquareElement<T, S>.width, y: CGFloat(y+1)*SquareElement<T, S>.height),
-            CGPoint(x: CGFloat(x+1)*SquareElement<T, S>.width, y: CGFloat(y+1)*SquareElement<T, S>.height),
-            CGPoint(x: CGFloat(x+1)*SquareElement<T, S>.width, y: CGFloat(y)*SquareElement<T, S>.height)]
+        let frame = self.frame
+        
+        return [frame.origin,
+            CGPoint(x: frame.origin.x, y: frame.origin.y+frame.size.height),
+            CGPoint(x: frame.origin.x+frame.size.width, y: frame.origin.y+frame.size.height),
+            CGPoint(x: frame.origin.x+frame.size.width, y: frame.origin.y)]
     }
 }
 
@@ -91,12 +93,14 @@ extension SquareElement {
 
     public static func elementsInRect<T, S>(rect: CGRect) -> Set<SquareElement<T, S>> {
         
-        let startSegment = segmentOfCoordinates(rect.origin)
-        let endSegment = segmentOfCoordinates(CGPoint(x: rect.origin.x+rect.size.width, y: rect.origin.y+rect.size.height))
+        let startX = segmentXOfCoordinate(rect.origin.x)
+        let startY = segmentYOfCoordinate(rect.origin.y)
+        let endX = segmentXOfCoordinate(rect.origin.x+rect.size.width)
+        let endY = segmentYOfCoordinate(rect.origin.y+rect.size.height)
         
-        var elements = Set<SquareElement<T, S>>(minimumCapacity: (endSegment.0-startSegment.0)*(endSegment.1-startSegment.1))
-        for x in startSegment.0...endSegment.0 {
-            for y in startSegment.1...endSegment.1 {
+        var elements = Set<SquareElement<T, S>>(minimumCapacity: (1+endX-startX)*(1+endY-startY))
+        for x in startX...endX {
+            for y in startY...endY {
                 elements.insert(SquareElement<T, S>(x: x, y: y))
             }
         }
@@ -109,10 +113,6 @@ extension SquareElement {
     
     private static func segmentYOfCoordinate(coordinate: CGFloat) -> Int {
         return coordinate < 0 && fmod(coordinate, height) != 0 ? Int(coordinate/height)-1 : Int(coordinate/height)
-    }
-    
-    private static func segmentOfCoordinates(coordinates: CGPoint) -> (Int, Int) {
-        return (segmentXOfCoordinate(coordinates.x), segmentYOfCoordinate(coordinates.y))
     }
 }
 

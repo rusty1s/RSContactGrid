@@ -21,7 +21,7 @@ class GameScene : SKScene {
     // MARK: BEGIN CUSTOMIZING
     
     // swap here for different element types!
-    typealias ElementType = HexagonalElementType
+    typealias ElementType = TriangularElementType
     
     // MARK: END CUSTOMIZING
     

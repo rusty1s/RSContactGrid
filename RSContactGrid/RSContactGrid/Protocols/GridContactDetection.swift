@@ -62,6 +62,9 @@ extension GridType {
             // if u1 > u2, the line segment is entirely outside the rectangle
             if u1 > u2 { return nil }
             
+            // if u1 == u2, the line segment intersects the rectangle in only one point
+            if u1 == u2 { return nil }
+            
             // if u1 <= 0 && 1 <= u2, the line segment is entirely inside the rectangle
             else if u1 <= 0 && 1 <= u2 { return (relStart, relEnd) }
             

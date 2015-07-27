@@ -77,15 +77,13 @@ public struct HexagonalElement<T, S> : GridElementType {
 extension HexagonalElement {
     
     public var frame: CGRect {
-        
-        let originX = CGFloat(x)*(HexagonalElement<T, S>.width+HexagonalElement<T, S>.horizontalLength) + (y%2 == 1 ? HexagonalElement<T, S>.width-HexagonalElement<T, S>.offsetX : 0)
-        let originY = CGFloat(y/2)*HexagonalElement<T, S>.height + (y%2 == 1 ? HexagonalElement<T, S>.height/2 : 0)
-        
-        return CGRect(x: originX, y: originY, width: HexagonalElement<T, S>.width, height: HexagonalElement<T, S>.height)
+        return CGRect(x: CGFloat(x)*(HexagonalElement<T, S>.width+HexagonalElement<T, S>.horizontalLength) + (abs(y)%2 == 1 ? HexagonalElement<T, S>.width-HexagonalElement<T, S>.offsetX : 0),
+            y: CGFloat(y/2)*HexagonalElement<T, S>.height + (abs(y)%2 == 1 ? HexagonalElement<T, S>.height/2 : 0),
+            width: HexagonalElement<T, S>.width,
+            height: HexagonalElement<T, S>.height)
     }
     
     public var vertices: [CGPoint] {
-        
         let frame = self.frame
         let offsetX = HexagonalElement<T, S>.offsetX
         
@@ -154,6 +152,8 @@ extension HexagonalElement {
 extension HexagonalElement {
     
     public static func elementsInRect<T, S>(rect: CGRect) -> Set<HexagonalElement<T, S>> {
+        // TODO
+        
         
         var elements = Set<HexagonalElement<T, S>>()
         
