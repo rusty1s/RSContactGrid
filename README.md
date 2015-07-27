@@ -2,7 +2,7 @@
 
 `RSContactGrid` is a grid datastructure for holding elements that can be addressed by coordinates implemented in **Swift 2.0**. Actual there are four different grid types to choose from (triangular, square, rotated square and hexagonal).
 
-`RSContactGrid` also implements a collision detection for all those four different grid types. It detects the elements in the grid which are overlayed by any polygon defined over a finite sequence of `CGPoint`. The images below showcase the different grid types and the collision detection:
+`RSContactGrid` also implements a contact detection for all four different grid types, that means the framework detects the elements in the grid which are overlayed by any polygon defined over a finite sequence of `CGPoint`. The images below showcase the different grid types and the contact detection:
 
 ![alt Triangular grid](triangular-grid.png)
 ![alt Square grid](square-grid.png)
@@ -19,7 +19,7 @@
 2. Set its width and height, e.g.: `SquareElement<Bool, Bool>.width = 40`. Note the generic type of `SquareElement`. The first type declares the type of the `content` of the element, the second declares the type of the `contact`.
 3. Set up the grid: `let grid = Grid<SquareElement<Bool, Bool>>()`
 4. Add elements to the grid: `grid.insertAtX(0, y: 0)`
-5. **Do the collision detection!**
+5. **Do the contact detection!**
 
 ```
 let polygon = [CGPoint(x: 0, y: 0), CGPoint(x: 50, y: 50), CGPoint(x: 80, y: -20)]
@@ -48,7 +48,7 @@ E.g. if you want to play with a triangular grid, just change line 24 in `GameSce
 ### GridType
 
 	protocol GridType { ... }
-A datastructure that holds elements conforming to `GridElementType` and addresses these elements by coordinates `x` and `y`. Implements a collision detection for any polygon with the elements in the grid.
+A datastructure that holds elements conforming to `GridElementType` and addresses these elements by coordinates `x` and `y`. Implements a contact detection for any polygon with the elements in the grid.
 
 #### Implementations:
 
