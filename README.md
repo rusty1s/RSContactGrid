@@ -41,6 +41,18 @@ E.g. if you want to play with a triangular grid, just change line 24 in `GameSce
 
 	typealias ElementType = TriangularElementType
 
+## Installation
+
+`RSContactGrid` is not yet released on CocoaPod. Instead use
+
+```
+use_frameworks!
+
+pod 'RSContactGrid', :git => 'https://github.com/rusty1s/RSContactGrid.git'
+```
+
+in your Podfile and run `pod install`.
+
 ## Documentation
 
 `RSContactGrid` is programmed the *protocol orientated* way introduced by Swift 2.0. That means you can easily switch the implementations by just conforming to the protocols `GridType` and `GridElementType`.
