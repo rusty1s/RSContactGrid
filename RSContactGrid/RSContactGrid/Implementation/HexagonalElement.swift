@@ -78,7 +78,7 @@ extension HexagonalElement {
     
     public var frame: CGRect {
         return CGRect(x: CGFloat(x)*(HexagonalElement<T, S>.width+HexagonalElement<T, S>.horizontalLength) + (abs(y)%2 == 1 ? HexagonalElement<T, S>.width-HexagonalElement<T, S>.offsetX : 0),
-            y: CGFloat(y/2)*HexagonalElement<T, S>.height + (abs(y)%2 == 1 ? HexagonalElement<T, S>.height/2 : 0),
+            y: y%2 == 0 ? CGFloat(y/2)*HexagonalElement<T, S>.height : (CGFloat((y+1)/2)-0.5)*HexagonalElement<T, S>.height,
             width: HexagonalElement<T, S>.width,
             height: HexagonalElement<T, S>.height)
     }
@@ -152,18 +152,60 @@ extension HexagonalElement {
 extension HexagonalElement {
     
     public static func elementsInRect<T, S>(rect: CGRect) -> Set<HexagonalElement<T, S>> {
-        // TODO
         
+        let evenStartX = startEvenSegmentXOfCoordinate(rect.origin.x)
+        let evenStartY = evenSegmentYOfCoordinate(rect.origin.y)
+        let evenEndX = endEvenSegmentXOfCoordinate(rect.origin.x+rect.size.width)
+        let evenEndY = evenSegmentYOfCoordinate(rect.origin.y+rect.size.height)
         
-        var elements = Set<HexagonalElement<T, S>>()
+        let oddStartX = startOddSegmentXOfCoordinate(rect.origin.x)
+        let oddStartY = oddSegmentYOfCoordinate(rect.origin.y)
+        let oddEndX = endOddSegmentXOfCoordinate(rect.origin.x+rect.size.width)
+        let oddEndY = oddSegmentYOfCoordinate(rect.origin.y+rect.size.height)
         
-        for x in 0...10 {
-            for y in 0...40 {
-                elements.insert(HexagonalElement<T, S>(x: x, y: y))
+        var elements = Set<HexagonalElement<T, S>>(minimumCapacity: (1+evenEndX-evenStartX)*(1+(evenEndY-evenStartY)/2)+(1+oddEndX-oddStartX)*(1+(oddEndY-oddStartY)/2))
+        
+        if evenEndX >= evenStartX {
+            for x in evenStartX...evenEndX {
+                for var y = evenStartY; y <= evenEndY; y+=2 {
+                    elements.insert(HexagonalElement<T, S>(x: x, y: y))
+                }
+            }
+        }
+        
+        if oddEndX >= oddStartX {
+            for x in oddStartX...oddEndX {
+                for var y = oddStartY; y <= oddEndY; y+=2 {
+                    elements.insert(HexagonalElement<T, S>(x: x, y: y))
+                }
             }
         }
         
         return elements
+    }
+    
+    private static func startEvenSegmentXOfCoordinate(coordinate: CGFloat) -> Int {
+        return endEvenSegmentXOfCoordinate(coordinate+horizontalLength)
+    }
+    
+    private static func endEvenSegmentXOfCoordinate(coordinate: CGFloat) -> Int {
+        return coordinate < 0 && fmod(coordinate, (width+horizontalLength)) != 0 ? Int(coordinate/(width+horizontalLength))-1 : Int(coordinate/(width+horizontalLength))
+    }
+    
+    private static func evenSegmentYOfCoordinate(coordinate: CGFloat) -> Int {
+        return coordinate < 0 && fmod(coordinate, height) != 0 ? (Int(coordinate/height)-1)*2 : Int(coordinate/height)*2
+    }
+    
+    private static func startOddSegmentXOfCoordinate(coordinate: CGFloat) -> Int {
+        return startEvenSegmentXOfCoordinate(coordinate-horizontalLength-offsetX)
+    }
+    
+    private static func endOddSegmentXOfCoordinate(coordinate: CGFloat) -> Int {
+        return endEvenSegmentXOfCoordinate(coordinate-horizontalLength-offsetX)
+    }
+    
+    private static func oddSegmentYOfCoordinate(coordinate: CGFloat) -> Int {
+        return evenSegmentYOfCoordinate(coordinate-height/2)+1
     }
 }
 

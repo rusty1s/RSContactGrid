@@ -63,7 +63,7 @@ extension RotatedSquareElement {
     
     public var frame: CGRect {
         return CGRect(x: CGFloat(x)*RotatedSquareElement<T, S>.width + (abs(y)%2 == 1 ? RotatedSquareElement<T, S>.width/2 : 0),
-            y: CGFloat((y+1)/2)*RotatedSquareElement<T, S>.height - (abs(y)%2 == 1 ? RotatedSquareElement<T, S>.height/2 : 0),
+            y: y%2 == 0 ? CGFloat(y/2)*RotatedSquareElement<T, S>.height : (CGFloat((y+1)/2)-0.5)*RotatedSquareElement<T, S>.height,
             width: RotatedSquareElement<T, S>.width,
             height: RotatedSquareElement<T, S>.height)
     }
@@ -137,20 +137,12 @@ extension RotatedSquareElement {
         return coordinate < 0 && fmod(coordinate, height) != 0 ? (Int(coordinate/height)-1)*2 : Int(coordinate/height)*2
     }
     
-    private static func oddSegmentXOfCoordinate(var coordinate: CGFloat) -> Int {
-        coordinate -= RotatedSquareElement<T, S>.width/2
-        
-        return coordinate < 0 && fmod(coordinate, width) != 0 ? Int(coordinate/width)-1 : Int(coordinate/width)
+    private static func oddSegmentXOfCoordinate(coordinate: CGFloat) -> Int {
+        return evenSegmentXOfCoordinate(coordinate-width/2)
     }
     
-    private static func oddSegmentYOfCoordinate(var coordinate: CGFloat) -> Int {
-        coordinate -= RotatedSquareElement<T, S>.height/2
-        
-        return coordinate < 0 && fmod(coordinate, height) != 0 ? (Int(coordinate/height)-1)*2+1 : Int(coordinate/height)*2+1
-    }
-    
-    private static func oddSegmentOfCoordinates(coordinates: CGPoint) -> (Int, Int) {
-        return (oddSegmentXOfCoordinate(coordinates.x), oddSegmentYOfCoordinate(coordinates.y))
+    private static func oddSegmentYOfCoordinate(coordinate: CGFloat) -> Int {
+        return evenSegmentYOfCoordinate(coordinate-height/2)+1
     }
 }
 

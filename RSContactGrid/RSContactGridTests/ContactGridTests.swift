@@ -181,4 +181,54 @@ class ContactGridTests: XCTestCase {
         XCTAssert(grid[1,1] != nil)
         XCTAssert(grid[1,2] != nil)
     }
+    
+    func testAddPolygonInHexagonalGrid() {
+        var grid = Grid<HexagonalElement<Bool, Bool>>()
+        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        
+        XCTAssertEqual(grid.count, 6)
+        XCTAssert(grid[-1,-1] != nil)
+        XCTAssert(grid[0,-1] != nil)
+        XCTAssert(grid[0,0] != nil)
+        XCTAssert(grid[-1,1] != nil)
+        XCTAssert(grid[0,1] != nil)
+        XCTAssert(grid[0,2] != nil)
+        
+        grid.removeAll()
+        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 30), CGPoint(x: 30, y: 30), CGPoint(x: 30, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        
+        XCTAssertEqual(grid.count, 10)
+        XCTAssert(grid[-1,-1] != nil)
+        XCTAssert(grid[0,-1] != nil)
+        XCTAssert(grid[0,0] != nil)
+        XCTAssert(grid[1,0] != nil)
+        XCTAssert(grid[-1,1] != nil)
+        XCTAssert(grid[0,1] != nil)
+        XCTAssert(grid[0,2] != nil)
+        XCTAssert(grid[1,2] != nil)
+        XCTAssert(grid[-1,3] != nil)
+        XCTAssert(grid[0,3] != nil)
+        
+        grid.removeAll()
+        grid.addPolygon([CGPoint(x: 15, y: 10), CGPoint(x: 30, y: 25), CGPoint(x: 45, y: 10)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        
+        XCTAssertEqual(grid.count, 4)
+        XCTAssert(grid[0,0] != nil)
+        XCTAssert(grid[1,0] != nil)
+        XCTAssert(grid[0,1] != nil)
+        XCTAssert(grid[1,2] != nil)
+        
+        grid.removeAll()
+        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 30), CGPoint(x: 60, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        
+        XCTAssertEqual(grid.count, 8)
+        XCTAssert(grid[-1,-1] != nil)
+        XCTAssert(grid[0,-1] != nil)
+        XCTAssert(grid[1,-1] != nil)
+        XCTAssert(grid[0,0] != nil)
+        XCTAssert(grid[1,0] != nil)
+        XCTAssert(grid[0,1] != nil)
+        XCTAssert(grid[1,1] != nil)
+        XCTAssert(grid[1,2] != nil)
+    }
 }
