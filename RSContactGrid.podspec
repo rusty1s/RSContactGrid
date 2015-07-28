@@ -20,6 +20,6 @@ Pod::Spec.new do |s|
   s.platform      = :ios, "9.0"
 
   s.source        = { :git => "https://github.com/rusty1s/RSContactGrid.git" }
-  s.source_files  = "RSContactGrid/RSContactGrid/*.swift"
+  s.source_files  = "RSContactGrid/RSContactGrid/*/*.swift"
 
 end
