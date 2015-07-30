@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
                     DESC
 
   s.homepage      = "https://github.com/rusty1s/RSContactGrid"
-  s.screenshots   = "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/triangular-grid.png", "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/square-grid.png", "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/rotated-square-grid.png", "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/hexagonal-grid.png",
+  s.screenshots   = "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/triangular-grid.png", "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/square-grid.png", "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/rotated-square-grid.png", "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/hexagonal-grid.png"
 
   s.license       = { :type => "MIT", :file => "LICENSE" }
 
