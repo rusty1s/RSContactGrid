@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name          = "RSContactGrid"
-  s.version       = "1.0"
+  s.version       = "1.0.1"
   s.summary       = "A triangular/square/rotated square/hexagonal grid datastructure with contact detection for any polygon"
 
   s.description   = <<-DESC
