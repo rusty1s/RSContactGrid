@@ -114,7 +114,7 @@ extension GridType {
             var contactedElements = Set<ElementType>()
             
             // mark all elements that intersect with the border of the polygon as contacted
-            for index in 0..<path.count-(closedPath ? 1 : 2) {
+            for index in 0...path.count-(closedPath ? 1 : 2) {
                 let point = path[index]
                 let nextPoint = path[closedPath ? (index+1)%path.count : index+1]
                 
