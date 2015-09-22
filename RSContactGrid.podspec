@@ -1,17 +1,17 @@
 Pod::Spec.new do |s|
 
   s.name          = "RSContactGrid"
-  s.version       = "1.0.1"
-  s.summary       = "A triangular/square/rotated square/hexagonal grid datastructure with contact detection for any polygon"
+  s.version       = "1.1"
+  s.summary       = "A triangular/square/rotated square/hexagonal grid tile map with contact detection for any path"
 
   s.description   = <<-DESC
-					RSContactGrid is a grid datastructure for holding elements that can be addressed by coordinates implemented in Swift 2.0. Actual there are four different grid types to choose from (triangular, square, rotated square and hexagonal).
+					RSContactGrid is a grid tile map for holding tiles that can be addressed by coordinates implemented in Swift 2.0. Actual there are four different tile types to choose from (triangular, square, rotated square and hexagonal).
 
-					RSContactGrid also implements a contact detection for all four different grid types, that means the framework detects the elements in the grid which are overlayed by any polygon defined over a finite sequence of CGPoint.
+					RSContactGrid also implements a contact detection for all four different tile types. The framework detects the tiles in the grid which are overlayed by a given path defined over a finite sequence of CGPoint.
                     DESC
 
   s.homepage      = "https://github.com/rusty1s/RSContactGrid"
-  s.screenshots   = "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/triangular-grid.png", "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/square-grid.png", "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/rotated-square-grid.png", "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/hexagonal-grid.png"
+  s.screenshots   = "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/triangular-tile-grid.png", "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/square-tile-grid.png", "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/rotated-square-tile-grid.png", "https://raw.githubusercontent.com/rusty1s/RSContactGrid/master/hexagonal-tile-grid.png"
 
   s.license       = { :type => "MIT", :file => "LICENSE" }
 
