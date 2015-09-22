@@ -56,7 +56,7 @@ public protocol TileType : Hashable, Comparable, CustomStringConvertible, Custom
 
 extension TileType {
     
-    /// The minimal frame rectangle, which describes the tiles location and
+    /// The minimal frame rectangle which describes the tiles location and
     /// size in its grids coordinate system.  The frame contains all vertices
     /// of the tile.
     /// - Desirable complexity: O(1).

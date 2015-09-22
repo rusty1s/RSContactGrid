@@ -6,9 +6,9 @@
 //  Copyright © 2015 Matthias Fey. All rights reserved.
 //
 
-/// A datastructure that holds tiles conforming to `TileType` and
-/// addresses these tiles by coordinates `x` and `y`.  Implements a contact
-/// detection for any path with and the tiles in the grid.
+/// A tile map that holds tiles conforming to `TileType` and
+/// addresses these by coordinates `x` and `y`.  Implements a contact
+/// detection for any path with the tiles in the grid.
 public protocol GridType : Hashable, Equatable, SequenceType, ArrayLiteralConvertible, CustomStringConvertible, CustomDebugStringConvertible {
     
     // MARK: Associated types

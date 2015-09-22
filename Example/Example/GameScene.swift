@@ -21,7 +21,7 @@ class GameScene : SKScene {
     // MARK: BEGIN CUSTOMIZING
     
     // swap here for different element types!
-    typealias TileType = SquareTileType
+    typealias TileType = HexagonalTileType
     
     // MARK: END CUSTOMIZING
     
