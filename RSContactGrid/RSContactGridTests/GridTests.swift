@@ -12,11 +12,11 @@ import RSContactGrid
 class GridTests: XCTestCase {
     
     func testInsertingAndRemoving() {
-        var grid = Grid<SquareElement<Bool, Bool>>()
+        var grid = Grid<SquareTile<Bool, Bool>>()
         
         XCTAssert(grid.isEmpty)
         XCTAssertEqual(grid.count, 0)
-        grid.insert(SquareElement(x: 0, y: 0))
+        grid.insert(SquareTile(x: 0, y: 0))
         XCTAssert(!grid.isEmpty)
         XCTAssertEqual(grid.count, 1)
         grid.insertAtX(1, y: 0)
@@ -31,21 +31,21 @@ class GridTests: XCTestCase {
         grid.removeAtX(2, y: 0)
         XCTAssert(!grid.isEmpty)
         XCTAssertEqual(grid.count, 1)
-        grid.remove(SquareElement(x: 2, y: 0))
+        grid.remove(SquareTile(x: 2, y: 0))
         XCTAssert(!grid.isEmpty)
         XCTAssertEqual(grid.count, 1)
-        grid.remove(SquareElement(x: 0, y: 0))
+        grid.remove(SquareTile(x: 0, y: 0))
         XCTAssert(grid.isEmpty)
         XCTAssertEqual(grid.count, 0)
         
         grid.insertAtX(0, y: 0)
         grid.insertAtX(2, y: 0)
-        let element1 = grid[0, 0]
-        XCTAssert(element1 != nil)
-        XCTAssertEqual(element1!.x, 0)
-        XCTAssertEqual(element1!.y, 0)
-        let element2 = grid[1, 0]
-        XCTAssert(element2 == nil)
+        let Tile1 = grid[0, 0]
+        XCTAssert(Tile1 != nil)
+        XCTAssertEqual(Tile1!.x, 0)
+        XCTAssertEqual(Tile1!.y, 0)
+        let Tile2 = grid[1, 0]
+        XCTAssert(Tile2 == nil)
         XCTAssert(!grid.isEmpty)
         XCTAssertEqual(grid.count, 2)
         grid.removeAll()
@@ -54,10 +54,10 @@ class GridTests: XCTestCase {
     }
     
     func testHashingAndEquality() {
-        var grid1 = Grid<SquareElement<Bool, Bool>>()
+        var grid1 = Grid<SquareTile<Bool, Bool>>()
         grid1.insertAtX(0, y: 0)
         
-        var grid2 = Grid<SquareElement<Bool, Bool>>()
+        var grid2 = Grid<SquareTile<Bool, Bool>>()
         grid2.insertAtX(1, y: 0)
         
         XCTAssertNotEqual(grid1.hashValue, grid2.hashValue)
@@ -71,29 +71,29 @@ class GridTests: XCTestCase {
     }
     
     func testInitialising() {
-        let grid1 = Grid<SquareElement<Bool, Bool>>()
+        let grid1 = Grid<SquareTile<Bool, Bool>>()
         XCTAssertEqual(grid1.count, 0)
         XCTAssert(grid1.isEmpty)
         
-        let grid2 = Grid<SquareElement<Bool, Bool>>(minimumCapacity: 10)
+        let grid2 = Grid<SquareTile<Bool, Bool>>(minimumCapacity: 10)
         XCTAssertEqual(grid2.count, 0)
         XCTAssert(grid2.isEmpty)
         
-        let grid3: Grid = [SquareElement<Bool, Bool>(x: 0, y: 0), SquareElement(x: 1, y: 0)]
+        let grid3: Grid = [SquareTile<Bool, Bool>(x: 0, y: 0), SquareTile(x: 1, y: 0)]
         XCTAssertEqual(grid3.count, 2)
         XCTAssert(!grid3.isEmpty)
         
-        let grid4 = Grid(Set([SquareElement<Bool, Bool>(x: 0, y: 0), SquareElement(x: 1, y: 0)]))
+        let grid4 = Grid(Set([SquareTile<Bool, Bool>(x: 0, y: 0), SquareTile(x: 1, y: 0)]))
         XCTAssertEqual(grid4.count, 2)
         XCTAssert(!grid4.isEmpty)
         
-        let grid5 = Grid([SquareElement<Bool, Bool>(x: 0, y: 0), SquareElement(x: 1, y: 0), SquareElement(x: 1, y: 0)])
+        let grid5 = Grid([SquareTile<Bool, Bool>(x: 0, y: 0), SquareTile(x: 1, y: 0), SquareTile(x: 1, y: 0)])
         XCTAssertEqual(grid5.count, 2)
         XCTAssert(!grid5.isEmpty)
     }
     
     func testSequenceType() {
-        var grid = Grid<SquareElement<Bool, Bool>>()
+        var grid = Grid<SquareTile<Bool, Bool>>()
         grid.insertAtX(0, y: 0)
         grid.insertAtX(1, y: 0)
         grid.insertAtX(2, y: 0)

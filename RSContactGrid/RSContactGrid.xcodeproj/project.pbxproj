@@ -11,16 +11,16 @@
 		6137B4D21B38740A006AC4C5 /* RSContactGrid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6137B4C71B38740A006AC4C5 /* RSContactGrid.framework */; };
 		6137B4D71B38740A006AC4C5 /* GridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6137B4D61B38740A006AC4C5 /* GridTests.swift */; };
 		614B307E1B41554E00B9EB4E /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B307A1B41554E00B9EB4E /* Grid.swift */; };
-		614B30801B41554E00B9EB4E /* SquareElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B307C1B41554E00B9EB4E /* SquareElement.swift */; };
-		614B30891B41555B00B9EB4E /* GridContactDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30841B41555B00B9EB4E /* GridContactDetection.swift */; };
-		614B308A1B41555B00B9EB4E /* GridElementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30851B41555B00B9EB4E /* GridElementType.swift */; };
+		614B30801B41554E00B9EB4E /* SquareTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B307C1B41554E00B9EB4E /* SquareTile.swift */; };
+		614B308A1B41555B00B9EB4E /* TileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30851B41555B00B9EB4E /* TileType.swift */; };
 		614B308B1B41555B00B9EB4E /* GridType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30861B41555B00B9EB4E /* GridType.swift */; };
 		614B309A1B42904100B9EB4E /* ContactGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B30991B42904100B9EB4E /* ContactGridTests.swift */; };
 		614B309C1B42905100B9EB4E /* GridElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614B309B1B42905100B9EB4E /* GridElementTests.swift */; };
-		61974CE61B66DC4A0095A6F4 /* TriangularElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61974CE51B66DC4A0095A6F4 /* TriangularElement.swift */; };
-		61974CE81B66DC530095A6F4 /* RotatedSquareElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61974CE71B66DC530095A6F4 /* RotatedSquareElement.swift */; };
-		61A7BCC91B5AA5E400FEB7B0 /* HexagonalElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A7BCC81B5AA5E400FEB7B0 /* HexagonalElement.swift */; };
-		61D142301B46B6EF008EAA20 /* GridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D1422F1B46B6EF008EAA20 /* GridDelegate.swift */; };
+		61974CE61B66DC4A0095A6F4 /* TriangularTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61974CE51B66DC4A0095A6F4 /* TriangularTile.swift */; };
+		61974CE81B66DC530095A6F4 /* RotatedSquareTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61974CE71B66DC530095A6F4 /* RotatedSquareTile.swift */; };
+		61986EA61BB02AC00037DD81 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61986EA51BB02AC00037DD81 /* Helper.swift */; settings = {ASSET_TAGS = (); }; };
+		61986EA81BB08CBA0037DD81 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61986EA71BB08CBA0037DD81 /* Data.swift */; settings = {ASSET_TAGS = (); }; };
+		61A7BCC91B5AA5E400FEB7B0 /* HexagonalTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A7BCC81B5AA5E400FEB7B0 /* HexagonalTile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,16 +41,16 @@
 		6137B4D61B38740A006AC4C5 /* GridTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridTests.swift; sourceTree = "<group>"; };
 		6137B4D81B38740A006AC4C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		614B307A1B41554E00B9EB4E /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = Implementation/Grid.swift; sourceTree = "<group>"; };
-		614B307C1B41554E00B9EB4E /* SquareElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SquareElement.swift; path = Implementation/SquareElement.swift; sourceTree = "<group>"; };
-		614B30841B41555B00B9EB4E /* GridContactDetection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridContactDetection.swift; path = Protocols/GridContactDetection.swift; sourceTree = "<group>"; };
-		614B30851B41555B00B9EB4E /* GridElementType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridElementType.swift; path = Protocols/GridElementType.swift; sourceTree = "<group>"; };
+		614B307C1B41554E00B9EB4E /* SquareTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SquareTile.swift; path = Implementation/SquareTile.swift; sourceTree = "<group>"; };
+		614B30851B41555B00B9EB4E /* TileType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileType.swift; path = Protocols/TileType.swift; sourceTree = "<group>"; };
 		614B30861B41555B00B9EB4E /* GridType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridType.swift; path = Protocols/GridType.swift; sourceTree = "<group>"; };
 		614B30991B42904100B9EB4E /* ContactGridTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactGridTests.swift; sourceTree = "<group>"; };
 		614B309B1B42905100B9EB4E /* GridElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridElementTests.swift; sourceTree = "<group>"; };
-		61974CE51B66DC4A0095A6F4 /* TriangularElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriangularElement.swift; path = Implementation/TriangularElement.swift; sourceTree = "<group>"; };
-		61974CE71B66DC530095A6F4 /* RotatedSquareElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RotatedSquareElement.swift; path = Implementation/RotatedSquareElement.swift; sourceTree = "<group>"; };
-		61A7BCC81B5AA5E400FEB7B0 /* HexagonalElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HexagonalElement.swift; path = Implementation/HexagonalElement.swift; sourceTree = "<group>"; };
-		61D1422F1B46B6EF008EAA20 /* GridDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridDelegate.swift; path = Protocols/GridDelegate.swift; sourceTree = "<group>"; };
+		61974CE51B66DC4A0095A6F4 /* TriangularTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriangularTile.swift; path = Implementation/TriangularTile.swift; sourceTree = "<group>"; };
+		61974CE71B66DC530095A6F4 /* RotatedSquareTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RotatedSquareTile.swift; path = Implementation/RotatedSquareTile.swift; sourceTree = "<group>"; };
+		61986EA51BB02AC00037DD81 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		61986EA71BB08CBA0037DD81 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Implementation/Data.swift; sourceTree = "<group>"; };
+		61A7BCC81B5AA5E400FEB7B0 /* HexagonalTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HexagonalTile.swift; path = Implementation/HexagonalTile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +96,7 @@
 				614B30561B3B104300B9EB4E /* Implementation */,
 				614B30551B399C3800B9EB4E /* Protocols */,
 				6137B4CA1B38740A006AC4C5 /* RSContactGrid.h */,
+				61986EA51BB02AC00037DD81 /* Helper.swift */,
 				6137B4CC1B38740A006AC4C5 /* Info.plist */,
 			);
 			path = RSContactGrid;
@@ -116,9 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				614B30861B41555B00B9EB4E /* GridType.swift */,
-				614B30841B41555B00B9EB4E /* GridContactDetection.swift */,
-				614B30851B41555B00B9EB4E /* GridElementType.swift */,
-				61D1422F1B46B6EF008EAA20 /* GridDelegate.swift */,
+				614B30851B41555B00B9EB4E /* TileType.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -127,10 +126,11 @@
 			isa = PBXGroup;
 			children = (
 				614B307A1B41554E00B9EB4E /* Grid.swift */,
-				61974CE51B66DC4A0095A6F4 /* TriangularElement.swift */,
-				614B307C1B41554E00B9EB4E /* SquareElement.swift */,
-				61974CE71B66DC530095A6F4 /* RotatedSquareElement.swift */,
-				61A7BCC81B5AA5E400FEB7B0 /* HexagonalElement.swift */,
+				61974CE51B66DC4A0095A6F4 /* TriangularTile.swift */,
+				614B307C1B41554E00B9EB4E /* SquareTile.swift */,
+				61974CE71B66DC530095A6F4 /* RotatedSquareTile.swift */,
+				61A7BCC81B5AA5E400FEB7B0 /* HexagonalTile.swift */,
+				61986EA71BB08CBA0037DD81 /* Data.swift */,
 			);
 			name = Implementation;
 			sourceTree = "<group>";
@@ -243,15 +243,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				614B30801B41554E00B9EB4E /* SquareElement.swift in Sources */,
-				61D142301B46B6EF008EAA20 /* GridDelegate.swift in Sources */,
-				61A7BCC91B5AA5E400FEB7B0 /* HexagonalElement.swift in Sources */,
-				614B308A1B41555B00B9EB4E /* GridElementType.swift in Sources */,
+				614B30801B41554E00B9EB4E /* SquareTile.swift in Sources */,
+				61A7BCC91B5AA5E400FEB7B0 /* HexagonalTile.swift in Sources */,
+				614B308A1B41555B00B9EB4E /* TileType.swift in Sources */,
 				614B308B1B41555B00B9EB4E /* GridType.swift in Sources */,
 				614B307E1B41554E00B9EB4E /* Grid.swift in Sources */,
-				614B30891B41555B00B9EB4E /* GridContactDetection.swift in Sources */,
-				61974CE81B66DC530095A6F4 /* RotatedSquareElement.swift in Sources */,
-				61974CE61B66DC4A0095A6F4 /* TriangularElement.swift in Sources */,
+				61986EA61BB02AC00037DD81 /* Helper.swift in Sources */,
+				61974CE81B66DC530095A6F4 /* RotatedSquareTile.swift in Sources */,
+				61986EA81BB08CBA0037DD81 /* Data.swift in Sources */,
+				61974CE61B66DC4A0095A6F4 /* TriangularTile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

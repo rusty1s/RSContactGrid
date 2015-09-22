@@ -12,28 +12,28 @@ import RSContactGrid
 class ContactGridTests: XCTestCase {
     
     func testAddPolygon() {
-        var grid1 = Grid<SquareElement<Bool, Bool>>()
-        grid1.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], allowInsertingElements: false) { return $0 }
+        var grid1 = Grid<SquareTile<Bool, Bool>>()
+        grid1.detectContactedTilesOfPath([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], closedPath: true, allowInsertingTiles: false) { $0.data.contact = true }
         
         XCTAssert(grid1.isEmpty)
         grid1.insertAtX(0, y: 0)
         grid1.insertAtX(1, y: 0)
-        grid1.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], allowInsertingElements: false) { var element = $0; element.contact = true; return element }
+        grid1.detectContactedTilesOfPath([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], closedPath: true, allowInsertingTiles: false) { $0.data.contact = true }
         
         XCTAssertFalse(grid1.isEmpty)
         XCTAssertEqual(grid1.count, 2)
         XCTAssert(grid1[0,0] != nil)
-        XCTAssertNotNil(grid1[0,0]!.contact)
-        XCTAssertEqual(grid1[0,0]!.contact!, true)
+        XCTAssertNotNil(grid1[0,0]!.data.contact)
+        XCTAssertEqual(grid1[0,0]!.data.contact!, true)
         XCTAssert(grid1[1,0] != nil)
-        XCTAssertNotNil(grid1[1,0]!.contact)
-        XCTAssertEqual(grid1[1,0]!.contact!, true)
+        XCTAssertNotNil(grid1[1,0]!.data.contact)
+        XCTAssertEqual(grid1[1,0]!.data.contact!, true)
     }
     
     func testAddPolygonInTriangularGrid() {
         
-        var grid = Grid<TriangularElement<Bool, Bool>>()
-        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        var grid = Grid<TriangularTile<Bool, Bool>>()
+        grid.detectContactedTilesOfPath([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
         
         XCTAssertEqual(grid.count, 7)
         XCTAssert(grid[-1,0] != nil)
@@ -45,7 +45,7 @@ class ContactGridTests: XCTestCase {
         XCTAssert(grid[1,1] != nil)
         
         grid.removeAll()
-        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 30), CGPoint(x: 30, y: 30), CGPoint(x: 30, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        grid.detectContactedTilesOfPath([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 30), CGPoint(x: 30, y: 30), CGPoint(x: 30, y: 0)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
         
         XCTAssertEqual(grid.count, 10)
         XCTAssert(grid[-1,0] != nil)
@@ -60,7 +60,7 @@ class ContactGridTests: XCTestCase {
         XCTAssert(grid[3,1] != nil)
         
         grid.removeAll()
-        grid.addPolygon([CGPoint(x: 15, y: 10), CGPoint(x: 30, y: 25), CGPoint(x: 45, y: 10)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        grid.detectContactedTilesOfPath([CGPoint(x: 15, y: 10), CGPoint(x: 30, y: 25), CGPoint(x: 45, y: 10)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
         
         XCTAssertEqual(grid.count, 8)
         XCTAssert(grid[0,0] != nil)
@@ -73,7 +73,7 @@ class ContactGridTests: XCTestCase {
         XCTAssert(grid[2,1] != nil)
         
         grid.removeAll()
-        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 30), CGPoint(x: 60, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        grid.detectContactedTilesOfPath([CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 30), CGPoint(x: 60, y: 0)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
         
         XCTAssertEqual(grid.count, 10)
         XCTAssert(grid[-1,0] != nil)
@@ -89,8 +89,8 @@ class ContactGridTests: XCTestCase {
     }
     
     func testAddPolygonInSquareGrid() {
-        var grid = Grid<SquareElement<Bool, Bool>>()
-        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        var grid = Grid<SquareTile<Bool, Bool>>()
+        grid.detectContactedTilesOfPath([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
  
         XCTAssertEqual(grid.count, 3)
         XCTAssert(grid[0,0] != nil)
@@ -98,7 +98,7 @@ class ContactGridTests: XCTestCase {
         XCTAssert(grid[1,0] != nil)
         
         grid.removeAll()
-        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 30), CGPoint(x: 30, y: 30), CGPoint(x: 30, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        grid.detectContactedTilesOfPath([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 30), CGPoint(x: 30, y: 30), CGPoint(x: 30, y: 0)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
         
         XCTAssertEqual(grid.count, 4)
         XCTAssert(grid[0,0] != nil)
@@ -107,7 +107,7 @@ class ContactGridTests: XCTestCase {
         XCTAssert(grid[1,0] != nil)
         
         grid.removeAll()
-        grid.addPolygon([CGPoint(x: 15, y: 10), CGPoint(x: 30, y: 25), CGPoint(x: 45, y: 10)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        grid.detectContactedTilesOfPath([CGPoint(x: 15, y: 10), CGPoint(x: 30, y: 25), CGPoint(x: 45, y: 10)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
         
         XCTAssertEqual(grid.count, 4)
         XCTAssert(grid[0,0] != nil)
@@ -116,7 +116,7 @@ class ContactGridTests: XCTestCase {
         XCTAssert(grid[1,0] != nil)
         
         grid.removeAll()
-        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 30), CGPoint(x: 60, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        grid.detectContactedTilesOfPath([CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 30), CGPoint(x: 60, y: 0)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
         
         XCTAssertEqual(grid.count, 4)
         XCTAssert(grid[0,0] != nil)
@@ -126,8 +126,8 @@ class ContactGridTests: XCTestCase {
     }
     
     func testAddPolygonInRotatedSquareGrid() {
-        var grid = Grid<RotatedSquareElement<Bool, Bool>>()
-        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        var grid = Grid<RotatedSquareTile<Bool, Bool>>()
+        grid.detectContactedTilesOfPath([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
 
         XCTAssertEqual(grid.count, 7)
         XCTAssert(grid[-1,-1] != nil)
@@ -139,7 +139,7 @@ class ContactGridTests: XCTestCase {
         XCTAssert(grid[0,2] != nil)
         
         grid.removeAll()
-        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 30), CGPoint(x: 30, y: 30), CGPoint(x: 30, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        grid.detectContactedTilesOfPath([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 30), CGPoint(x: 30, y: 30), CGPoint(x: 30, y: 0)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
         
         XCTAssertEqual(grid.count, 12)
         XCTAssert(grid[-1,-1] != nil)
@@ -156,7 +156,7 @@ class ContactGridTests: XCTestCase {
         XCTAssert(grid[0,3] != nil)
 
         grid.removeAll()
-        grid.addPolygon([CGPoint(x: 15, y: 10), CGPoint(x: 30, y: 25), CGPoint(x: 45, y: 10)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        grid.detectContactedTilesOfPath([CGPoint(x: 15, y: 10), CGPoint(x: 30, y: 25), CGPoint(x: 45, y: 10)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
         
         XCTAssertEqual(grid.count, 6)
         XCTAssert(grid[0,0] != nil)
@@ -167,7 +167,7 @@ class ContactGridTests: XCTestCase {
         XCTAssert(grid[1,2] != nil)
 
         grid.removeAll()
-        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 30), CGPoint(x: 60, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        grid.detectContactedTilesOfPath([CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 30), CGPoint(x: 60, y: 0)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
     
         XCTAssertEqual(grid.count, 10)
         XCTAssert(grid[-1,-1] != nil)
@@ -183,8 +183,8 @@ class ContactGridTests: XCTestCase {
     }
     
     func testAddPolygonInHexagonalGrid() {
-        var grid = Grid<HexagonalElement<Bool, Bool>>()
-        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        var grid = Grid<HexagonalTile<Bool, Bool>>()
+        grid.detectContactedTilesOfPath([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 20), CGPoint(x: 20, y: 20), CGPoint(x: 20, y: 0)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
         
         XCTAssertEqual(grid.count, 6)
         XCTAssert(grid[-1,-1] != nil)
@@ -195,7 +195,7 @@ class ContactGridTests: XCTestCase {
         XCTAssert(grid[0,2] != nil)
         
         grid.removeAll()
-        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 30), CGPoint(x: 30, y: 30), CGPoint(x: 30, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        grid.detectContactedTilesOfPath([CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 30), CGPoint(x: 30, y: 30), CGPoint(x: 30, y: 0)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
         
         XCTAssertEqual(grid.count, 10)
         XCTAssert(grid[-1,-1] != nil)
@@ -210,7 +210,7 @@ class ContactGridTests: XCTestCase {
         XCTAssert(grid[0,3] != nil)
         
         grid.removeAll()
-        grid.addPolygon([CGPoint(x: 15, y: 10), CGPoint(x: 30, y: 25), CGPoint(x: 45, y: 10)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        grid.detectContactedTilesOfPath([CGPoint(x: 15, y: 10), CGPoint(x: 30, y: 25), CGPoint(x: 45, y: 10)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
         
         XCTAssertEqual(grid.count, 4)
         XCTAssert(grid[0,0] != nil)
@@ -219,7 +219,7 @@ class ContactGridTests: XCTestCase {
         XCTAssert(grid[1,2] != nil)
         
         grid.removeAll()
-        grid.addPolygon([CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 30), CGPoint(x: 60, y: 0)], allowInsertingElements: true) { var element = $0; element.contact = true; return element }
+        grid.detectContactedTilesOfPath([CGPoint(x: 0, y: 0), CGPoint(x: 30, y: 30), CGPoint(x: 60, y: 0)], closedPath: true, allowInsertingTiles: true) { $0.data.contact = true }
         
         XCTAssertEqual(grid.count, 8)
         XCTAssert(grid[-1,-1] != nil)

@@ -10,7 +10,7 @@ import SpriteKit
 
 class GridElementNode : SKShapeNode {
     
-    init(element: GameScene.ElementType) {
+    init(element: GameScene.TileType) {
         let path = CGPathCreateMutable()
         for (index, vertex) in element.vertices.enumerate() {
             if index == 0 { CGPathMoveToPoint(path, nil, vertex.x, vertex.y) }
@@ -23,7 +23,7 @@ class GridElementNode : SKShapeNode {
         self.path = path
         lineWidth = 1
         strokeColor = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
-        if element.contact != nil {
+        if element.data.contact != nil {
             fillColor = SKColor.redColor()
         }
     }
